@@ -38,19 +38,6 @@ Thumbs.db
 
 # EMACS generated files #
 ########################
-*~
-
-# Maven generated files #
-#########################
-target/
-bin/
-test-output/
-
-# Eclipse generated files #
-###########################
-.classpath
-.project
-.settings/
 
 # CS147 nodejs based gitignores #
 #################################
