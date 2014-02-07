@@ -1,4 +1,4 @@
-exports.view = function(req, res) {
+exports.viewForm = function(req, res) {
   res.render('login');
 }
 
