@@ -13,7 +13,13 @@ var handlebars = require('express3-handlebars')
 var index = require('./routes/index');
 var project = require('./routes/project');
 var login = require('./routes/login');
-var placeinfo = require('./routes/placeinfo');
+var wishlist = require('./routes/wishlist');
+var info = require('./routes/info');
+var mapview = require('./routes/mapview');
+var pasteats = require('./routes/pasteats');
+var search = require('./routes/search');
+var help = require('./routes/help');
+
 // Example route
 // var user = require('./routes/user');
 
@@ -44,41 +50,22 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/project/:name', project.viewProject);
 app.get('/login', login.view);
+<<<<<<< HEAD
 app.get('/placeinfo', placeinfo.viewPlaceInfo);
+=======
+app.get('/wishlist', wishlist.view);
+app.get('/info/:id', info.viewById);
+app.get('/mapview', mapview.view);
+app.get('/pasteats', pasteats.view);
+app.get('/pasteats/:id', pasteats.viewById);
+app.get('/search', search.viewForm);
+app.get('/search/results', search.viewResults);
+app.get('/help', help.view);
+
+>>>>>>> 641c72b1c9531f503658b151517fb4ecffda257c
 // Example route
 // app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

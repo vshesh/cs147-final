@@ -1,0 +1,27 @@
+
+		<link rel="stylesheet" type="text/css" href="/css/menubar/component.css" />
+		<script src="/js/menubar/modernizr.custom.js"></script>
+	<body class="cbp-spmenu-push">
+		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+			<h3>Umami</h3>
+			<a href="/wishlist">WishList</a>
+			<a href="/pasteats">Past Eats</a>
+			<a href="/search">Search</a>
+			<!-- <a href="/profile">Profile</a> -->
+			<a href="/help">Help</a>
+		</nav>
+		<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+		<script src="/js/menubar/classie.js"></script>
+		<script>
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				menuButton = document.getElementById( 'menuButton' ),
+				body = document.body;
+
+			menuButton.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
+		</script>
+	</body>
