@@ -52,3 +52,9 @@ a, a:hover{
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+#signup{
+	background-image: linear-gradient(to bottom,#d42b45 0,#C6151A 100%);
+	background-repeat: repeat-x;
+	border-color: #2b669a;
+}
