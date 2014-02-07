@@ -16,9 +16,9 @@ var login = require('./routes/login');
 var wishlist = require('./routes/wishlist');
 var info = require('./routes/info');
 var mapview = require('./routes/mapview');
-var pasteats = require('/routes/pasteats');
-var search = require('/routes/search');
-var help = require('/routes/help');
+var pasteats = require('./routes/pasteats');
+var search = require('./routes/search');
+var help = require('./routes/help');
 
 // Example route
 // var user = require('./routes/user');
