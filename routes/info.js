@@ -1,4 +1,4 @@
 exports.viewById = function(req, res) {
-  id = req.params.id;
-  res.render('placeinfo');
+  var id = req.params.id;
+  res.render('info');
 }

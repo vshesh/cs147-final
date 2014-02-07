@@ -1,0 +1,34 @@
+.header-text {
+	font-size: 1.5em;
+	text-align: center;
+}
+
+ul, li {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+iframe, object{
+	width: 100%;
+}
+
+.btn {
+	height:100%;
+}
+
+.photos {
+	width:100%;
+	text-align: center;
+}
+
+.photos img {
+	width: 7em;
+	height: 7em;
+	padding: 1em .5em 0em .5em;
+}
+
+hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

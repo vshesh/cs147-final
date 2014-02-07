@@ -50,9 +50,6 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/project/:name', project.viewProject);
 app.get('/login', login.view);
-<<<<<<< HEAD
-app.get('/placeinfo', placeinfo.viewPlaceInfo);
-=======
 app.get('/wishlist', wishlist.view);
 app.get('/info/:id', info.viewById);
 app.get('/mapview', mapview.view);
@@ -61,8 +58,6 @@ app.get('/pasteats/:id', pasteats.viewById);
 app.get('/search', search.viewForm);
 app.get('/search/results', search.viewResults);
 app.get('/help', help.view);
-
->>>>>>> 641c72b1c9531f503658b151517fb4ecffda257c
 // Example route
 // app.get('/users', user.list);
 
