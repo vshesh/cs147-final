@@ -1,51 +1,55 @@
+<!doctype html>
 
-
-
-
-
-<!DOCTYPE html>
-<!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Thu Feb 06 2014 22:31:40 GMT+0000 (UTC) -->
-<!--
-<html data-wf-site="52f409a76f60c03a1900023c">
+<html>
 <head>
+  <title>HCI Project Portfolio</title>  
   <meta charset="utf-8">
-  <title>LoginScreen</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="/css/login/normalize.css">
-  <link rel="stylesheet" type="text/css" href="/css/login/webflow.css">
-  <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="/css/boostrap-theme.css">
-  <link rel="stylesheet" type="text/css" href="/css/login/loginscreen.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
-  <script>
-    WebFont.load({
-      google: {
-        families: ["Open Sans:300,400,600,700,800"]
-      }
-    });
-  </script>
-  <script>
-    if (/mobile/i.test(navigator.userAgent)) document.documentElement.className += ' w-mobile';
-  </script>
-  <!--<link rel="shortcut icon" type="image/x-icon" href="https://y7v4p6k4.ssl.hwcdn.net/placeholder/favicon.ico">-->
-  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="/css/introHCI.css" rel="stylesheet">
+  <link href="/css/login/login.css" rel="stylesheet">
 
-<!--</head>
+  <!-- this is a comment in HTML -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->        
+</head>
+
 <body>
-  <h1>Welcome to Umami</h1>
-  <div class="form">
-    <form class="form" name="email-form" data-name="Email Form">
-      <label for="name">Name:</label>
-      <input class="w-input" type="text" placeholder="Enter your name" name="name" data-name="Name"></input>
-      <label for="email">Email Address:</label>
-      <input class="w-input" type="email" placeholder="Enter your email address" name="email" data-name="Email" required="required"></input>
-      <input class="w-button w-hidden-medium submit-button" type="submit" value="Sign In!" data-wait="Please wait..."></input>
-    </form>
-  </div>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script type="text/javascript" src="js/webflow.js"></script>
+
+    <a href="/login">Avi Click Here!</a>
+
+    <h4>Projects</h4>
+    <!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
+    <!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
+    <!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
+    {{#each projects}}
+      <div class="project" id="{{id}}">
+        <a href="project/{{name}}" class="thumbnail">
+          <img src="images/{{image}}" alt="Lorem Pixel image" class="img">
+          <p>{{name}}</p>
+        </a>
+      </div>
+    {{/each}}
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
 
--->
+
+
+
+
+
+
+
+
+
+
+
+

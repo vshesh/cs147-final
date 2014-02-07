@@ -13,7 +13,6 @@
 the CSS to the page. feel free to remove it once the link is working. */
 body {
   margin: 1px;
-  border: 10px solid #333;
   padding: 20px;
   background-color: #f8f8f8;
   background-image: url("../images/hatched-linen-texture.jpg");
