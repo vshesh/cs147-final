@@ -1,7 +1,7 @@
 exports.viewForm = function(req, res) {
-  res.render('login');
+  res.render('searchform');
 }
 
 exports.viewResults = function(req, res) {
-  res.render('login')
+  res.render('serachresults')
 }
