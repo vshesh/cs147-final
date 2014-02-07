@@ -54,7 +54,7 @@ app.get('/wishlist', wishlist.view);
 app.get('/info/:id', info.viewById);
 app.get('/mapview', mapview.view);
 app.get('/pasteats', pasteats.view);
-app.get('/pasteats/id', pasteats.viewById);
+app.get('/pasteats/:id', pasteats.viewById);
 app.get('/search', search.viewForm);
 app.get('/search/results', search.viewResults);
 app.get('/help', help.view);
