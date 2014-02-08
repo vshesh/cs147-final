@@ -4,6 +4,14 @@ body {
   background-color: #eee;
 }
 
+#signinButton{
+  text-align: center;
+}
+
+#signinButton .g-signin {
+  horizontal-align: center;
+}
+
 .form-signin-heading{
 	text-align: center;
 }
