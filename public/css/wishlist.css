@@ -1,3 +1,14 @@
+.wishlist-entry {
+	min-height: 4.5em;
+	overflow: hidden;
+	padding: .5em 0em;
+	border-bottom: 1px #e3e3e3 solid;
+}
+
+.right-info {
+	text-align:right;
+}
+
 ul, li {
 	list-style-type: none;
 	padding: 0;
@@ -5,14 +16,15 @@ ul, li {
 	font-size: .9em;
 }
 
-ul li:first-child {
+.col-xs-6 ul li:first-child {
 	font-size: 1em;
+	font-weight: bold;
 }
 
 img {
-	margin-top:.25em;
-	width: 4em;
-	height: 4em;
+	width: 4.5em;
+	height: 4.5em;
+	border: 1px #e3e3e3 solid;
 }
 
 hr {
@@ -24,16 +36,7 @@ a:link, a:visited {
 	color: black;	
 }
 
-.wishlist-entry .col-xs-4 {
-	text-align:right;
-}
-
-.wishlist-entry {
-	min-height: 4.5em;
-	overflow: hidden;
-}
-
-.entries {
-	margin-left: -20px;
-	width: 120%;
+.photo {
+	padding: 0px 0px 0px .5em;
+	width:4.5em;
 }
