@@ -14,8 +14,15 @@
   <body>
     {{> menu-partial}}
     {{> menupanel-partial}}
-    <!--Ash, write up your code after this-->
+    
+    <form action="/search/results" id="searchform" role="form" method="get">
+        <h3>Search for Places</h3>
+        <div class="searchName">
+          <input type="text">
+        </div>
 
+        <input type="submit" value="GO" id="submitBtn" class="btn btn-default"></input>
+    </form>
 
     <!-- Req for menubar-->
     <script src="/js/menubar/modernizr.custom.js"></script>
@@ -25,3 +32,4 @@
     <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>
+
