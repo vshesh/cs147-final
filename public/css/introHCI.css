@@ -1,16 +1,15 @@
-/* applies to anything of class "example-class-selector" */
-.example-class-selector {
-  margin-top: 2em;
+
+
+body { 
+  padding-top: 40px; 
 }
 
-/* applies to any <p> descendants of an element of class "example-class-selector" */
-.example-class-selector p {
-  /* Colors are in hexadecimal: http://www.colorpicker.com/ */   
-  color: #CC00AA;
+@media screen and (max-width: 768px) {
+    body { 
+      padding-top: 0px; 
+    }
 }
 
-/* this style exists to make it obvious that you've successfully linked
-the CSS to the page. feel free to remove it once the link is working. */
 body {
   margin: 1px;
   padding: 20px;

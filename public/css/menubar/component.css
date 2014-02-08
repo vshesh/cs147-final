@@ -4,6 +4,10 @@
 	position: fixed;
 }
 
+.navbar-toggle{
+	display: default;
+}
+
 .cbp-spmenu h3 {
 	color: #afdefa;
 	font-size: 1.9em;
