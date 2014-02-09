@@ -1,35 +1,82 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    {{> title}}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="/css/introHCI.css" rel="stylesheet">
-    <!-- Req for menubar-->
-    <link href="/css/menubar/component.css" rel="stylesheet"/>
-  </head>
+<head>
+  {{> title}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="/css/introHCI.css" rel="stylesheet">
+  <!-- Req for menubar-->
+  <link href="/css/menubar/component.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/select2.css">
+  <link rel="stylesheet" href="/css/select2-bootstrap.css">
+  <link rel="stylesheet" href="css/searchform.css">
 
-  <body>
-    {{> menu-partial}}
-    {{> menupanel-partial}}
+  <!-- Req for menubar-->
+  <script src="/js/menubar/modernizr.custom.js"></script>
+  <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+  <script src="/js/menubar/classie.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/select2.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#e1').select2();
+      $('.priceWrapper').select2();
+    });
+  </script>
+</head>
+
+<body>
+{{> menu-partial}}
+{{> menupanel-partial}}
+
+<div class="container">
+  <form action="/search/results" id="searchform" role="form" method="get">
+    <h3>Search for Places</h3>
+    <div class="searchName form-group">
+      <input type="text" placeholder="name" class="form-control" id="nameInput">
+    </div>
     
-    <form action="/search/results" id="searchform" role="form" method="get">
-        <h3>Search for Places</h3>
-        <div class="searchName">
-          <input type="text">
-        </div>
+    <div class="priceWrapper">
+      <select id="priceSelect" multiple="">
+        <option value="1">$</option>
+        <option value="2">$$</option>
+        <option value="3">$$$</option>        
+      </select>
+    </div>
+    
+    <div class="cuisineWrapper">    
+      <select multiple id="e1" style="width:300px">
+          <option value="AL">Indian</option>
+          <option value="Am">Chinese</option>
+          <option value="An">Mexican</option>
+          <option value="Ak">Thai</option>
+          <option value="WY">Burger</option>
+      </select>
+    </div>
+  <br>
+  <input type="submit" value="GO" id="submitBtn" class="btn btn-default"></input>
+  </form>
+</div>
 
-        <input type="submit" value="GO" id="submitBtn" class="btn btn-default"></input>
-    </form>
-
-    <!-- Req for menubar-->
-    <script src="/js/menubar/modernizr.custom.js"></script>
-    <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
-    <script src="/js/menubar/classie.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

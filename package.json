@@ -18,7 +18,8 @@
     "express3-handlebars": "*",
     "express-partials": "*",
     "mongodb": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "select2": "*"
   },
   "engines": {
     "node": "0.10.x"

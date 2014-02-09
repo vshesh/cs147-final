@@ -58,6 +58,24 @@ app.get('/pasteats/:id', pasteats.viewById);
 app.get('/search', search.viewForm);
 app.get('/search/results', search.viewResults);
 app.get('/help', help.view);
+
+// routes for css/js in node_modules (libraries that we need)
+app.get('/css/select2.css', function(req, res) {
+  res.sendfile(path.join(__dirname, 'node_modules', 'select2', 'select2.css'));
+});
+
+app.get('/css/select2.png', function(req, res) {
+  res.sendfile(path.join(__dirname, 'node_modules', 'select2', 'select2.png'));
+});
+
+app.get('/css/select2-bootstrap.css', function(req, res) {
+  res.sendfile(path.join(__dirname, 'node_modules', 'select2', 'select2-bootstrap.css'));
+});
+
+app.get('/js/select2.js', function(req, res) {
+  res.sendfile(path.join(__dirname, 'node_modules', 'select2', 'select2.js'));
+});
+
 // Example route
 // app.get('/users', user.list);
 
