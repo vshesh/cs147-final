@@ -1,89 +1,23 @@
-
-
-body { 
-  padding-top: 40px; 
-}
-
-@media screen and (max-width: 768px) {
-    body { 
-      padding-top: 0px; 
-    }
-}
-
 body {
-  margin: 1px;
-  padding: 20px;
+  margin: 45px 0px 0px 0px;
   background-color: #f8f8f8;
   color: #333;
   padding-top: 40px;
 }
 
-.image {
-  width: 100%;
-  border: 1px solid #333;
+.container, .container-fluid{
+	padding: 0px;
+	width: 100%;
 }
 
-.h4wrapper {
-  text-align: left;
-  width: 50%;
-  max-width: 50%;
-  padding-left: 3em;
+.navbar-header {
+  height: 40px;
 }
 
-.h4wrapper:after {
-  content: " ";
-  display: block;
-  border: 2px solid black;
-  margin-bottom: 1.5em;
-
+#menuButton {
+  	margin-left: .5em;
+	padding: .5em;
 }
-
-.project {
-  margin: 0 auto;
-  text-align: center;
-}
-
-.thumbnail {
-  display: inline-block;
-  background: #282828;
-  border-radius: 2px;
-  border: solid 1px black;
-  text-align: center;
-  padding: 1.5em 1.5em 0 1.5em;
-  margin: 0px 0px 10px 0px;
-}
-
-.jumbotron {
-  position: relative;
-  background: none;
-  color: #333;
-}
-
-.jumbotron:after {
-  content:"";
-  background-size: 100%;
-  opacity: 0.3;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: 0;  
-}
-
-#main-jumbo.jumbotron:after{
-  background: url("../images/jumbotron-background.jpg");
-}
-
-
-#project-jumbo.jumbotron:after{
-  background: url("../images/lorempixel.jumbotron.jpeg");
-}
-
-
-
-
-
 
 
 
