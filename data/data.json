@@ -1,0 +1,40 @@
+{
+  "app_name" : "umami",
+  "authors:" : ""
+  "users" : [
+    {
+      "name": "Aviral Bagla", 
+      "google_id": "1", 
+      "wishlist" : [
+        {
+          "name": "Red Bean Cafe",
+          "gplaces_id": "afeff17128761239afe",
+          "yelp_id": "1231facbe1123adef"
+          // alternatively, we can store street,city,state,zip separately
+          "address" : "111 Main Street, Palo Alto, CA, 95135"
+          "hours" : {
+            "monday" : "1pm-3pm",
+            "tuesday": "3pm-4pm",
+          },
+          "rating" : 4  
+        },
+        {
+          "name": "Blue Bean Cafe",
+          "gplaces_id": "afeff17128761239afe",
+          "yelp_id": "1231facbe1123adef"
+          // alternatively, we can store street,city,state,zip separately
+          "address" : "111 Main Street, Palo Alto, CA, 95135"
+          "hours" : {
+            "monday" : "1pm-3pm",
+            "tuesday": "3pm-4pm",
+          },
+          "rating" : 3
+        }
+      ],
+      "pasteats": [
+        {
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+.container {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.searchName {
+  text-align: center;
+  width: 80%;
+  horizontal-align: center;
+}
+
+#nameInput {
+  width: 50%;
+  horizontal-align: center !important;
+}
+
+.priceWrapper {
+  display:flex;
+  width: 80%;
+  horizontal-align: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#priceSelect {
+  margin: auto;
+  width: 40%;
+}
+
+.select2-search-choice-close {
+
+}
+
+.select2-search-choice-close:after {
+  content: "X";
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.select2-search-choice {
+  vertical-align: center !important;
+  color:  #eee !important;
+  background-color: #888 !important;
+  background-image: none !important;
+  padding: 9px 5px 5px 5px !important;
+  border-radius: 2px !important;
+  border: 0px !important;
+}
+
+.select2-search-choice > div{
+  display:inline;
+}
+
+.select2-search-choice > a{
+  position: relative;
+  display: inline;
+  vertical-align: center: !important;
+  top: -0.6px !important;
+  left:0px !important;
+}
+
+.priceOption {  
+  padding: 5px;
+  flex: 1;
+  background-color: #1e4147;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  text-align: center;
+}
+
+.toggleOff {
+  opacity: 0.5;
+}
+
+.toggleOn {
+  opacity: 1;
+}
+
