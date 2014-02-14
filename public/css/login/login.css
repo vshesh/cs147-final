@@ -4,15 +4,6 @@ body {
   background-color: #eee;
 }
 
-#signinButton{
-  text-align: center;
-  padding-top: 200px;
-}
-
-#signinButton .g-signin {
-  horizontal-align: center;
-}
-
 .form-signin-heading{
 	text-align: center;
 }
