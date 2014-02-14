@@ -1,27 +1,47 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
+<head>
     {{> title}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/css/introHCI.css" rel="stylesheet">
+    <link href="/css/pasteats2.css" rel="stylesheet">
     <!-- Req for menubar-->
     <link href="/css/menubar/component.css" rel="stylesheet"/>
-  </head>
+</head>
 
-  <body>
+<body>
     {{> menu-partial}}
     {{> menupanel-partial}}
-    <!--Ash, write up your code after this-->
+    <div class="container">
+        <div class="swipe-tile" id="swipe1">
+            <div class="pasteats-entry">
+                <div class= "entry-text row-fluid">
+                    <div class= "col-xs-8"><b>Red Bean Cafe</b></div>
+                    <div class= "col-xs-4">04/28/12</div>
+                    <p>General text lorem ipsum short overview ladee da dee da. Fantastic place to eat crab!</p>   
+                </div>
+                <img src= "http://lorempixel.com/400/400/food">
+                <div class= "caption-text">
+                    <p>This is a caption for the food </p>
+                </div>
+                <div class="entry-end">
+                    <span class="glyphicon glyphicon-share-alt"></span>
+                    <span class="glyphicon glyphicon-trash"></span>
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-    <!-- Req for menubar-->
-    <script src="/js/menubar/modernizr.custom.js"></script>
-    <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
-    <script src="/js/menubar/classie.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
+<!-- Req for menubar-->
+<script src="/js/menubar/modernizr.custom.js"></script>
+<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+<script src="/js/menubar/classie.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
 </html>

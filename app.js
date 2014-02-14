@@ -17,6 +17,7 @@ var wishlist = require('./routes/wishlist');
 var info = require('./routes/info');
 var mapview = require('./routes/mapview');
 var pasteats = require('./routes/pasteats');
+var pasteats_editcreate = require('./routes/pasteats-editcreate');
 var search = require('./routes/search');
 var help = require('./routes/help');
 
@@ -55,6 +56,7 @@ app.get('/info/:id', info.viewById);
 app.get('/mapview', mapview.view);
 app.get('/pasteats', pasteats.view);
 app.get('/pasteats/:id', pasteats.viewById);
+app.get('/pasteats-editcreate/:id', pasteats_editcreate.viewById);
 app.get('/search', search.viewForm);
 app.get('/search/results', search.viewResults);
 app.get('/help', help.view);
