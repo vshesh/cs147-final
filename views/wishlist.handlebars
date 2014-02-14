@@ -24,6 +24,15 @@
 	<div class="container">
 {{#each wishlist}}
 		<div class="wishlist-entry" id="swipe{{id}}">
+			
+			<div class="swipe-options">
+				<div class="option"> 
+					<span class="glyphicon glyphicon-remove"></span></div>
+					<div class="option">
+						<a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>
+					</div>
+				</div>
+
 
 			<a href="/info/20">
 				<div class="photo"> 
@@ -47,13 +56,6 @@
 
 			</a>
 
-			<div class="swipe-options">
-				<div class="option"> 
-					<span class="glyphicon glyphicon-remove" id="remove"></span></div>
-					<div class="option">
-						<a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>
-					</div>
-				</div>
 
 			</div>
 		{{/each}}

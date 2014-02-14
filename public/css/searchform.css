@@ -1,6 +1,15 @@
+body {
+  background-color: #f46b4f;
+  color: white;
+}
+
 .container {
   text-align: center;
   margin: auto;
+}
+
+.searchName, .priceWrapper, .cuisineWrapper {
+  padding: .25em 0em;
 }
 
 .searchName {  
