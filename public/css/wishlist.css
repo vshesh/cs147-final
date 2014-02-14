@@ -6,10 +6,6 @@
 	position: relative;
 	width: 200%;
 }
-/*
-.swipe-options, .right-info, .left-info, .photo {
-	border: 1px black solid;
-}*/
 
 .swipe-options {
 	width:49%;
@@ -23,14 +19,6 @@
 	font-size: 2em;
 	float: left;
 	text-align: center;
-}
-
-.right-info {
-	text-align:right;
-	width: 10.5%;
-	float:left;
-	height: 59px;
-	padding: 0px .5em 0px 0em;
 }
 
 ul, li {
@@ -50,15 +38,18 @@ ul, li {
 	font-weight: bold;
 }
 
+.right-info {
+	text-align:right;
+	width: 10.5%;
+	float:left;
+	height: 59px;
+	padding: 0px 1em 0px 0em;
+}
+
 img {
 	width: 4.5em;
 	height: 4.5em;
 	border: 1px #e3e3e3 solid;
-}
-
-hr {
-	margin-top: 10px;
-	margin-bottom: 10px;
 }
 
 a:link, a:visited {
@@ -73,6 +64,5 @@ a:link, a:visited {
 }
 
 #out {
-	top: 200px;
-	position: absolute;
+	padding: .5em;
 }
