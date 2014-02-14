@@ -13,11 +13,17 @@
 			menuButton = document.getElementById( 'menuButton' ),
 			body = document.body;
 
-		menuButton.onclick = function() {
-			classie.toggle( this, 'active' );
-			classie.toggle( body, 'cbp-spmenu-push-toright' );
-			classie.toggle( menuLeft, 'cbp-spmenu-open' );
-			disableOther( 'showLeftPush' );
-		};
+		$('#menuButton').click(function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+			});
+		$('.container').click(function(){
+			if($('body').hasClass('.cbp-spmenu-push-toright')){
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+			}
+		});
 	</script>
 </div>

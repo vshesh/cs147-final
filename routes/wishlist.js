@@ -2,7 +2,7 @@ var data = require('../data/data.json');
 
 exports.view = function(req, res) {
   req.session.lastPage = '/login';
-  res.render("wishlist", data);
+  res.render("wishlist", data.users[0]);
 }
 
 

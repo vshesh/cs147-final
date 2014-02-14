@@ -22,6 +22,7 @@
 	{{> menu-partial}}
 	{{> menupanel-partial}}
 	<div class="container">
+		{{#each wishlist}}
 		<a href="/info/20">
 			<div class="swipe-tile" id="swipe1">
 				<div class="wishlist-entry">
@@ -30,23 +31,24 @@
 					</div>
 					<div class= "col-xs-6">
 						<ul>		
-							<li>Red Bean Cafe</li>
-							<li>Cafe, Japanese, Desserts, Bakeries</li
+							<li>{{name}}</li>
+							<li>{{cuisines}}</li
 								>
 							<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
 						</ul>
 					</div>
 					<div class= "col-xs-3 right-info">
 						<ul>
-							<li>1.2 mi</li>
-							<li>11a-8p</li>
-							<li>$$$</li>
+							<li>{{distance}}</li>
+							<li>{{hours}}</li>
+							<li>{{price}}</li>
 							
 						</ul>
 					</div>
 				</div>
 			</div>
 		</a>
+		{{/each}}
 		<p><button type="button" id="location">Show my location</button></p>
 	<div id="out"></div>
 	</div>

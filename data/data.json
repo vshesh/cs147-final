@@ -8,16 +8,31 @@
       "access_token": "null",
       "wishlist" : [
         {
+          "name" : "Palo Alto Buffet",
+          "cuisines": "American, Desserts",
+          "distance":"1.8 mi",
+          "hours": "12pm - 9pm",
+          "price":"$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
           "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
           "created_timestamp" : "UTC 09 09 2013 5:33pm"
         }, 
         {
+          "name" : "Red Bean Cafe",
+          "cuisines": "Cafe, Japanese, Desserts, Bakeries",
+          "distance":"1.2 mi",
+          "hours": "11am - 9pm",
+          "price":"$$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
           "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
           "created_timestamp" : "UTC 09 09 2013 5:33pm"
         }, 
         {
+          "name" : "Ike's",
+          "cuisines": "Sandwiches, Fast Food",
+          "distance":"0.3 mi",
+          "hours": "10am - 7pm",
+          "price":"$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
           "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
           "created_timestamp" : "UTC 09 09 2013 5:33pm"
