@@ -9,19 +9,36 @@
     <link href="/css/introHCI.css" rel="stylesheet">
     <!-- Req for menubar-->
     <link href="/css/menubar/component.css" rel="stylesheet"/>
-  </head>
+    <link href="/css/help.css" rel="stylesheet"/>
 
-  <body>
-    {{> menu-partial}}
-    {{> menupanel-partial}}
-    <!--Ash, write up your code after this-->
-
-
-    <!-- Req for menubar-->
     <script src="/js/menubar/modernizr.custom.js"></script>
     <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
     <script src="/js/menubar/classie.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    {{> menu-partial}}
+    {{> menupanel-partial}}
+    
+    <div class="wrapper">
+      <h1>Help!</h1>
+      <p>Maintaining a food list can be hard. We're here to help.</p>
+      <h2>General Concepts</h2>
+      <h3>Wishlist</h3>
+      <p>Your wishlist is a compendium of all the places in the world you would like to go eat at. You can add and subtract entries from the wishlist at any time, and sort them by their distance from you whenever you need to quickly come up with a suggestion for where to eat.
+      </p>
+      <p>Navigation: To navigate to the wishlist, click the menu button in the upper left-hand corner and select wish list. This is also the default page you land on when you first log into the app. </p>
+      
+      <h3>Past Eats</h3>
+      <p>Your Past Eats are your reflections of places you've eaten at. You can choose to share this information on Google+ if you wish, but by default all your entries are private. Each entry contains a general description, and some photos and captions of your experience.</p>
+      
+      <p><strong>Creating Posts:</strong> to create a new post, either search for the place or scroll to it in your wish list, swipe left, then select create post.  A dialog will pop up allowing you to enter your opinion of the venue, and attach photos to showcase the food!</p>
+      
+      <h3>Search</h3>
+      <p>All the search functionality is present in one unified search window. If you know what you're searching for, just start entering the name, and then select the right option to get the results page. Otherwise, you can filter by price, cuisine, and location to try to find something that may be to your liking. </p>
+      <p>We always search both your list and the web, so you will see listings from both places.</p>
+    </div>
   </body>
 </html>
