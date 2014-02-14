@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	{{> title}}
+	{{title}}
 	<meta charset="utf-8">
 	<meta name="google-signin-clientid" content="CLIENT_ID" />
 	<meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login" />
@@ -13,11 +13,11 @@
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/introHCI.css" rel="stylesheet">
 	<link href="/css/wishlist.css" rel="stylesheet">
-	<!-- Req for menubar-->
 	<link href="/css/menubar/component.css" rel="stylesheet"/>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://apis.google.com/js/plusone.js"></script>
 	<script src="https://apis.google.com/js/client:plusone.js"></script>
+	<link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="spreadsheet">
 </head>
 
 	<script type="text/javascript">
@@ -47,13 +47,12 @@
 <body>
 	{{> menu-partial}}
 	{{> menupanel-partial}}
-	<div id="coords"></div>
 	<div class="container">
 		<a href="/info/20">
-			<div class="swipe-tile" id="touchzone">
+			<div class="swipe-tile" id="swipe1">
 				<div class="wishlist-entry">
 					<div class="col-xs-3 photo">
-						<img src="http://lorempixel.com/400/400/people">
+						<img src="http://lorempixel.com/400/400/food">
 					</div>
 					<div class= "col-xs-6">
 						<ul>		
@@ -75,13 +74,19 @@
 			</div>
 		</a>
 		<div id="profile"></div>
+		<p><button type="button" id="location">Show my location</button></p>
+<div id="out"></div>
 	</div>
 
 		<!-- Req for menubar-->
 		<script src="/js/menubar/modernizr.custom.js"></script>
 		<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
 		<script src="/js/menubar/classie.js"></script>
-		<script src="https://code.jquery.com/jquery.js"></script>
+		<script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
+		<script src="js/hammer.js"></script>
+   	<script src="js/jquery.hammer.js"></script>
+		<script src="/js/wishlist2.js"></script>
 	</body>
 	</html>
