@@ -63,18 +63,29 @@
 
       function signinCallback(authResult) {
         if (authResult['status']['signed_in']) {
-          gapi.client.load('plus', 'v1', function(){
-            showPeople();
-          });
+            console.log(gapi);
+            gapi.auth.setToken(authResult);
+
+            gapi.client.load('plus', 'v1', function(){
+              var request = gapi.client.plus.people.list({
+                'userId': 'me',
+                'collection': 'visible'
+              });
+
+              request.execute(function(resp) {
+                console.log(resp);
+              });
+                showPeople();
+            });
           console.log(authResult);
           // Update the app to reflect a signed in user
           // Hide the sign-in button now that the user is authorized, for example:
           document.getElementById('signinButton').setAttribute('style', 'display: none');
 
 
-          window.location = "../wishlist"
+          //window.location = "../wishlist"
         } else {
-          window.location = "../login";
+          //window.location = "../login";
           // Update the app to reflect a signed out user
           // Possible error values:
           //   "user_signed_out" - User is signed-out

@@ -3,6 +3,11 @@
 <head>
 	{{> title}}
 	<meta charset="utf-8">
+	<meta name="google-signin-clientid" content="CLIENT_ID" />
+	<meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login" />
+	<meta name="google-signin-requestvisibleactions" content="http://schemas.google.com/AddActivity" />
+	<meta name="google-signin-cookiepolicy" content="single_host_origin" />
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -10,8 +15,35 @@
 	<link href="/css/wishlist.css" rel="stylesheet">
 	<!-- Req for menubar-->
 	<link href="/css/menubar/component.css" rel="stylesheet"/>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://apis.google.com/js/plusone.js"></script>
+	<script src="https://apis.google.com/js/client:plusone.js"></script>
 </head>
 
+	<script type="text/javascript">
+	  	$(window).load(function(){
+	  		loadAPI();
+	  	});
+	  	function loadAPI(){
+	  		console.log(gapi);
+	  		gapi.client.load('plus', 'v1', function(){
+	        showPeople();
+	      });
+	  	}
+
+		function showPeople(){
+	        var user = gapi.client.plus.people.get({'userId' : 'me'});
+	        user.execute(function(profile){
+	          $('#profile').append(
+	            $('<p><img src=\"' + profile.image.url + '\"></p>')      
+	            );
+	          $('#profile').append(
+	            $('<p>Hello ' + profile.displayName + '</p>')
+	            ); 
+	        });
+	        console.log(user);
+	      }
+	</script>
 <body>
 	{{> menu-partial}}
 	{{> menupanel-partial}}
@@ -42,6 +74,7 @@
 				</div>
 			</div>
 		</a>
+		<div id="profile"></div>
 	</div>
 
 		<!-- Req for menubar-->
