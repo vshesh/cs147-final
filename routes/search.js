@@ -3,5 +3,5 @@ exports.viewForm = function(req, res) {
 }
 
 exports.viewResults = function(req, res) {
-  res.render('serachresults')
+  res.render('searchresults')
 }

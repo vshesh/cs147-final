@@ -1,38 +1,66 @@
 {
   "app_name" : "umami",
-  "authors:" : ""
+  "authors:" : "",
   "users" : [
     {
-      "name": "Aviral Bagla", 
+      "name": "Avi Bagla", 
       "google_id": "1", 
+      "access_token": "null",
       "wishlist" : [
         {
-          "name": "Red Bean Cafe",
-          "gplaces_id": "afeff17128761239afe",
-          "yelp_id": "1231facbe1123adef"
-          // alternatively, we can store street,city,state,zip separately
-          "address" : "111 Main Street, Palo Alto, CA, 95135"
-          "hours" : {
-            "monday" : "1pm-3pm",
-            "tuesday": "3pm-4pm",
-          },
-          "rating" : 4  
-        },
+          "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
+          "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
+          "created_timestamp" : "UTC 09 09 2013 5:33pm"
+        }, 
         {
-          "name": "Blue Bean Cafe",
-          "gplaces_id": "afeff17128761239afe",
-          "yelp_id": "1231facbe1123adef"
-          // alternatively, we can store street,city,state,zip separately
-          "address" : "111 Main Street, Palo Alto, CA, 95135"
-          "hours" : {
-            "monday" : "1pm-3pm",
-            "tuesday": "3pm-4pm",
-          },
-          "rating" : 3
+          "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
+          "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
+          "created_timestamp" : "UTC 09 09 2013 5:33pm"
+        }, 
+        {
+          "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
+          "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
+          "created_timestamp" : "UTC 09 09 2013 5:33pm"
         }
       ],
       "pasteats": [
         {
+          "yelp_id" : "2483172d89wejnashnvapwuytn0v981ytnq89ppwtyiwyt",
+          "google_id" : "1239845098nasdhnasptyansptanpwe98tn23985150924vtwn",
+          "created_timestamp" : "UTC 11 02 2014 7:53pm",
+          "last_modified_timestamp" : "UTC 13 02 2014 10:01am",
+          "entry_time" : "UTC 11 02 2014 10:00am",
+
+          "general_description" : "The restaurant was really bad actually, and I don't know why I put it on my wishlist",
+          "photo_entries" : [
+            {
+              "image" : "http://lorempixel.com/500/400/food",
+              "caption" : "This garlic something or another was great!"
+            },
+            {
+              "image" : "http://lorempixel.com/500/400/food",
+              "caption" : "This garlic something or another was great!"
+            }
+          ]
+        },
+        {
+          "yelp_id" : "2483172d89wejnashnvapwuytn0v981ytnq89ppwtyiwyt",
+          "google_id" : "1239845098nasdhnasptyansptanpwe98tn23985150924vtwn",
+          "created_timestamp" : "UTC 11 02 2014 7:53pm",
+          "last_modified_timestamp" : "UTC 13 02 2014 10:01am",
+          "entry_time" : "UTC 11 02 2014 10:00am",
+
+          "general_description" : "The restaurant was really bad actually, and I don't know why I put it on my wishlist",
+          "photo_entries" : [
+            {
+              "image" : "http://lorempixel.com/500/400/food",
+              "caption" : "This garlic something or another was great!"
+            },
+            {
+              "image" : "http://lorempixel.com/500/400/food",
+              "caption" : "This garlic something or another was great!"
+            }
+          ]
         }
       ]
     }

@@ -34,70 +34,15 @@
 <!-- Navigation Ends -->
     <div class="container">
       <h2 class="form-signin-heading">Welcome to Umami!</h2>
-      <!--<form class="form-signin" role="form">
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
-        <!--<label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>-->
-      <!--  <button class="btn btn-lg btn-primary btn-block" type="submit"><a href="/wishlist">Log In</a></button>
-        <button class="btn btn-lg btn-danger btn-block" type="sign-up"><a href="/wishlist">Sign Up</a></button>
-      </form>-->
-      <div id="signinButton">
-        <span
-          class="g-signin"
-          data-width= "wide"
-          data-height= "tall"
-          data-callback="signinCallback"
-          data-clientid="101989331854-aqje8r3qpvudqru12luln8q88kdm7btd.apps.googleusercontent.com"
-          data-cookiepolicy="single_host_origin"
-          data-requestvisibleactions="http://schemas.google.com/AddActivity"
-          data-scope="https://www.googleapis.com/auth/plus.login">
-        </span>
+      
+        <a href="/auth/google">
+          <button style="width: 70%; margin: auto" type="submit" class="btn btn-lg btn-primary btn-block">
+          Log in with Google
+          </button>
+        </a>
       </div>
-      <div id="profile"></div>
 
     </div> <!-- /container -->
-
-    <script type="text/javascript">
-
-      function signinCallback(authResult) {
-        if (authResult['status']['signed_in']) {
-          gapi.client.load('plus', 'v1', function(){
-            showPeople();
-          });
-          console.log(authResult);
-          // Update the app to reflect a signed in user
-          // Hide the sign-in button now that the user is authorized, for example:
-          document.getElementById('signinButton').setAttribute('style', 'display: none');
-
-
-          window.location = "../wishlist"
-        } else {
-          window.location = "../login";
-          // Update the app to reflect a signed out user
-          // Possible error values:
-          //   "user_signed_out" - User is signed-out
-          //   "access_denied" - User denied access to your app
-          //   "immediate_failed" - Could not automatically log in the user
-          console.log('Sign-in state: ' + authResult['error']);
-
-        }
-      }
-
-      function showPeople(){
-        var user = gapi.client.plus.people.get({'userId' : 'me'});
-        user.execute(function(profile){
-          $('#profile').append(
-            $('<p><img src=\"' + profile.image.url + '\"></p>')      
-            );
-          $('#profile').append(
-            $('<p>Hello ' + profile.displayName + '</p>')
-            ); 
-        });
-        console.log(user);
-      }
-    </script>
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/bootstrap.min.js"></script>
 </body>

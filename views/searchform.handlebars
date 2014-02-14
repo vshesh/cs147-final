@@ -11,7 +11,7 @@
   <link href="/css/menubar/component.css" rel="stylesheet"/>
   <link rel="stylesheet" href="/css/select2.css">
   <link rel="stylesheet" href="/css/select2-bootstrap.css">
-  <link rel="stylesheet" href="css/searchform.css">
+  <link rel="stylesheet" href="/css/searchform.css">
 
   <!-- Req for menubar-->
   <script src="/js/menubar/modernizr.custom.js"></script>
@@ -22,8 +22,12 @@
   <script src="/js/select2.js"></script>
   <script>
     $(document).ready(function() {
-      $('#e1').select2();
-      $('#priceSelect').select2();
+      $('#cuisineSelect').select2({
+        placeholder: "Select some cuisines..."
+      });
+      $('#priceSelect').select2({
+        placeholder: "Select some price ranges..."
+      });
     });
   </script>
 </head>
@@ -36,11 +40,11 @@
   <form action="/search/results" id="searchform" role="form" method="get">
     <h3>Search for Places</h3>
     <div class="searchName">
-      <input type="text" placeholder="name" class="form-control" id="nameInput">
+      <input type="text" placeholder="name (if you want something specific)" class="form-control" id="nameInput">
     </div>
     
     <div class="priceWrapper">
-      <select id="priceSelect" multiple="" style="width:300px">
+      <select id="priceSelect" multiple>
         <option value="1">$</option>
         <option value="2">$$</option>
         <option value="3">$$$</option>        
@@ -48,7 +52,7 @@
     </div>
     
     <div class="cuisineWrapper">    
-      <select multiple id="e1" style="width:300px">
+      <select multiple id="cuisineSelect">
           <option value="AL">Indian</option>
           <option value="Am">Chinese</option>
           <option value="An">Mexican</option>
