@@ -1,3 +1,5 @@
+var width = window.innerWidth;
+
 $(document).ready(function() {
 	initializePage();
 });
@@ -12,43 +14,52 @@ function initializePage() {
 };
 
 function swipeTiles() {
-var container = document.getElementById("swipe1");
+var wishlist_entry = document.getElementById("swipe1");
 var distance = 0;
 var direction;
 var delta = 0;
+$("#swipe1").css({
+  left: "0px",
+});
 
-var readout = document.getElementById("readout");
- var hammertime = new Hammer(container, { drag_max_touches: 0 , drag_block_vertical: true});
-    hammertime.on("drag", function(ev) {
-
-        direction = ev.gesture.direction;
-        distance = ev.gesture.distance;
-        delta = distance - delta;
-
-
-
-        readout.innerHTML = "Direction: " + direction + "</br>Distance: " + distance + "</br>Delta: " + delta;
-        console.log("distance: " + ev.gesture.distance);
-        console.log(direction);
-        if (delta < 0) {
-          distance = -ev.gesture.distance/15;
-        }
-        if (direction != "left" && direction != "right") {
-          distance = 0;
-        }
-        if (distance > window.innerWidth) distance = 0;
+var readout = document.getElementById("swipe1");
+ var hammertime = new Hammer(wishlist_entry);
+    hammertime.on("swipeleft", function(ev) {
         $("#swipe1").animate({
-          left: "+="+distance+"px",
-        }, 0);
-    });
-
-  var hammertime2 = new Hammer(container, { drag_max_touches: 0 });
-    hammertime2.on("dragend", function(ev) {
-        console.log("dragend");
-        $("#swipe1").animate({
-          left: "0px",
+          left: width + "px",
         }, 500, 'easeOutCirc');
-    })
+      });
+ // var hammertime = new Hammer(container, { drag_max_touches: 0 , drag_block_vertical: true});
+ //    hammertime.on("drag", function(ev) {
+
+ //        direction = ev.gesture.direction;
+ //        distance = ev.gesture.distance;
+ //        delta = distance - delta;
+
+
+
+ //        readout.innerHTML = "Direction: " + direction + "</br>Distance: " + distance + "</br>Delta: " + delta;
+ //        console.log("distance: " + ev.gesture.distance);
+ //        console.log(direction);
+ //        if (delta < 0) {
+ //          distance = -ev.gesture.distance/15;
+ //        }
+ //        if (direction != "left" && direction != "right") {
+ //          distance = 0;
+ //        }
+ //        if (distance > window.innerWidth) distance = 0;
+ //        $("#swipe1").animate({
+ //          left: "+="+distance+"px",
+ //        }, 0);
+ //    });
+
+ //  var hammertime2 = new Hammer(container, { drag_max_touches: 0 });
+ //    hammertime2.on("dragend", function(ev) {
+ //        console.log("dragend");
+ //        $("#swipe1").animate({
+ //          left: "0px",
+ //        }, 500, 'easeOutCirc');
+ //    })
 }
 
 function geoFindMe() {

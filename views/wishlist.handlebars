@@ -16,20 +16,20 @@
 	{{> menu-partial}}
 	{{> menupanel-partial}}
 	<div class="container">
-		<a href="/info/20">
-				<div class="wishlist-entry" id="swipe1">
-					<div class="col-xs-3 photo">
-						<img src="http://lorempixel.com/400/400/food">
-					</div>
-					<div class= "col-xs-6">
-						<ul>		
-							<li>Red Bean Cafe</li>
-							<li>Cafe, Japanese, Desserts, Bakeries</li
-								>
+		<div class="wishlist-entry" id="swipe1">
+
+			<a href="/info/20">
+				<div class="photo">
+					<img src="http://lorempixel.com/400/400/food">
+				</div>
+				<div class= "left-info">
+					<ul>		
+						<li>Red Bean Cafe</li>
+						<li>Cafe, Japanese, Desserts</li>
 							<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
 						</ul>
 					</div>
-					<div class= "col-xs-3 right-info">
+					<div class= "right-info">
 						<ul>
 							<li>1.2 mi</li>
 							<li>11a-8p</li>
@@ -37,21 +37,31 @@
 							
 						</ul>
 					</div>
-				</div>
-		</a>
-		<div id="readout"></div>
-		<div id="out"></div>
-	</div>
 
-		<!-- Req for menubar-->
-		<script src="/js/menubar/modernizr.custom.js"></script>
-		<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
-		<script src="/js/menubar/classie.js"></script>
-		<script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="js/hammer.js"></script>
-   		<script src="js/jquery.hammer.js"></script>
-		<script src="/js/wishlist2.js"></script>
-	</body>
-	</html>
+				</a>
+
+				<div class="swipe-options">
+					<div class="option"> 
+						<span class="glyphicon glyphicon-remove"></span></div>
+						<div class="option">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</div>
+					</div>
+
+				</div>
+				<div id="readout"></div>
+				<div id="out"></div>
+			</div>
+
+			<!-- Req for menubar-->
+			<script src="/js/menubar/modernizr.custom.js"></script>
+			<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+			<script src="/js/menubar/classie.js"></script>
+			<script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+			<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+			<script src="/js/bootstrap.min.js"></script>
+			<script src="js/hammer.js"></script>
+			<script src="js/jquery.hammer.js"></script>
+			<script src="/js/wishlist2.js"></script>
+		</body>
+		</html>
