@@ -37,6 +37,7 @@ a:link, a:visited, a:hover, a:active {
 	background-color: #f8f8f8;
 	width: 95%;
 	margin: auto;
+	margin-top: 5px;
 	border-radius: 3px;
 }
 
@@ -86,4 +87,12 @@ a:link, a:visited, a:hover, a:active {
 
 table {
 	margin-top: .5em;
+}
+
+td {
+	width:50%;
+}
+
+#btnYes {
+	border-left: 1px #c9c9c9 solid;
 }

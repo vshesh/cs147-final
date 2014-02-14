@@ -3,6 +3,7 @@
 	overflow: hidden;
 	padding: .5em 0em;
 	border-bottom: 1px #e3e3e3 solid;
+	position: relative;
 }
 
 .right-info {
@@ -39,4 +40,9 @@ a:link, a:visited {
 .photo {
 	padding: 0px 0px 0px .5em;
 	width:4.5em;
+}
+
+#out {
+	top: 200px;
+	position: absolute;
 }
