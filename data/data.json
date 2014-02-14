@@ -1,10 +1,11 @@
 {
   "app_name" : "umami",
-  "authors:" : ""
+  "authors:" : "",
   "users" : [
     {
-      "name": "Aviral Bagla", 
+      "name": "Avi Bagla", 
       "google_id": "1", 
+      "access_token": "null",
       "wishlist" : [
         {
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",

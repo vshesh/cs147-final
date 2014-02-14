@@ -3,7 +3,7 @@
 <head>
 	{{title}}
 	<meta charset="utf-8">
-	<meta name="google-signin-clientid" content="CLIENT_ID" />
+	<meta name="google-signin-clientid" content="101989331854-aqje8r3qpvudqru12luln8q88kdm7btd.apps.googleusercontent.com" />
 	<meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login" />
 	<meta name="google-signin-requestvisibleactions" content="http://schemas.google.com/AddActivity" />
 	<meta name="google-signin-cookiepolicy" content="single_host_origin" />
@@ -15,35 +15,9 @@
 	<link href="/css/wishlist.css" rel="stylesheet">
 	<link href="/css/menubar/component.css" rel="stylesheet"/>
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://apis.google.com/js/plusone.js"></script>
-	<script src="https://apis.google.com/js/client:plusone.js"></script>
 	<link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="spreadsheet">
 </head>
 
-	<script type="text/javascript">
-	  	$(window).load(function(){
-	  		loadAPI();
-	  	});
-	  	function loadAPI(){
-	  		console.log(gapi);
-	  		gapi.client.load('plus', 'v1', function(){
-	        showPeople();
-	      });
-	  	}
-
-		function showPeople(){
-	        var user = gapi.client.plus.people.get({'userId' : 'me'});
-	        user.execute(function(profile){
-	          $('#profile').append(
-	            $('<p><img src=\"' + profile.image.url + '\"></p>')      
-	            );
-	          $('#profile').append(
-	            $('<p>Hello ' + profile.displayName + '</p>')
-	            ); 
-	        });
-	        console.log(user);
-	      }
-	</script>
 <body>
 	{{> menu-partial}}
 	{{> menupanel-partial}}
@@ -73,9 +47,8 @@
 				</div>
 			</div>
 		</a>
-		<div id="profile"></div>
 		<p><button type="button" id="location">Show my location</button></p>
-<div id="out"></div>
+	<div id="out"></div>
 	</div>
 
 		<!-- Req for menubar-->
@@ -85,8 +58,8 @@
 		<script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
-		<script src="js/hammer.js"></script>
-   	<script src="js/jquery.hammer.js"></script>
+		<script src="/js/hammer.js"></script>
+   	<script src="/js/jquery.hammer.js"></script>
 		<script src="/js/wishlist2.js"></script>
 	</body>
 	</html>

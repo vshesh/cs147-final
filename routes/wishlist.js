@@ -1,3 +1,14 @@
+var data = require('../data/data.json');
+
 exports.view = function(req, res) {
-  res.render("wishlist");
+  req.session.lastPage = '/login';
+  res.render("wishlist", data);
+}
+
+
+exports.loginUser = function(req, res) {
+	console.log(req.body.authToken);
+	data.users[0].access_token = req.body.authToken;
+	console.log(data.users[0]);
+	res.end('true');
 }
