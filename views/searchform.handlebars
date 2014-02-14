@@ -23,7 +23,7 @@
   <script>
     $(document).ready(function() {
       $('#e1').select2();
-      $('.priceWrapper').select2();
+      $('#priceSelect').select2();
     });
   </script>
 </head>
@@ -35,12 +35,12 @@
 <div class="container">
   <form action="/search/results" id="searchform" role="form" method="get">
     <h3>Search for Places</h3>
-    <div class="searchName form-group">
+    <div class="searchName">
       <input type="text" placeholder="name" class="form-control" id="nameInput">
     </div>
     
     <div class="priceWrapper">
-      <select id="priceSelect" multiple="">
+      <select id="priceSelect" multiple="" style="width:300px">
         <option value="1">$</option>
         <option value="2">$$</option>
         <option value="3">$$$</option>        
