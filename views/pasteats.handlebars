@@ -16,24 +16,36 @@
     {{> menu-partial}}
     {{> menupanel-partial}}
     <div class="container">
+        <div id="overlay" class="web_dialog_overlay"></div>
+        <div id="dialog" class="web_dialog">
+            Delete this post?
+           <table style="width: 100%;" cellspacing="0">
+              <tr>
+                <td>
+                    <a href="#" id="btnNo">No</a>
+                 </td>
+                 <td>
+                    <a href="#" id="btnYes" style="color:blue">Yes</a>
+                </td>
+              </tr>
+           </table>
+        </div>
+
         <div class="swipe-tile" id="swipe1">
             <div class="pasteats-entry">
                 <div class= "entry-text row-fluid">
                     <div class= "col-xs-8"><b>Red Bean Cafe</b></div>
-                    <div class= "col-xs-4">04/28/12</div>
+                    <div class= "col-xs-4">04.28.12</div>
                     <p>General text lorem ipsum short overview ladee da dee da. Fantastic place to eat crab!</p>   
                 </div>
                 <img src= "http://lorempixel.com/400/400/food">
-                <div class= "caption-text">
-                    <p>This is a caption for the food </p>
-                </div>
+                <div class= "caption-text"> This is a caption for the food </div>
                 <div class="entry-end">
                     <span class="glyphicon glyphicon-share-alt"></span>
                     <span class="glyphicon glyphicon-trash"></span>
                     <span class="glyphicon glyphicon-pencil"></span>
                 </div>
-            </div>
-        </div>
+                    
     </div>
 </div>
 
@@ -42,6 +54,7 @@
 <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
 <script src="/js/menubar/classie.js"></script>
 <script src="https://code.jquery.com/jquery.js"></script>
+<script src="/js/pasteats2.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
