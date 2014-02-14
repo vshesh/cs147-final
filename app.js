@@ -76,7 +76,6 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
-app.get('/project/:name', project.viewProject);
 app.get('/login', login.view);
 app.get('/wishlist', wishlist.view);
 app.post('/wishlist', wishlist.loginUser);

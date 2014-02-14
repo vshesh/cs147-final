@@ -13,16 +13,19 @@
 			menuButton = document.getElementById( 'menuButton' ),
 			body = document.body;
 
+
 		$('#menuButton').click(function() {
 				classie.toggle( this, 'active' );
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
 			});
-		$('.container').click(function(){
-			if($('body').hasClass('.cbp-spmenu-push-toright')){
+		$('.html').click(function(){
+			console.log("made it!");
+			if($('#menuButton').hasClass('active')){
 				classie.toggle( this, 'active' );
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+
 			}
 		});
 	</script>
