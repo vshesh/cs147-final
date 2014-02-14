@@ -2,6 +2,10 @@ var width = window.innerWidth;
 
 $(document).ready(function() {
 	initializePage();
+
+  $(document).on('touchmove', function(e) {
+    e.preventDefault();
+  });
 });
 
 /*
@@ -22,13 +26,27 @@ $("#swipe1").css({
   left: "0px",
 });
 
+var swiped = false;
 var readout = document.getElementById("swipe1");
  var hammertime = new Hammer(wishlist_entry);
     hammertime.on("swipeleft", function(ev) {
+      if(!swiped) {
+        console.log("swipeleft");
+          $("#swipe1").animate({
+            left: -width + "px",
+          }, 500, 'easeOutCirc');
+          swiped = true;
+        }
+        });
+    hammertime.on("swiperight", function(ev) {
+      if(swiped) {
+        console.log("swiperight");
         $("#swipe1").animate({
-          left: width + "px",
+          left: "0px",
         }, 500, 'easeOutCirc');
-      });
+        swiped = false;
+        }
+    });
  // var hammertime = new Hammer(container, { drag_max_touches: 0 , drag_block_vertical: true});
  //    hammertime.on("drag", function(ev) {
 

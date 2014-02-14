@@ -37,7 +37,7 @@ a:link, a:visited, a:hover, a:active {
 	background-color: #f8f8f8;
 	width: 95%;
 	margin: auto;
-	margin-top: 5px;
+	margin-top: .75em;
 	border-radius: 3px;
 }
 
@@ -51,29 +51,29 @@ a:link, a:visited, a:hover, a:active {
 
 .web_dialog_overlay
 {
-   position: absolute;
-   top: 0;;
-   left: 0;
-   height: 100%;
-   width: 100%;
-   margin: 0;
-   padding: 0;
-   background: #000000;
-   opacity: .50;
-   filter: alpha(opacity=50);
-   -moz-opacity: .50;
-   z-index: 101;
-   display: none;
+	position: absolute;
+	top: 0;;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: #000000;
+	opacity: .50;
+	filter: alpha(opacity=50);
+	-moz-opacity: .50;
+	z-index: 101;
+	display: none;
 }
 .web_dialog
 {
-   top: 45%;
-   left: 10%;
-   position: absolute;
-   margin: auto;
-   width: 80%;
-   z-index: 102;
-   background-color: #f8f8f8;
+	top: 45%;
+	left: 10%;
+	position: absolute;
+	margin: auto;
+	width: 80%;
+	z-index: 102;
+	background-color: #f8f8f8;
 	border-radius: 2px;
 	padding: .5em;
 	display:none;
