@@ -1,37 +1,33 @@
 .container {
   text-align: center;
-  align-items: center;
-  justify-content: center;
+  margin: auto;
 }
 
-
-.searchName {
-  text-align: center;
+.searchName {  
+  margin: auto;
   width: 80%;
-  horizontal-align: center;
 }
 
 #nameInput {
-  width: 50%;
-  horizontal-align: center !important;
+  margin: auto;
 }
 
 .priceWrapper {
-  display:flex;
   width: 80%;
-  horizontal-align: center;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
 }
 
-#priceSelect {
+.cuisineWrapper {
+  width: 80%;
   margin: auto;
-  width: 40%;
+}
+
+.select2-container {
+  width: 100% !important;
 }
 
 .select2-search-choice-close {
-
+  
 }
 
 .select2-search-choice-close:after {
@@ -51,10 +47,12 @@
   padding: 9px 5px 5px 5px !important;
   border-radius: 2px !important;
   border: 0px !important;
+  margin: auto !important;
 }
 
 .select2-search-choice > div{
   display:inline;
+  margin: auto !important;
 }
 
 .select2-search-choice > a{
@@ -64,24 +62,3 @@
   top: -0.6px !important;
   left:0px !important;
 }
-
-.priceOption {  
-  padding: 5px;
-  flex: 1;
-  background-color: #1e4147;
-  color: white;
-  font-size: 16px;
-  border-radius: 5px;
-  margin-left: 2px;
-  margin-right: 2px;
-  text-align: center;
-}
-
-.toggleOff {
-  opacity: 0.5;
-}
-
-.toggleOn {
-  opacity: 1;
-}
-
