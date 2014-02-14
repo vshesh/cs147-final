@@ -1,14 +1,52 @@
+var width = window.innerWidth;
+
 $(document).ready(function() {
 	initializePage();
+  $(document).on('touchmove', function(e) {
+    e.preventDefault();
+  });
 });
 
-/*
- * Function that is called when the document is ready.
- */
-function initializePage() {
-	console.log("Javascript connected!");
-	geoFindMe();
-};
+ function initializePage() {
+   console.log("Javascript connected!");
+   geoFindMe();
+   swipeTiles();
+   $("#remove").click(function (e) {
+    $("#swipe1").fadeOut(500, function(){
+      console.log("hiding");
+      $("#swipe1").hide(500);
+    });
+    e.preventDefault();
+  });
+ };
+
+ function swipeTiles() {
+  var wishlist_entry = document.getElementById("swipe1");
+  $("#swipe1").css({
+    left: "0px",
+  });
+
+  var swiped = false;
+  var hammertime = new Hammer(wishlist_entry);
+  hammertime.on("swipeleft", function(ev) {
+    if(!swiped) {
+      console.log("swipeleft");
+      $("#swipe1").animate({
+        left: -width + "px",
+      }, 500, 'easeOutCirc');
+      swiped = true;
+    }
+  });
+  hammertime.on("swiperight", function(ev) {
+    if(swiped) {
+      console.log("swiperight");
+      $("#swipe1").animate({
+        left: "0px",
+      }, 500, 'easeOutCirc');
+      swiped = false;
+    }
+  });
+}
 
 function geoFindMe() {
   var output = document.getElementById("out");

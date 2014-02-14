@@ -22,35 +22,41 @@
 	{{> menu-partial}}
 	{{> menupanel-partial}}
 	<div class="container">
-		{{#each wishlist}}
-		<a href="/info/20">
-			<div class="swipe-tile" id="swipe1">
-				<div class="wishlist-entry">
-					<div class="col-xs-3 photo">
-						<img src="http://lorempixel.com/400/400/food">
-					</div>
-					<div class= "col-xs-6">
-						<ul>		
-							<li>{{name}}</li>
-							<li>{{cuisines}}</li
-								>
-							<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
-						</ul>
-					</div>
-					<div class= "col-xs-3 right-info">
-						<ul>
-							<li>{{distance}}</li>
-							<li>{{hours}}</li>
-							<li>{{price}}</li>
-							
-						</ul>
+{{#each wishlist}}
+		<div class="wishlist-entry" id="swipe{{id}}">
+
+			<a href="/info/20">
+				<div class="photo"> 
+					<img src="http://lorempixel.com/400/400/food/{{id}}">
+				</div>
+				<div class= "left-info">
+					<ul>		
+						<li>{{name}}</li>
+						<li>{{cuisines}}</li>
+						<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
+					</ul>
+				</div>
+				<div class= "right-info">
+					<ul>
+						<li>{{distance}}</li>
+						<li>{{hours}}</li>
+						<li>{{price}}</li>
+
+					</ul>
+				</div>
+
+			</a>
+
+			<div class="swipe-options">
+				<div class="option"> 
+					<span class="glyphicon glyphicon-remove" id="remove"></span></div>
+					<div class="option">
+						<a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>
 					</div>
 				</div>
+
 			</div>
-		</a>
 		{{/each}}
-		<p><button type="button" id="location">Show my location</button></p>
-	<div id="out"></div>
 	</div>
 
 		<!-- Req for menubar-->
@@ -60,8 +66,8 @@
 		<script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/hammer.js"></script>
-   	<script src="/js/jquery.hammer.js"></script>
+		<script src="js/hammer.js"></script>
+		<script src="js/jquery.hammer.js"></script>
 		<script src="/js/wishlist2.js"></script>
 	</body>
-	</html>
+</html>

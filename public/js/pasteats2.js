@@ -1,34 +1,26 @@
 $(document).ready(function() {
 	initializePage();
-
-      $("#btnNo").click(function (e)
-      {
-         HideDialog();
-         e.preventDefault();
-      });
-
-      $("#btnYes").click(function (e)
-      {
-         HideDialog();
-         deleteEntry(e);
-         e.preventDefault();
-      });
-
 });
 
-/*
- * Function that is called when the document is ready.
- */
- function initializePage() {
-   console.log("Javascript connected!");
-   $('.glyphicon-share-alt').click(share);
-   $('.glyphicon-trash').click(trash);
-   $('.glyphicon-pencil').click(pencil);
- };
+function initializePage() {
+  console.log("Javascript connected!");
+  // $('.glyphicon-share-alt').click(share);
+  $('.glyphicon-trash').click(trash);
+  $("#btnNo").click(function (e) {
+    HideDialog();
+    e.preventDefault();
+  });
 
- function share(e) {
-  console.log("share");
-}
+  $("#btnYes").click(function (e) {
+    HideDialog();
+    deleteEntry(e);
+    e.preventDefault();
+  });
+};
+
+//  function share(e) {
+//   console.log("share");
+// }
 
 function trash(e) {
   console.log("trash");
@@ -49,27 +41,20 @@ function pencil(e) {
   console.log("edit");
 }
 
-   function ShowDialog(modal)
-   {
-      $("#overlay").show();
-      $("#dialog").fadeIn(300);
+function ShowDialog(modal){
+  $("#overlay").show();
+  $("#dialog").fadeIn(300);
 
-      if (modal)
-      {
-         $("#overlay").unbind("click");
-      }
-      else
-      {
-         $("#overlay").click(function (e)
-         {
-            HideDialog();
-         });
-      }
-   }
+  if (modal) {
+   $("#overlay").unbind("click");
+ } else {
+   $("#overlay").click(function (e){
+    HideDialog();
+  });
+ }
+}
 
-   function HideDialog()
-   {
-      $("#overlay").hide();
-      $("#dialog").fadeOut(300);
-   } 
-        
+function HideDialog(){
+  $("#overlay").hide();
+  $("#dialog").fadeOut(300);
+} 

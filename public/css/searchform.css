@@ -58,7 +58,7 @@
 .select2-search-choice > a{
   position: relative;
   display: inline;
-  vertical-align: center: !important;
+  vertical-align: center !important;
   top: -0.6px !important;
   left:0px !important;
 }
