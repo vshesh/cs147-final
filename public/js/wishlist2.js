@@ -22,6 +22,7 @@ $(function(){
       if( !tip || tip === '') return false;
 
       target.removeAttr('title');
+      console.log($(this).attr('class'));
       tooltip.css('opacity', 0).html(tip).appendTo('body');
 
       var initTooltip = function(){
@@ -49,6 +50,7 @@ $(function(){
           tooltip.addClass('top');
         } else tooltip.removeClass('top');
 
+        console.log('made it to before animate in!');
         tooltip.css( {left:posLeft, top:posTop}).animate({top: '+= 10', opacity: 1}, 50);
       };
 

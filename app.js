@@ -59,11 +59,12 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GoogleStrategy({
 		clientID: '101989331854-aqje8r3qpvudqru12luln8q88kdm7btd.apps.googleusercontent.com',
 		clientSecret: '9DCgH6NzVtSZlMPwtodv2pLv',
-		callbackURL: "https://umami.herokuapp.com/auth/google/callback"
+		callbackURL: "http://localhost:3000/auth/google/callback"
 	},
 	function(accessToken, refreshToken, profile, done) {
 		process.nextTick(function(){
 			console.log(profile);
+			//post profile to database/webpage and populate the site
 			return done(null, profile);
 		});
 	}
@@ -92,6 +93,11 @@ app.get('/auth/google/callback', passport.authenticate('google', {failureRedirec
 		function(req, res){
 			res.redirect('/wishlist');
 		});
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 // routes for css/js in node_modules (libraries that we need)
 app.get('/css/select2.css', function(req, res) {
