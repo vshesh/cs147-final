@@ -16,6 +16,18 @@
 	<link href="/css/menubar/component.css" rel="stylesheet"/>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="spreadsheet">
+
+	<!-- Req for menubar-->
+		<script src="/js/menubar/modernizr.custom.js"></script>
+		<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+		<script src="/js/menubar/classie.js"></script>
+		<script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/hammer.js"></script>
+		<script src="/js/jquery.hammer.js"></script>
+		<script src="/js/wishlist2.js"></script>
+
 </head>
 
 <script type="text/javascript">
@@ -39,7 +51,8 @@
 
 	<div class="container">
 		{{#each wishlist}}
-		<div class="wishlist-entry" id="swipe{{id}}">
+		<!-- FREAKING FIX THE NAMES ALREADY THIS IS RIDICULOUS -->
+		<div class="wishlist-entry" id="swipe{{id}}" gid = "{{g_places_ref}}" gref = "{{g_places_id}}">
 			
 			<div class="swipe-options">
 				<div class="option"> 
@@ -48,7 +61,6 @@
 						<a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>
 					</div>
 				</div>
-
 
 			<a  class = "place" gid = "{{g_places_id}}" id = "{{g_places_ref}}"  href="/info/{{g_places_id}}">
 					<!--<div class="photo"> 
@@ -89,17 +101,27 @@
 				console.log(theBody.result.name);
 				$('#' + theBody.result.id).length;
 				$('#' + theBody.result.id).html( $('#' + theBody.result.id).html() + createResultDiv(theBody.result) );
-
 			}
 		});
 	});
+
+	$('.glyphicon-remove').each(function(i,e) {
+        $(e).click(function(ev) {
+          ev.preventDefault();
+          $.get('/wishlist/remove/', {
+            gid: $(this).parent().parent().parent().attr('gid'),
+            gref: $(this).parent().parent().parent().attr('gref')
+          }, function(result, err) {if (err) console.log(err);});
+        })
+      });
+
 	function createResultDiv(place) {
       var price = place.price_level ? Array(place.price_level+1).join('$') : "";
       var hours = place.opening_hours ? place.opening_hours : "";
       var opennow = hours.open_now;
       var displayopen = "";
       if (opennow != undefined) {
-        displayopen = opennow ? "open" : "not open";
+        displayopen = opennow ? "open" : "closed";
       }
       return '    <div class="photo"> '+
       '      <img src="'+place.icon+'">'+
@@ -120,16 +142,5 @@
 	}
 	</script>
 
-
-		<!-- Req for menubar-->
-		<script src="/js/menubar/modernizr.custom.js"></script>
-		<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
-		<script src="/js/menubar/classie.js"></script>
-		<script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/hammer.js"></script>
-		<script src="/js/jquery.hammer.js"></script>
-		<script src="/js/wishlist2.js"></script>
 	</body>
 	</html>

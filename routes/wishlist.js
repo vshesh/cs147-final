@@ -5,10 +5,10 @@ var request = require('request');
 var findByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
         if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
-            return array[i];
+            return i;
         }
     }
-    return undefined;
+    return -1;
 }
 
 exports.view = function(req, res) {
@@ -77,9 +77,9 @@ exports.add = function(req, res) {
 		"g_places_id" : req.query.gref,
 		"created_timestamp" : Date.now()
 	};
-	var user = findByAttr(data, 'google_id', req.user.id);
+	var user = data[findByAttr(data, 'google_id', req.user.id)];
 	console.log(user.wishlist.length);
-	var entry = findByAttr(user.wishlist, 'g_places_ref', req.query.gid);
+	var entry = user.wishlist[findByAttr(user.wishlist, 'g_places_ref', req.query.gid)];
 	if (entry == undefined) {
 		user.wishlist.push(newentry);
 		console.log(user.wishlist[user.wishlist.length-1]);
@@ -88,7 +88,17 @@ exports.add = function(req, res) {
 }
 
 exports.remove = function(req, res) {
-	
+	var user = data[findByAttr(data, 'google_id', req.user.id)];
+	console.log(user.wishlist.length);
+	console.log(req.query);
+	console.log(user.wishlist[0]);
+	var index = findByAttr(user.wishlist, 'g_places_ref', req.query.gid);
+	if (index != -1) {
+		console.log('found the index alright');
+		user.wishlist.splice(index, 1);
+		res.send(200);
+	}
+	res.send(201);
 }
 
 
