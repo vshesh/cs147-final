@@ -49,7 +49,7 @@
     }
 
     function callback(results, status) {
-      console.log(results[0]);
+      // console.log(results[0]);
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
           createMarker(results[i]);
@@ -68,29 +68,29 @@
       if (opennow != undefined) {
         displayopen = opennow ? "open" : "not open";
       }
-      return  '<div class="wishlist-entry" id="swipe0"><div class="swipe-options">'+
+      return       '<div class="wishlist-entry" id="swipe0"><div class="swipe-options">'+
       '  <div class="option"> '+
-      '    <span class="glyphicon glyphicon-remove"></span></div>'+
+      '    <span class="glyphicon glyphicon-plus"></span></div>'+
       '    <div class="option">'+
       '      <a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>'+
       '    </div>'+
       '  </div>'+
       '  <a  href="#">'+
       '    <div class="photo"> '+
-      '      <img src="http://lorempixel.com/400/400/food/{{id}}">'+
+      '      <img src="'+place.icon+'">'+
       '    </div>'+
       '    <div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">'+
       '      <ul >   '+
-      '        <li>{{name}}</li>'+
-      '        <li>{{cuisines}}</li>'+
-      '        <li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>'+
+      '        <li>'+place.name +'</li>'+
+      '        <li>'+place.types.toString()+'</li>'+
+      '        <li>'+(place.rating? place.rating : "")+'</li>'+
       '      </ul>'+
       '    </div>'+
       '    <div title="These are details about restaraunts" rel="tooltip" class= "right-info">'+
       '      <ul>'+
-      '        <li>{{distance}}</li>'+
-      '        <li>{{hours}}</li>'+
-      '        <li>{{price}}</li>'+
+      '        <li>'+'1.2 mi'+'</li>'+
+      '        <li>'+displayopen+'</li>'+
+      '        <li>'+price+'</li>'+
       '      </ul>'+
       '    </div>'+
       '  </a>'+
@@ -112,7 +112,6 @@
     function swipeTiles() {
       console.log('running swipeTiles');
       $('.wishlist-entry').each(function(i,e) {
-        console.log(i);
         $(this).css({
           left: -width +"px"
         });
