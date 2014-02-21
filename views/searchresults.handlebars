@@ -73,7 +73,7 @@
       '  <div class="option"> '+
       '    <span class="glyphicon glyphicon-plus"></span></div>'+
       '    <div class="option">'+
-      '      <a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>'+
+      '      <a href="/pasteats-editcreate/' + place.reference + '""><span class="glyphicon glyphicon-pencil"></span></a>'+
       '    </div>'+
       '  </div>'+
       '  <a class="place" gid="' + place.reference+ '"" id= "' + place.id + '" href="/info/' + place.reference+ '"">'+
@@ -154,7 +154,6 @@
             gref: $(this).parent().parent().parent().attr('gref')
           }, function(result, err) {
             if (err) console.log(err);
-            
           });
         })
       });
