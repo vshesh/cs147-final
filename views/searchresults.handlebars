@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/css/select2.css">
   <link rel="stylesheet" href="/css/select2-bootstrap.css">
   <link rel="stylesheet" href="/css/searchresults.css">
+  <link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="">
 
   <!-- Req for menubar-->
   <script src="/js/menubar/modernizr.custom.js"></script>
@@ -20,44 +21,80 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/select2.js"></script>
+  <!-- Hammerjs stuffs -->
+  <script src="/js/jquery.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="/js/hammer.js"></script>
+  <script src="/js/jquery.hammer.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
   <script>
+    var width = window.innerWidth;
+    var swiped = false;
     var map;
     var infowindow;
-
     function initialize() {
-      var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
+      var pyrmont = new google.maps.LatLng(33.8665433, -115.1956316);
 
       map = new google.maps.Map(document.getElementById('map-canvas'), {
         center: pyrmont,
-        zoom: 15
+        zoom: 10
       });
 
       var request = {
-        location: pyrmont,
-        radius: 500,
-        types: ['store']
+        query: "{{keyword}}"
       };
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);
-      service.nearbySearch(request, callback);
+      service.textSearch(request, callback);
     }
 
     function callback(results, status) {
-      console.log(results);
+      console.log(results[0]);
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
           createMarker(results[i]);
           $('#results').html($('#results').html() + createResultDiv(results[i]));
         }
       }
+      map.setCenter(results[0].geometry.location);
+      swipeTiles();
     }
 
     function createResultDiv(place) {
-      return '<div class="wishlist-entry"> <div class="col-xs-3 photo"> <img src="'+ 
-      place.icon
-       +'"></div><div class= "col-xs-6"><ul><li>' + place.name +
-        '</li><li>' + place.types.toString() + '</li><li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li></ul></div><div class= "col-xs-3 right-info"><ul><li>1.2 mi</li><li>11a-8p</li><li>'+ Array(place.pricelevel).join('$') +'</li></ul></div></div></div>';
+      var price = place.price_level ? Array(place.price_level+1).join('$') : "";
+      var hours = place.opening_hours ? place.opening_hours : "";
+      var opennow = hours.open_now;
+      var displayopen = "";
+      if (opennow != undefined) {
+        displayopen = opennow ? "open" : "not open";
+      }
+      return  '<div class="wishlist-entry" id="swipe0"><div class="swipe-options">'+
+      '  <div class="option"> '+
+      '    <span class="glyphicon glyphicon-remove"></span></div>'+
+      '    <div class="option">'+
+      '      <a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>'+
+      '    </div>'+
+      '  </div>'+
+      '  <a  href="#">'+
+      '    <div class="photo"> '+
+      '      <img src="http://lorempixel.com/400/400/food/{{id}}">'+
+      '    </div>'+
+      '    <div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">'+
+      '      <ul >   '+
+      '        <li>{{name}}</li>'+
+      '        <li>{{cuisines}}</li>'+
+      '        <li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>'+
+      '      </ul>'+
+      '    </div>'+
+      '    <div title="These are details about restaraunts" rel="tooltip" class= "right-info">'+
+      '      <ul>'+
+      '        <li>{{distance}}</li>'+
+      '        <li>{{hours}}</li>'+
+      '        <li>{{price}}</li>'+
+      '      </ul>'+
+      '    </div>'+
+      '  </a>'+
+      '</div>';
     }
 
     function createMarker(place) {
@@ -72,8 +109,41 @@
         infowindow.open(map, this);
       });
     }
+    function swipeTiles() {
+      console.log('running swipeTiles');
+      $('.wishlist-entry').each(function(i,e) {
+        console.log(i);
+        $(this).css({
+          left: -width +"px"
+        });
+        Hammer(e).on("swiperight", function(ev) {
+        if(!swiped) {
+          console.log('swiperight');
+          $(this).animate({
+            left: "0px"
+          }, 500, 'easeOutCirc');
+          swiped = true;
+        }
+      });
+      });
+      $('.wishlist-entry').each(function(i,e) {
+        Hammer(e).on("swipeleft", function(ev) {
+        if(swiped) {
+          console.log("swipeleft");
+          $(this).animate({
+            left: -width + "px",
+          }, 500, 'easeOutCirc');
+          swiped = false;
+        }
+      });
+      });
+    }
 
     google.maps.event.addDomListener(window, 'load', initialize);
+    $(document).ready(function() {
+      $(document).on('touchmove', function(e) {e.preventDefault();});
+    });
+
   </script>
 </head>
 
@@ -90,6 +160,8 @@
 
 </body>
 </html>
+
+
 
 
 
