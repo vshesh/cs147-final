@@ -50,6 +50,10 @@ lib-cov
 *.pid
 *.gz
 
+# Keeping our secrets secret #
+##############################
+secrets.js
+
 pids
 logs
 results

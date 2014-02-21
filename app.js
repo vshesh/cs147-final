@@ -21,6 +21,7 @@ var pasteats = require('./routes/pasteats');
 var pasteats_editcreate = require('./routes/pasteats-editcreate');
 var search = require('./routes/search');
 var help = require('./routes/help');
+var secrets = require('./secrets');
 
 // Example route
 // var user = require('./routes/user');
@@ -57,8 +58,8 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new GoogleStrategy({
-		clientID: '101989331854-aqje8r3qpvudqru12luln8q88kdm7btd.apps.googleusercontent.com',
-		clientSecret: '9DCgH6NzVtSZlMPwtodv2pLv',
+		clientID: secrets.googleID,
+		clientSecret: secrets.googleSecret,
 		callbackURL: "http://localhost:3000/auth/google/callback"
 	},
 	function(accessToken, refreshToken, profile, done) {
