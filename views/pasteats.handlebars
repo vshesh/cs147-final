@@ -29,39 +29,44 @@
     </div>
     <div id="underlay"></div>
 
+    
     <div class="container">
-        <div id="overlay" class="web_dialog_overlay"></div>
-        <div id="dialog" class="web_dialog">
-            Delete this post?
-            <table style="width: 100%;" cellspacing="0">
-              <tr>
-                <td id ="btnNo">
-                    No
-                </td>
-                <td  id="btnYes">
-                    <span style="color:blue">Yes</span>
-                </td>
-            </tr>
-        </table>
-    </div>
+        {{#each pasteats}}    
+            <div id="overlay" class="web_dialog_overlay"></div>
+            <div id="dialog" class="web_dialog">
+                Delete this post?
+                <table style="width: 100%;" cellspacing="0">
+                  <tr>
+                    <td id ="btnNo">
+                        No
+                    </td>
+                    <td  id="btnYes">
+                        <span style="color:blue">Yes</span>
+                    </td>
+                  </tr>
+                </table>
+            </div>
 
-    <div class="swipe-tile" id="swipe1">
-        <div class="pasteats-entry">
-            <div class= "entry-text row-fluid">
-                <div class= "col-xs-8"><b>Red Bean Cafe</b></div>
-                <div class= "col-xs-4">04.28.12</div>
-                <p>General text lorem ipsum short overview ladee da dee da. Fantastic place to eat crab!</p>   
-            </div>
-            <img src= "http://lorempixel.com/400/400/food">
-            <div class= "caption-text"> This is a caption for the food </div>
-            <div class="entry-end">
-                <!-- <span class="glyphicon glyphicon-share-alt"></span> -->
-                <span class="glyphicon glyphicon-trash"></span>
-                <a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span>
+        <div class="swipe-tile" id="swipe1">
+            <div class="pasteats-entry">
+                <div class= "entry-text row-fluid">
+                    <div class= "col-xs-8"><b>{{title}}</b></div>
+                    <div class= "col-xs-4">{{created_timestamp}}</div>
+                    <p>{{summary}}</p>   
                 </div>
-                
+                <img src= "{{image}}">
+                <div class= "caption-text"> {{caption}}</div>
+                <div class="entry-end">
+                    <!-- <span class="glyphicon glyphicon-share-alt"></span> -->
+                    <span class="glyphicon glyphicon-trash"></span>
+                    <a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span>
+                    </div>
+                    
+                </div>
             </div>
-        </div>
+        {{/each}}
+
+    </div>
 
         <!-- Req for menubar-->
         <script src="/js/menubar/modernizr.custom.js"></script>

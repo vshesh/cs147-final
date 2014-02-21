@@ -4,6 +4,10 @@
   line-height: 150%;
 }
 
-h1, h3 {
+h5, h3 {
   color: #f46b4f;
+}
+
+h4 {
+	line-height: 150%
 }

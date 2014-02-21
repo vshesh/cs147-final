@@ -81,10 +81,10 @@ $(function(){
       parent_tile.fadeOut(500, function(){
         console.log("hiding");
         parent_tile.hide(500);
+      });
     });
     swiped = false;
   });
- });
  };
 
  function swipeTiles() {

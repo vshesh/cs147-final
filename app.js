@@ -32,11 +32,7 @@ var local_database_uri  = 'mongodb://localhost/' + local_database_name
 var database_uri = process.env.MONGOLAB_URI || local_database_uri
 mongoose.connect(database_uri);*/
 
-
-
 var app = express();
-
-
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -94,6 +90,7 @@ app.get('/login', login.view);
 app.get('/wishlist', wishlist.view);
 app.post('/wishlist', wishlist.loginUser);
 app.get('/wishlist/add', wishlist.add);
+app.get('/wishlist/remove', wishlist.remove);
 app.get('/info/:id', info.viewById);
 app.get('/mapview', mapview.view);
 app.get('/pasteats', pasteats.view);
@@ -106,7 +103,6 @@ app.get('/help', help.view);
 app.get('/auth/google', passport.authenticate('google', {scope: 'https://www.googleapis.com/auth/plus.login'}));
 app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/login'}),
 		function(req, res){
-			console.log("1" + req.user + "2");
 			res.redirect('/wishlist');
 		});
 
@@ -118,6 +114,7 @@ app.get('/logout', function(req, res){
 
 app.get('/pasteats/add/:id', pasteats.add);
 app.get('/pasteats/remove/:id', pasteats.remove);
+app.get('/wishlist/add/:id', wishlist.add);
 
 // places autocomplete request endpoints. 
 // NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)

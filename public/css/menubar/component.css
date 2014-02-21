@@ -14,15 +14,14 @@
 	font-size: 1.9em;
 	padding: 20px;
 	margin: 0;
-	font-weight: 300;
 	background: #0d77b6;
 }
 
 .cbp-spmenu a {
 	display: block;
 	color: #fff;
-	font-size: 1.1em;
-	font-weight: 300;
+	font-size: 1.3em;
+	font-weight: 500;
 }
 
 .cbp-spmenu a:hover {
@@ -37,7 +36,7 @@
 /* Orientation-dependent styles for the content of the menu */
 
 .cbp-spmenu-vertical {
-	width: 240px;
+	width: 200px;
 	height: 100%;
 	top: 0;
 	z-index: 1000;
