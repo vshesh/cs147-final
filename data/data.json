@@ -55,38 +55,22 @@
           "google_id" : "1239845098nasdhnasptyansptanpwe98tn23985150924vtwn",
           "created_timestamp" : "February 20, 2014",
           "last_modified_timestamp" : "February 20, 2014",
-          "entry_time" : "February 20, 2014",
-
-          "general_description" : "The restaurant was really bad actually, and I don't know why I put it on my wishlist",
-          "photo_entries" : [
-            {
-              "image" : "http://lorempixel.com/500/400/food",
-              "caption" : "This garlic something or another was great!"
-            },
-            {
-              "image" : "http://lorempixel.com/500/400/food",
-              "caption" : "This garlic something or another was great!"
-            }
-          ]
+          "id": "1",
+          "title": "this is a title",
+          "summmary": "this is a summary",
+          "image": "http://lorempixel.com/400/400/food",
+          "caption": "this is a caption"
         },
         {
           "yelp_id" : "2483172d89wejnashnvapwuytn0v981ytnq89ppwtyiwyt",
           "google_id" : "1239845098nasdhnasptyansptanpwe98tn23985150924vtwn",
           "created_timestamp" : "February 20, 2014",
           "last_modified_timestamp" : "February 20, 2014",
-          "entry_time" : "February 20, 2014",
-
-          "general_description" : "The restaurant was really bad actually, and I don't know why I put it on my wishlist",
-          "photo_entries" : [
-            {
-              "image" : "http://lorempixel.com/500/400/food",
-              "caption" : "This garlic something or another was great!"
-            },
-            {
-              "image" : "http://lorempixel.com/500/400/food",
-              "caption" : "This garlic something or another was great!"
-            }
-          ]
+          "id": "2",
+          "title": "this is a title2",
+          "summmary": "this is a summary2",
+          "image": "http://lorempixel.com/400/400/food",
+          "caption": "this is a caption2"
         }
       ]
     }
