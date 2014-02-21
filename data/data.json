@@ -1,7 +1,4 @@
-{
-  "app_name" : "umami",
-  "authors:" : "",
-  "users" : [
+[
     {
       "name": "Avi Bagla", 
       "google_id": "111452748021407255154", 
@@ -16,7 +13,7 @@
           "price":"$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
           "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
-          "created_timestamp" : "UTC 09 09 2013 5:33pm"
+          "created_timestamp" : "February 20, 2014"
         }, 
         {
           "id": "2",
@@ -27,7 +24,7 @@
           "price":"$$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
           "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
-          "created_timestamp" : "UTC 09 09 2013 5:33pm"
+          "created_timestamp" : "February 20, 2014"
         }, 
         {
           "id": "3",
@@ -38,7 +35,7 @@
           "price":"$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
           "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
-          "created_timestamp" : "UTC 09 09 2013 5:33pm"
+          "created_timestamp" : "February 20, 2014"
         },
         {
           "id": "4",
@@ -49,16 +46,16 @@
           "price":"$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
           "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
-          "created_timestamp" : "UTC 09 09 2013 5:33pm"
+          "created_timestamp" : "February 20, 2014"
         }
       ],
       "pasteats": [
         {
           "yelp_id" : "2483172d89wejnashnvapwuytn0v981ytnq89ppwtyiwyt",
           "google_id" : "1239845098nasdhnasptyansptanpwe98tn23985150924vtwn",
-          "created_timestamp" : "UTC 11 02 2014 7:53pm",
-          "last_modified_timestamp" : "UTC 13 02 2014 10:01am",
-          "entry_time" : "UTC 11 02 2014 10:00am",
+          "created_timestamp" : "February 20, 2014",
+          "last_modified_timestamp" : "February 20, 2014",
+          "entry_time" : "February 20, 2014",
 
           "general_description" : "The restaurant was really bad actually, and I don't know why I put it on my wishlist",
           "photo_entries" : [
@@ -75,9 +72,9 @@
         {
           "yelp_id" : "2483172d89wejnashnvapwuytn0v981ytnq89ppwtyiwyt",
           "google_id" : "1239845098nasdhnasptyansptanpwe98tn23985150924vtwn",
-          "created_timestamp" : "UTC 11 02 2014 7:53pm",
-          "last_modified_timestamp" : "UTC 13 02 2014 10:01am",
-          "entry_time" : "UTC 11 02 2014 10:00am",
+          "created_timestamp" : "February 20, 2014",
+          "last_modified_timestamp" : "February 20, 2014",
+          "entry_time" : "February 20, 2014",
 
           "general_description" : "The restaurant was really bad actually, and I don't know why I put it on my wishlist",
           "photo_entries" : [
@@ -94,4 +91,3 @@
       ]
     }
   ]
-}

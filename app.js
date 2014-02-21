@@ -9,8 +9,10 @@ var passport = require('passport'), GoogleStrategy = require('passport-google-oa
 var partials = require('express-partials');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
+var handlebars = require('express3-handlebars');
+var mongoose = require('mongoose');
 
+//routes
 var index = require('./routes/index');
 var project = require('./routes/project');
 var login = require('./routes/login');
@@ -23,8 +25,13 @@ var search = require('./routes/search');
 var help = require('./routes/help');
 var secrets = require('./secrets');
 
-// Example route
-// var user = require('./routes/user');
+//Mongo Database
+var local_database_name = 'cs147-final';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name
+var database_uri = process.env.MONGOLAB_URI || local_database_uri
+mongoose.connect(database_uri);
+
+
 
 var app = express();
 
