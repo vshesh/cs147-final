@@ -27,7 +27,8 @@ exports.add = function(req, res) {
 		'created_timestamp' : Date.now(),
 		'title' : req.body.title,
 		'summary': req.body.summary,
-		'image' : req.body.image
+		'image' : req.body.image,
+		'caption': req.body.caption
 	};
 
 	var user = findByAttr(data, 'google_id', req.user.id);
