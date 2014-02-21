@@ -16,6 +16,18 @@
 	<link href="/css/menubar/component.css" rel="stylesheet"/>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="spreadsheet">
+
+	<!-- Req for menubar-->
+		<script src="/js/menubar/modernizr.custom.js"></script>
+		<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+		<script src="/js/menubar/classie.js"></script>
+		<script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/hammer.js"></script>
+		<script src="/js/jquery.hammer.js"></script>
+		<script src="/js/wishlist2.js"></script>
+
 </head>
 
 <script type="text/javascript">
@@ -91,13 +103,14 @@
 			}
 		});
 	});
+
 	function createResultDiv(place) {
       var price = place.price_level ? Array(place.price_level+1).join('$') : "";
       var hours = place.opening_hours ? place.opening_hours : "";
       var opennow = hours.open_now;
       var displayopen = "";
       if (opennow != undefined) {
-        displayopen = opennow ? "open" : "not open";
+        displayopen = opennow ? "open" : "closed";
       }
       return '    <div class="photo"> '+
       '      <img src="'+place.icon+'">'+
@@ -119,16 +132,5 @@
 	}
 	</script>
 
-
-		<!-- Req for menubar-->
-		<script src="/js/menubar/modernizr.custom.js"></script>
-		<!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
-		<script src="/js/menubar/classie.js"></script>
-		<script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-		<script src="/js/bootstrap.min.js"></script>
-		<script src="/js/hammer.js"></script>
-		<script src="/js/jquery.hammer.js"></script>
-		<script src="/js/wishlist2.js"></script>
 	</body>
 	</html>
