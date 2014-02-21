@@ -109,7 +109,6 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-
 // places autocomplete request endpoints. 
 // NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)
 app.get('/places/autocomplete/:keywords', function(req, res) {
