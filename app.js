@@ -68,7 +68,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GoogleStrategy({
 		clientID: secrets.googleID,
 		clientSecret: secrets.googleSecret,
-		callbackURL: "http://localhost:3000/auth/google/callback"
+		callbackURL: "https://umami.herokuapp.com/auth/google/callback"
 	},
 	function(accessToken, refreshToken, profile, done) {
 			console.log(profile);
