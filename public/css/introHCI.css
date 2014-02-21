@@ -21,6 +21,10 @@ body {
   height: 40px;
 }
 
+.navbar {
+  height: 40px;
+}
+
 #menuButton {
   margin-left: .5em;
 	padding: .5em;

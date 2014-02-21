@@ -101,6 +101,18 @@ exports.remove = function(req, res) {
 	res.send(201);
 }
 
+exports.find = function(req, res) {
+	var user = data[findByAttr(data, 'google_id', req.user.id)];
+	var index = findByAttr(user.wishlist, 'g_places_ref', req.query.gid);
+	if (index == -1) {
+		console.log('not in wishlist');
+		res.json({found: false});
+	} else {
+		console.log('in wishlist');
+		res.json({found: true});
+	}
+}
+
 
 
 
