@@ -149,11 +149,19 @@
       $('.glyphicon-plus').each(function(i,e) {
         $(e).click(function(ev) {
           ev.preventDefault();
-          $.get('/wishlist/add/', {
-            gid: $(this).parent().parent().parent().attr('gid'),
-            gref: $(this).parent().parent().parent().attr('gref')
-          }, function(result, err) {if (err) console.log(err);});
-        })
+          $.ajax({
+            url: '/wishlist/add/', 
+            data: { 
+              gid: $(this).parent().parent().parent().attr('gid'),
+              gref: $(this).parent().parent().parent().attr('gref')
+            }, 
+            complete: function(result, err) {
+              console.log('callback called');
+              if (err) console.log(err);
+              top.location.href = '/wishlist'
+            }
+          });
+        });
       });
     }
 
