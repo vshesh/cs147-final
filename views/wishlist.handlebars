@@ -18,6 +18,10 @@
 	<link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="spreadsheet">
 </head>
 
+<script type="text/javascript">
+	
+</script>
+
 <body>
 	{{> menu-partial}}
 	{{> menupanel-partial}}
@@ -34,7 +38,7 @@
 				</div>
 
 
-			<a  href="/info/{{id}}">
+			<a  href="/info/{{g_places_id}}">
 				<div class="photo"> 
 					<img src="http://lorempixel.com/400/400/food/{{id}}">
 				</div>
@@ -43,6 +47,7 @@
 						<li>{{name}}</li>
 						<li>{{cuisines}}</li>
 						<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
+						<li>{{rating}}</li>
 					</ul>
 				</div>
 				<div title="These are details about restaraunts" rel="tooltip" class= "right-info">

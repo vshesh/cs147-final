@@ -117,7 +117,7 @@ app.get('/places/autocomplete/:keywords', function(req, res) {
         function(error, result, body) {res.json(result.body);});
 })
 
-app.get('/places/autocomplete/:id', function(req, res) {
+app.get('/places/details/:id', function(req, res) {
   request("https://maps.googleapis.com/maps/api/place/details/json?reference=" + req.params.id + "&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", 
         function(error, result, body) {res.json(result.body);});
 })
