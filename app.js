@@ -71,10 +71,10 @@ passport.use(new GoogleStrategy({
 		callbackURL: "http://localhost:3000/auth/google/callback"
 	},
 	function(accessToken, refreshToken, profile, done) {
-		process.nextTick(function(){
 			console.log(profile);
-			//post profile to database/webpage and populate the site
-			return done(null, profile);
+			login.findOrCreate({googleId: profile.id, name: profile.displayName}, function(err, user){
+				console.log("created a user!");
+				return done(err, user);
 		});
 	}
 ));
@@ -100,6 +100,7 @@ app.get('/help', help.view);
 app.get('/auth/google', passport.authenticate('google', {scope: 'https://www.googleapis.com/auth/plus.login'}));
 app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/login'}),
 		function(req, res){
+			console.log("1" + req.user + "2");
 			res.redirect('/wishlist');
 		});
 
