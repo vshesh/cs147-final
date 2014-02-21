@@ -75,7 +75,14 @@ exports.add = function(req, res) {
 }
 
 exports.remove = function(req, res) {
-	
+	var user = findByAttr(data, 'google_id', req.user.id);
+	console.log(user.wishlist.length);
+	var entry = findByAttr(user.wishlist, 'g_places_ref', req.query.gid);
+	if (entry == undefined) {
+		user.wishlist.push(newentry);
+		console.log(user.wishlist[user.wishlist.length-1]);
+	}
+	res.send(200);
 }
 
 
