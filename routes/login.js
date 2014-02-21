@@ -12,6 +12,8 @@ exports.findOrCreate = function(req, res){
 		.sort()
 		.exec(userCallback);
 
+		
+
 		function userCallback(err, user){
 			console.log(user);
 			if(user.length){

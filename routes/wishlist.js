@@ -5,7 +5,20 @@ var request = require('request');
 
 exports.view = function(req, res) {
   req.session.lastPage = '/login';
-  res.render("wishlist", data[0]);
+  res.render('wishlist', data[0]);
+
+  /*data.filter(function(user){
+  	console.log(user.google_id);
+  	console.log(req.user.google_id);
+  	if(user.google_id === req.user.google_id){
+  	  		res.render("wishlist", user);
+  	  		return true;
+
+  	 }
+
+  	else return false;
+
+  });*/
 	/*models.User
 		.find({'google_id':req.user.google_id})
 		.sort()

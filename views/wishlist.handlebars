@@ -72,8 +72,10 @@
 			console.log(placeID);
 			$.get('/places/details/' + placeID, callback);
 			function callback(result, err){
-				var theBody = JSON.parse(result)
-				$('#' + theBody.result.id).length
+				if(err)console.log(err);
+				var theBody = JSON.parse(result);
+				console.log(theBody.result.name);
+				$('#' + theBody.result.id).length;
 				$('#' + theBody.result.id).html( $('#' + theBody.result.id).html() + createResultDiv(theBody.result) );
 
 			}
