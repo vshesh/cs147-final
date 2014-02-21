@@ -4,7 +4,7 @@
   "users" : [
     {
       "name": "Avi Bagla", 
-      "google_id": "1", 
+      "google_id": "111452748021407255154", 
       "access_token": "null",
       "wishlist" : [
         {
@@ -12,7 +12,7 @@
           "name" : "Palo Alto Buffet",
           "cuisines": "American, Desserts",
           "distance":"1.8 mi",
-          "hours": "12pm - 9pm",
+          "hours": "12p - 9p",
           "price":"$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
           "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
@@ -21,9 +21,9 @@
         {
           "id": "2",
           "name" : "Red Bean Cafe",
-          "cuisines": "Cafe, Japanese, Desserts, Bakeries",
+          "cuisines": "Cafe, Japanese, Desserts",
           "distance":"1.2 mi",
-          "hours": "11am - 9pm",
+          "hours": "11a - 9p",
           "price":"$$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
           "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
@@ -34,7 +34,18 @@
           "name" : "Ike's",
           "cuisines": "Sandwiches, Fast Food",
           "distance":"0.3 mi",
-          "hours": "10am - 7pm",
+          "hours": "10a - 7p",
+          "price":"$$",
+          "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
+          "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
+          "created_timestamp" : "UTC 09 09 2013 5:33pm"
+        },
+        {
+          "id": "4",
+          "name" : "The CoHo",
+          "cuisines": "Sandwiches, Coffee, Salad",
+          "distance":"0.1 mi",
+          "hours": "6am - 12am",
           "price":"$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
           "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",

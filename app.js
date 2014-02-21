@@ -64,6 +64,7 @@ passport.use(new GoogleStrategy({
 	function(accessToken, refreshToken, profile, done) {
 		process.nextTick(function(){
 			console.log(profile);
+			//post profile to database/webpage and populate the site
 			return done(null, profile);
 		});
 	}
@@ -76,7 +77,6 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
-app.get('/project/:name', project.viewProject);
 app.get('/login', login.view);
 app.get('/wishlist', wishlist.view);
 app.post('/wishlist', wishlist.loginUser);
@@ -93,6 +93,11 @@ app.get('/auth/google/callback', passport.authenticate('google', {failureRedirec
 		function(req, res){
 			res.redirect('/wishlist');
 		});
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 // routes for css/js in node_modules (libraries that we need)
 app.get('/css/select2.css', function(req, res) {

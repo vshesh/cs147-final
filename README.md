@@ -1,4 +1,4 @@
-lab4
+Umami
 ====
 
-Lab 4: Programming with Javascript
+Changing the way we find restaraunts. Your way

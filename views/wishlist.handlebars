@@ -24,19 +24,28 @@
 	<div class="container">
 {{#each wishlist}}
 		<div class="wishlist-entry" id="swipe{{id}}">
+			
+			<div class="swipe-options">
+				<div class="option"> 
+					<span class="glyphicon glyphicon-remove"></span></div>
+					<div class="option">
+						<a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>
+					</div>
+				</div>
 
-			<a href="/info/20">
+
+			<a  href="/info/{{id}}">
 				<div class="photo"> 
 					<img src="http://lorempixel.com/400/400/food/{{id}}">
 				</div>
-				<div class= "left-info">
-					<ul>		
+				<div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">
+					<ul >		
 						<li>{{name}}</li>
 						<li>{{cuisines}}</li>
 						<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
 					</ul>
 				</div>
-				<div class= "right-info">
+				<div title="These are details about restaraunts" rel="tooltip" class= "right-info">
 					<ul>
 						<li>{{distance}}</li>
 						<li>{{hours}}</li>
@@ -47,13 +56,6 @@
 
 			</a>
 
-			<div class="swipe-options">
-				<div class="option"> 
-					<span class="glyphicon glyphicon-remove" id="remove"></span></div>
-					<div class="option">
-						<a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>
-					</div>
-				</div>
 
 			</div>
 		{{/each}}
