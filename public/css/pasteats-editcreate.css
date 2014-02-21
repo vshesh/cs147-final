@@ -1,0 +1,23 @@
+body {
+	background-color: #f46b4f;
+}
+
+form {
+	margin-top: 30px;
+}
+
+.textfield, textarea, #image, #upload{
+  color: #333;
+  font-size: 13px;
+  font-family: 'Noto Sans', sans-serif;
+  border: none;
+  width: 90%;
+  margin: auto;
+  display:block;
+  padding: .5em;
+  resize:none;
+}
+
+textarea {
+	height: 100px;
+}

@@ -6,29 +6,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="/css/menubar/component.css" rel="stylesheet"/>
+	<link href="/css/menubar/component.css" rel="stylesheet">
+  <link href="/css/introHCI.css" rel="stylesheet">
+  <link href="/css/pasteats-editcreate.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <link href="/froala_editor_1.0.5/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="/froala_editor_1.0.5/css/froala_editor.min.css" rel="stylesheet" type="text/css">
+  <script src="/froala_editor_1.0.5/js/froala_editor.min.js"></script>
+  <script src="/js/pasteats-editcreate2.js"></script>
+  
 </head>
 
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-headerw">
+      <button id="menuButton" type="button" class="navbar-toggle pull-left">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </button>
+      <a class="navbar-brand" href="#">Edit Entry</a>
+  </div>
+</div>
 <body>
-	<div class = "container-fluid">
-  		<div class = "row-fluid">
-  			<div class = "panel panel-default">
-  				<div class= "panel-body">
-  					<div class= "col-xs-3">
-  						<a href="/pasteats"><button type="button" class="btn btn-default btn-md">
-  							<span class="glyphicon glyphicon-chevron-left"></span>
-  						</button></a>
-  					</div>
-  					<div class= "col-xs-9 header-text">
-  						Edit Entry
-  					</div>
-  				</div>
-  			</div>
-  		</div>
-    </div>
-    
+	<div class = "container">
     <form action="upload.htm" method="post" enctype="multipart/form-data">
-      <input type="file" accept="image/*" capture>
-      <input type="submit" value="Upload">
+      <input type="text" name="title" class="textfield" placeholder="Title" required maxlength="20">
+      </br>
+      <textarea id="summary" placeholder="Yo"></textarea>
+      <input type="file" id="image" multiple accept="image/*">
+      <input type="file" id="image" accept="image/*">
+      <input type="file" id="image" accept="image/*" capture>
+      <input type="submit" id="upload" value="Upload">
     </form>
+    </div>
 </body>
