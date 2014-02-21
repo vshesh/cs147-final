@@ -40,6 +40,13 @@
         ],
         multiple: true
       });
+      $('#submitBtn').click(function(e) {
+        e.preventDefault();
+        var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
+        var location = $('#pac-input').val();
+        // redirect as a get request
+        window.location  = '/search/results?keyword='+cuisines+" "+location;
+      });
     });
     var address = '';
     function initialize() {
@@ -66,11 +73,6 @@
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
-    $('#submitBtn').click(function(e) {
-      e.preventDefault();
-      var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
-
-    });
   </script>
 </head>
 
@@ -79,7 +81,7 @@
 {{> menupanel-partial}}
 
 <div class="container">
-  <form id="searchform" role="form" method="get" action="/search/results">
+  <div id="searchform">
     <h3>Search for Places</h3>
     <div class="searchName">
     <input id="pac-input" class="controls" type="text"
@@ -96,7 +98,7 @@
     </div>
   <br>
   <button id="submitBtn" class="btn btn-default">Go</button>
-  </form>
+  </div>
 </div>
 
 </body>
