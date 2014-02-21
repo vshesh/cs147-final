@@ -2,8 +2,10 @@ var data = require('../data/data.json');
 
 exports.view = function(req, res) {
   req.session.lastPage = '/login';
-  console.log(data);
   res.render("wishlist", data[0]);
+  console.log("this is the req")
+  console.log(req.user.google_id);
+  console.log("yes");
 }
 
 
