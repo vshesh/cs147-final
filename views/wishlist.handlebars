@@ -101,10 +101,20 @@
 				console.log(theBody.result.name);
 				$('#' + theBody.result.id).length;
 				$('#' + theBody.result.id).html( $('#' + theBody.result.id).html() + createResultDiv(theBody.result) );
-
 			}
 		});
 	});
+
+	$('.glyphicon-remove').each(function(i,e) {
+        $(e).click(function(ev) {
+          ev.preventDefault();
+          $.get('/wishlist/remove/', {
+            gid: $(this).parent().parent().parent().attr('gid'),
+            gref: $(this).parent().parent().parent().attr('gref')
+          }, function(result, err) {if (err) console.log(err);});
+        })
+      });
+    }
 
 	function createResultDiv(place) {
       var price = place.price_level ? Array(place.price_level+1).join('$') : "";
