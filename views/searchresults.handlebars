@@ -49,7 +49,7 @@
     }
 
     function callback(results, status) {
-      // console.log(results[0]);
+      console.log(results);
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
           createMarker(results[i]);
@@ -69,7 +69,7 @@
       if (opennow != undefined) {
         displayopen = opennow ? "open" : "not open";
       }
-      return '<div class="wishlist-entry" id="swipe0"><div class="swipe-options">'+
+      return '<div class="wishlist-entry" gid="'+place.id+'" gref="'+place.reference+'"><div class="swipe-options">'+
       '  <div class="option"> '+
       '    <span class="glyphicon glyphicon-plus"></span></div>'+
       '    <div class="option">'+
@@ -125,7 +125,7 @@
           swiped = true;
         }
       });
-      });
+    });
       $('.wishlist-entry').each(function(i,e) {
         Hammer(e).on("swipeleft", function(ev) {
         if(swiped) {
@@ -145,9 +145,14 @@
     });
 
     function setupActions() {
+      console.log('running setupActions');
       $('.glyphicon-plus').each(function(i,e) {
-        $(e).click(function() {
-          $.get('/add/');
+        $(e).click(function(ev) {
+          ev.preventDefault();
+          $.get('/wishlist/add/', {
+            gid: $(this).parent().parent().parent().attr('gid'),
+            gref: $(this).parent().parent().parent().attr('gref')
+          }, function(result, err) {if (err) console.log(err);});
         })
       });
     }
