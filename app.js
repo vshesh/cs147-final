@@ -106,7 +106,6 @@ app.get('/help', help.view);
 app.get('/auth/google', passport.authenticate('google', {scope: 'https://www.googleapis.com/auth/plus.login'}));
 app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/login'}),
 		function(req, res){
-			console.log("1" + req.user + "2");
 			res.redirect('/wishlist');
 		});
 
