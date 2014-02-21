@@ -10,7 +10,10 @@ var partials = require('express-partials');
 var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
+var request = require('request');
+var mongoose = require('mongoose');
 
+//routes
 var index = require('./routes/index');
 var project = require('./routes/project');
 var login = require('./routes/login');
@@ -21,9 +24,15 @@ var pasteats = require('./routes/pasteats');
 var pasteats_editcreate = require('./routes/pasteats-editcreate');
 var search = require('./routes/search');
 var help = require('./routes/help');
+var secrets = require('./secrets');
 
-// Example route
-// var user = require('./routes/user');
+//Mongo Database
+var local_database_name = 'cs147-final';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name
+var database_uri = process.env.MONGOLAB_URI || local_database_uri
+mongoose.connect(database_uri);
+
+
 
 var app = express();
 
@@ -57,15 +66,15 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new GoogleStrategy({
-		clientID: '101989331854-aqje8r3qpvudqru12luln8q88kdm7btd.apps.googleusercontent.com',
-		clientSecret: '9DCgH6NzVtSZlMPwtodv2pLv',
+		clientID: secrets.googleID,
+		clientSecret: secrets.googleSecret,
 		callbackURL: "http://localhost:3000/auth/google/callback"
 	},
 	function(accessToken, refreshToken, profile, done) {
-		process.nextTick(function(){
 			console.log(profile);
-			//post profile to database/webpage and populate the site
-			return done(null, profile);
+			login.findOrCreate({googleId: profile.id, name: profile.displayName}, function(err, user){
+				console.log("created a user!");
+				return done(err, user);
 		});
 	}
 ));
@@ -91,6 +100,7 @@ app.get('/help', help.view);
 app.get('/auth/google', passport.authenticate('google', {scope: 'https://www.googleapis.com/auth/plus.login'}));
 app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/login'}),
 		function(req, res){
+			console.log("1" + req.user + "2");
 			res.redirect('/wishlist');
 		});
 
@@ -98,6 +108,19 @@ app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+
+// places autocomplete request endpoints. 
+// NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)
+app.get('/places/autocomplete/:keywords', function(req, res) {
+  request("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+req.params.keywords+"&location=37.76999,-122.44696&radius=500&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", 
+        function(error, result, body) {res.json(result.body);});
+})
+
+app.get('/places/autocomplete/:id', function(req, res) {
+  request("https://maps.googleapis.com/maps/api/place/details/json?reference=" + req.params.id + "&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", 
+        function(error, result, body) {res.json(result.body);});
+})
 
 // routes for css/js in node_modules (libraries that we need)
 app.get('/css/select2.css', function(req, res) {
