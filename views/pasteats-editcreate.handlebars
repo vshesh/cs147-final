@@ -19,11 +19,26 @@
       <button id="menuButton" type="button" class="navbar-toggle pull-left">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </button>
-      <span class="navbar-brand">Edit Entry</span>
+      <span class="navbar-brand">Create Entry</span>
   </div>
 </div>
 <body>
 	<div class = "container">
+  <div class="container">
+        <div id="overlay" class="web_dialog_overlay"></div>
+        <div id="dialog" class="web_dialog">
+            Discard draft?
+            <table style="width: 100%;" cellspacing="0">
+              <tr>
+                <td id ="btnNo">
+                    No
+                </td>
+                <td  id="btnYes">
+                    <span style="color:blue">Yes</span>
+                </td>
+            </tr>
+        </table>
+    </div>
     <form action="upload.htm" method="post" enctype="multipart/form-data">
       <input type="text" name="title" class="textfield" placeholder="Title" required maxlength="20">
       <textarea id="summary" placeholder="Your eloquent text"></textarea>
@@ -31,7 +46,7 @@
       <input type="file" accept="image/*" id="file">
       <div id="previewbox">
         <img id="preview">
-        <input type="text" name="caption" id="caption" placeholder="Caption the above image">
+        <input type="text" name="caption" id="caption" placeholder="Caption the image">
       </div>
         <input type="submit" id="upload" value="Submit">
     </form>

@@ -8,8 +8,7 @@ function initializePage() {
   $('#previewbox').hide()
 
   $('#menuButton').click(function (e) {
-    console.log("back clicked");
-    window.history.back();
+    ShowDialog(false);
     e.preventDefault();
   });
   
@@ -32,6 +31,8 @@ function initializePage() {
             $('#preview').attr('src', e.target.result);
             $('#previewbox').show(300);
         }
+
+        $('#filewrapper').html("Change Photo");
         reader.readAsDataURL(input.files[0]);
     }
 }
@@ -40,18 +41,16 @@ function initializePage() {
     readURL(this);
 });
 
-//   // $('.glyphicon-share-alt').click(share);
-//   $('.glyphicon-trash').click(trash);
-//   $("#btnNo").click(function (e) {
-//     HideDialog();
-//     e.preventDefault();
-//   });
+  $("#btnNo").click(function (e) {
+    HideDialog();
+    e.preventDefault();
+  });
 
-//   $("#btnYes").click(function (e) {
-//     HideDialog();
-//     deleteEntry(e);
-//     e.preventDefault();
-//   });
+  $("#btnYes").click(function (e) {
+    console.log("back confirmed");
+    window.history.back();
+    e.preventDefault();
+  });
 };
 
 function handleFiles(files) {
@@ -69,48 +68,29 @@ function handleFiles(files) {
     preview.appendChild(img);
     
     var reader = new FileReader();
-    reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
-    reader.readAsDataURL(file);
-  }
+    reader.onload = (function(aImg) { return funct*
 }
 
-// //  function share(e) {
-// //   console.log("share");
-// // }
+ function discard(e) {
+        console.log("discard");
+        ShowDialog(false);
+        e.preventDefault();
+}
 
-// function trash(e) {
-//   console.log("trash");
-//   ShowDialog(false);
-//   e.preventDefault();
-// }
+function ShowDialog(modal){
+  $("#overlay").show();
+  $("#dialog").fadeIn(300);
 
-// function deleteEntry(e) {
-//   //this will eventually actually delete the entry
-//   console.log("deleting");
-//   $("#swipe1").fadeOut(500, function(){
-//     console.log("hiding");
-//     $("#swipe1").hide(500);
-//   });
-// }
+  if (modal) {
+   $("#overlay").unbind("click");
+ } else {
+   $("#overlay").click(function (e){
+    HideDialog();
+  });
+ }
+}
 
-// function pencil(e) {
-//   console.log("edit");
-// }
-
-// function ShowDialog(modal){
-//   $("#overlay").show();
-//   $("#dialog").fadeIn(300);
-
-//   if (modal) {
-//    $("#overlay").unbind("click");
-//  } else {
-//    $("#overlay").click(function (e){
-//     HideDialog();
-//   });
-//  }
-// }
-
-// function HideDialog(){
-//   $("#overlay").hide();
-//   $("#dialog").fadeOut(300);
-// } 
+function HideDialog(){
+  $("#overlay").hide();
+  $("#dialog").fadeOut(300);
+} 

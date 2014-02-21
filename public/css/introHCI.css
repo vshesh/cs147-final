@@ -8,6 +8,10 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+.cpb-spmenu {
+  margin-top: .5em;
+}
+
 .container, .container-fluid{
 	padding: 0px;
 	width: 100%;
