@@ -58,6 +58,7 @@
       }
       map.setCenter(results[0].geometry.location);
       swipeTiles();
+      setupActions();
     }
 
     function createResultDiv(place) {
@@ -68,7 +69,7 @@
       if (opennow != undefined) {
         displayopen = opennow ? "open" : "not open";
       }
-      return       '<div class="wishlist-entry" id="swipe0"><div class="swipe-options">'+
+      return '<div class="wishlist-entry" id="swipe0"><div class="swipe-options">'+
       '  <div class="option"> '+
       '    <span class="glyphicon glyphicon-plus"></span></div>'+
       '    <div class="option">'+
@@ -142,6 +143,14 @@
     $(document).ready(function() {
       $(document).on('touchmove', function(e) {e.preventDefault();});
     });
+
+    function setupActions() {
+      $('.glyphicon-plus').each(function(i,e) {
+        $(e).click(function() {
+          $.get('/add/');
+        })
+      });
+    }
 
   </script>
 </head>
