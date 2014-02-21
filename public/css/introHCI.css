@@ -67,4 +67,11 @@ body {
   margin: 0;
 }
 
+.navbar-brand {
+  padding-left:0;
+  margin-top: -2px;
+}
 
+#menuButton {
+  border:none;
+}

@@ -10,9 +10,6 @@
   <link href="/css/introHCI.css" rel="stylesheet">
   <link href="/css/pasteats-editcreate.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery.js"></script>
-  <link href="/froala_editor_1.0.5/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="/froala_editor_1.0.5/css/froala_editor.min.css" rel="stylesheet" type="text/css">
-  <script src="/froala_editor_1.0.5/js/froala_editor.min.js"></script>
   <script src="/js/pasteats-editcreate2.js"></script>
   
 </head>
@@ -22,19 +19,21 @@
       <button id="menuButton" type="button" class="navbar-toggle pull-left">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </button>
-      <a class="navbar-brand" href="#">Edit Entry</a>
+      <span class="navbar-brand">Edit Entry</span>
   </div>
 </div>
 <body>
 	<div class = "container">
     <form action="upload.htm" method="post" enctype="multipart/form-data">
       <input type="text" name="title" class="textfield" placeholder="Title" required maxlength="20">
-      </br>
-      <textarea id="summary" placeholder="Yo"></textarea>
-      <input type="file" id="image" multiple accept="image/*">
-      <input type="file" id="image" accept="image/*">
-      <input type="file" id="image" accept="image/*" capture>
-      <input type="submit" id="upload" value="Upload">
+      <textarea id="summary" placeholder="Your eloquent text"></textarea>
+      <div id="filewrapper">Add Photo</div>
+      <input type="file" accept="image/*" id="file">
+      <div id="previewbox">
+        <img id="preview">
+        <input type="text" name="caption" id="caption" placeholder="Caption the above image">
+      </div>
+        <input type="submit" id="upload" value="Submit">
     </form>
     </div>
 </body>

@@ -9,4 +9,10 @@ $(document).ready(function() {
  */
 function initializePage() {
 	console.log("Javascript connected!");
-}
+
+	$('#menuButton').click(function (e) {
+		console.log("back clicked");
+    window.history.back();
+    e.preventDefault();
+  });
+};
