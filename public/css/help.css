@@ -1,4 +1,6 @@
 .wrapper {
+  width: 80%;
+  margin: auto;
   padding: .5em;
   line-height: 150%;
 }
