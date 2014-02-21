@@ -16,7 +16,8 @@ exports.viewById = function(req, res) {
   		"website": theBody.result.website, 
   		"reviews" : theBody.result.reviews,
   		"phone" : theBody.result.international_phone_number.substr(3),
-
+      "id" : theBody.result.id,
+      "ref" : theBody.result.reference,
   	};
   	console.log(entry);
   	res.render('info', entry);
