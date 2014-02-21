@@ -10,6 +10,7 @@ var partials = require('express-partials');
 var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
+var request = require('request');
 
 var index = require('./routes/index');
 var project = require('./routes/project');
@@ -98,6 +99,19 @@ app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+
+// places autocomplete request endpoints. 
+// NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)
+app.get('/places/autocomplete/:keywords', function(req, res) {
+  request("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+req.params.keywords+"&location=37.76999,-122.44696&radius=500&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", 
+        function(error, result, body) {res.json(result.body);});
+})
+
+app.get('/places/autocomplete/:id', function(req, res) {
+  request("https://maps.googleapis.com/maps/api/place/details/json?reference=" + req.params.id + "&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", 
+        function(error, result, body) {res.json(result.body);});
+})
 
 // routes for css/js in node_modules (libraries that we need)
 app.get('/css/select2.css', function(req, res) {
