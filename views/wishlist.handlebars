@@ -51,7 +51,8 @@
 
 	<div class="container">
 		{{#each wishlist}}
-		<div class="wishlist-entry" id="swipe{{id}}">
+		<!-- FREAKING FIX THE NAMES ALREADY THIS IS RIDICULOUS -->
+		<div class="wishlist-entry" id="swipe{{id}}" gid = "{{g_places_ref}}" gref = "{{g_places_id}}">
 			
 			<div class="swipe-options">
 				<div class="option"> 
@@ -60,7 +61,6 @@
 						<a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>
 					</div>
 				</div>
-
 
 			<a  class = "place" gid = "{{g_places_id}}" id = "{{g_places_ref}}"  href="/info/{{g_places_id}}">
 					<!--<div class="photo"> 
@@ -114,7 +114,6 @@
           }, function(result, err) {if (err) console.log(err);});
         })
       });
-    }
 
 	function createResultDiv(place) {
       var price = place.price_level ? Array(place.price_level+1).join('$') : "";
