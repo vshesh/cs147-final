@@ -98,6 +98,7 @@ app.get('/mapview', mapview.view);
 app.get('/pasteats', pasteats.view);
 app.get('/pasteats/:id', pasteats.viewById);
 app.get('/pasteats-editcreate/:id', pasteats_editcreate.viewById);
+app.get('/search/results', search.viewResults);
 app.get('/search', search.viewForm);
 app.get('/search/results', search.viewResults);
 app.get('/help', help.view);
@@ -112,6 +113,9 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+
+app.get('/pasteats/add/:id', pasteats.add);
+app.get('/pasteats/remove/:id', pasteats.remove);
 
 // places autocomplete request endpoints. 
 // NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)

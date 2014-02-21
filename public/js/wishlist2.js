@@ -72,7 +72,7 @@ $(function(){
 
  function initializePage() {
    console.log("Javascript connected!");
-   geoFindMe();
+   // geoFindMe();
    swipeTiles();
    $('.glyphicon-remove').each(function(i,e) {
     $(this).click(function (eve) {
