@@ -18,11 +18,15 @@
 	<link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="spreadsheet">
 </head>
 
+<script type="text/javascript">
+	
+</script>
+
 <body>
 	{{> menu-partial}}
 	{{> menupanel-partial}}
 	<div class="container">
-{{#each wishlist}}
+		{{#each wishlist}}
 		<div class="wishlist-entry" id="swipe{{id}}">
 			
 			<div class="swipe-options">
@@ -34,7 +38,25 @@
 				</div>
 
 
-			<a  href="/info/{{id}}">
+<<<<<<< HEAD
+				<a  href="/info/{{id}}">
+					<div class="photo"> 
+						<img src="http://lorempixel.com/400/400/food/{{id}}">
+					</div>
+					<div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">
+						<ul >		
+							<li>{{name}}</li>
+							<li>{{cuisines}}</li>
+							<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
+						</ul>
+					</div>
+					<div title="These are details about restaraunts" rel="tooltip" class= "right-info">
+						<ul>
+							<li>{{distance}}</li>
+							<li>{{hours}}</li>
+							<li>{{price}}</li>
+=======
+			<a  href="/info/{{g_places_id}}">
 				<div class="photo"> 
 					<img src="http://lorempixel.com/400/400/food/{{id}}">
 				</div>
@@ -43,6 +65,7 @@
 						<li>{{name}}</li>
 						<li>{{cuisines}}</li>
 						<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
+						<li>{{rating}}</li>
 					</ul>
 				</div>
 				<div title="These are details about restaraunts" rel="tooltip" class= "right-info">
@@ -50,16 +73,17 @@
 						<li>{{distance}}</li>
 						<li>{{hours}}</li>
 						<li>{{price}}</li>
+>>>>>>> cec40aaa15ee304c3e1cb83073f5881459292fa7
 
-					</ul>
-				</div>
+						</ul>
+					</div>
 
-			</a>
+				</a>
 
 
 			</div>
-		{{/each}}
-	</div>
+			{{/each}}
+		</div>
 
 		<!-- Req for menubar-->
 		<script src="/js/menubar/modernizr.custom.js"></script>
@@ -72,4 +96,4 @@
 		<script src="/js/jquery.hammer.js"></script>
 		<script src="/js/wishlist2.js"></script>
 	</body>
-</html>
+	</html>

@@ -30,6 +30,7 @@
   						<li>{{cuisines}}</li>
   						<li>{{price}}</li>
   						<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
+              <li>{{rating}}</li>
   					</ul>
   				</div>
   				<div class= "col-xs-6">
@@ -69,7 +70,20 @@
               
             </div></a>
         </div>
-
+			<div class = "row-fluid">
+					<a href="{{website}}"><div class="btn btn-default col-xs-4">
+		  				<span class="glyphicon glyphicon-link"></span>
+		  				Website
+		  			</div></a>
+					<a href="/"><div class="btn btn-default col-xs-4">
+		  				<span class="glyphicon glyphicon-list-alt"></span>
+		  				Menu
+		  			</div></a>
+					<a href="tel:{{phone}}"><div class="btn btn-default col-xs-4">
+		  				<span class="glyphicon glyphicon-earphone"></span>
+		  				Call
+		  			</div></a>
+			</div>
 
       <div class="row-fluid">
          <div class= "photos">
@@ -84,23 +98,20 @@
             </a>
           </div>
       </div>
-
-      <div class="row-fluid" id="reviews">
-            <span class = "header-text">Reviews</span>
+      <div class="row-fluid panel panel-default">
+         <div class= "panel-body review">
+            <span class = "header-text">Yelp Reviews</span>
+            {{#each reviews}}
             <hr>
             <ul>
-              <li>Billy Bob Joe</li>
+              <li>{{author_name}}</li>
               <li>1/2/14</li>
-              <li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-empty"></span><span class="glyphicon glyphicon-star-empty"></span></li>
-              <li> This place was the bomb and I hella enjoyed it... <a href "#">More</a></li>
+              <li><span class="glyphicon glyphicon-star"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-empty"></span><span class="glyphicon glyphicon-star-empty"></span></li>
+              <li>Rating: {{rating}}</li>
+              <li> {{text}}</li>
             </ul>
-            <hr>
-            <ul>
-              <li>Billy Bob Joe</li>
-              <li>1/2/14</li>
-              <li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-empty"></span><span class="glyphicon glyphicon-star-empty"></span></li>
-              <li> This place was the bomb and I hella enjoyed it... <a href "#">More</a></li>
-            </ul>
+            {{/each}}
+          </div>
       </div>
 
   		</div>
