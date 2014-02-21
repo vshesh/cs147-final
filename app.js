@@ -64,7 +64,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GoogleStrategy({
 		clientID: secrets.googleID,
 		clientSecret: secrets.googleSecret,
-		callbackURL: "http://localhost:3000/auth/google/callback"
+		callbackURL: "https://umami.herokuapp.com/auth/google/callback"
 	},
 	function(accessToken, refreshToken, profile, done) {
 			console.log(profile);
@@ -115,7 +115,7 @@ app.get('/logout', function(req, res){
 app.get('/pasteats/add/:id', pasteats.add);
 app.post('/pasteats-editcreate/add', pasteats.add);
 
-app.get('/pasteats/remove/:id', pasteats.remove);
+app.post('/pasteats/remove', pasteats.remove);
 app.get('/wishlist/add/:id', wishlist.add);
 app.get('/wishlist/find', wishlist.find);
 
