@@ -117,6 +117,7 @@ app.get('/logout', function(req, res){
 
 app.get('/pasteats/add/:id', pasteats.add);
 app.get('/pasteats/remove/:id', pasteats.remove);
+app.get('/wishlist/add/:id', wishlist.add);
 
 // places autocomplete request endpoints. 
 // NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)

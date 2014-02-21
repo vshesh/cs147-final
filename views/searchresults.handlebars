@@ -152,7 +152,10 @@
           $.get('/wishlist/add/', {
             gid: $(this).parent().parent().parent().attr('gid'),
             gref: $(this).parent().parent().parent().attr('gref')
-          }, function(result, err) {if (err) console.log(err);});
+          }, function(result, err) {
+            if (err) console.log(err);
+            
+          });
         })
       });
     }
