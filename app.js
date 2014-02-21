@@ -11,7 +11,9 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
 var request = require('request');
+var mongoose = require('mongoose');
 
+//routes
 var index = require('./routes/index');
 var project = require('./routes/project');
 var login = require('./routes/login');
@@ -22,9 +24,15 @@ var pasteats = require('./routes/pasteats');
 var pasteats_editcreate = require('./routes/pasteats-editcreate');
 var search = require('./routes/search');
 var help = require('./routes/help');
+var secrets = require('./secrets');
 
-// Example route
-// var user = require('./routes/user');
+//Mongo Database
+var local_database_name = 'cs147-final';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name
+var database_uri = process.env.MONGOLAB_URI || local_database_uri
+mongoose.connect(database_uri);
+
+
 
 var app = express();
 
@@ -58,8 +66,8 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new GoogleStrategy({
-		clientID: '101989331854-aqje8r3qpvudqru12luln8q88kdm7btd.apps.googleusercontent.com',
-		clientSecret: '9DCgH6NzVtSZlMPwtodv2pLv',
+		clientID: secrets.googleID,
+		clientSecret: secrets.googleSecret,
 		callbackURL: "http://localhost:3000/auth/google/callback"
 	},
 	function(accessToken, refreshToken, profile, done) {
