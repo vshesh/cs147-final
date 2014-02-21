@@ -1,7 +1,7 @@
 <div class="cbp-spmenu-push">
 	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
 		<h3></h3>
-		<a href="/wishlist">WishList</a>
+		<a href="/wishlist">Wishlist</a>
 		<a href="/pasteats">Past Eats</a>
 		<a href="/search">Search</a>
 		<!--<a href="/profile">Profile</a>-->
@@ -9,38 +9,37 @@
 		<a href="/logout">Sign Out </a>
 	</nav>
 	<script>
-		var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-			menuButton = document.getElementById( 'menuButton' ),
-			body = document.body;
+		$( document ).ready(function() {
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				menuButton = document.getElementById( 'menuButton' ),
+				body = document.body;
 
-			//not able to click underlay yet
-  	$('#underlay').click(function() {
-	  		console.log("underlayclicked");
-				classie.toggle( menuButton, 'active' );
-				classie.toggle( body, 'cbp-spmenu-push-toright' );
-				classie.toggle( menuLeft, 'cbp-spmenu-open' );
-	  		$('#underlay').hide();
+	  	$('#underlay').click(function() {
+		  		console.log("underlayclicked");
+					classie.toggle( menuButton, 'active' );
+					classie.toggle( body, 'cbp-spmenu-push-toright' );
+					classie.toggle( menuLeft, 'cbp-spmenu-open' );
+		  		$('#underlay').hide();
+				});
+
+			$('#menuButton').click(function() {
+					console.log("menubutton clicked");
+					classie.toggle( this, 'active' );
+					classie.toggle( body, 'cbp-spmenu-push-toright' );
+					classie.toggle( menuLeft, 'cbp-spmenu-open' );
+		  		$('#underlay').toggle();
+				});
+
+			$('.html').click(function(){
+				console.log("made it!");
+				if($('#menuButton').hasClass('active')){
+					classie.toggle( this, 'active' );
+					classie.toggle( body, 'cbp-spmenu-push-toright' );
+					classie.toggle( menuLeft, 'cbp-spmenu-open' );
+		  		$('#underlay').toggle();
+				}
+
 			});
-
-		$('#menuButton').click(function() {
-				console.log("menubutton clicked");
-				classie.toggle( this, 'active' );
-				classie.toggle( body, 'cbp-spmenu-push-toright' );
-				classie.toggle( menuLeft, 'cbp-spmenu-open' );
-	  		$('#underlay').toggle();
-				classie.toggle( menuLeft, 'put-in-shadow' );
 			});
-
-		$('.html').click(function(){
-			console.log("made it!");
-			if($('#menuButton').hasClass('active')){
-				classie.toggle( this, 'active' );
-				classie.toggle( body, 'cbp-spmenu-push-toright' );
-				classie.toggle( menuLeft, 'cbp-spmenu-open' );
-				classie.toggle( menuLeft, 'put-in-shadow' );
-	  		$('#underlay').toggle();
-			}
-
-		});
 	</script>
 </div>
