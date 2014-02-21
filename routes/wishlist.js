@@ -37,10 +37,6 @@ exports.view = function(req, res) {
 		res.render('wishlist', data[0]/*user[0].wishlist);
 	}*/
 
-
-  console.log("this is the req")
-  console.log(req.user.google_id);
-  console.log("yes");
 }
 
 
