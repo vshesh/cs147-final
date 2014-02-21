@@ -68,9 +68,10 @@ function handleFiles(files) {
     preview.appendChild(img);
     
     var reader = new FileReader();
-    reader.onload = (function(aImg) { return funct*
-}
-
+     reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+    reader.readAsDataURL(file);
+     }
+ }
  function discard(e) {
         console.log("discard");
         ShowDialog(false);

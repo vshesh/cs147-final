@@ -13,13 +13,24 @@
 			menuButton = document.getElementById( 'menuButton' ),
 			body = document.body;
 
+			//not able to click underlay yet
+  	$('#underlay').click(function() {
+	  		console.log("underlayclicked");
+				classie.toggle( menuButton, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+	  		$('#underlay').hide();
+			});
 
 		$('#menuButton').click(function() {
+				console.log("menubutton clicked");
 				classie.toggle( this, 'active' );
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+	  		$('#underlay').toggle();
 				classie.toggle( menuLeft, 'put-in-shadow' );
 			});
+
 		$('.html').click(function(){
 			console.log("made it!");
 			if($('#menuButton').hasClass('active')){
@@ -27,7 +38,7 @@
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
 				classie.toggle( menuLeft, 'put-in-shadow' );
-
+	  		$('#underlay').toggle();
 			}
 
 		});

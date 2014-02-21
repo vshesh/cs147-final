@@ -51,8 +51,6 @@
       ],
       "pasteats": [
         {
-          "yelp_id" : "2483172d89wejnashnvapwuytn0v981ytnq89ppwtyiwyt",
-          "google_id" : "1239845098nasdhnasptyansptanpwe98tn23985150924vtwn",
           "created_timestamp" : "February 20, 2014",
           "last_modified_timestamp" : "February 20, 2014",
           "id": "1",
@@ -62,8 +60,6 @@
           "caption": "this is a caption"
         },
         {
-          "yelp_id" : "2483172d89wejnashnvapwuytn0v981ytnq89ppwtyiwyt",
-          "google_id" : "1239845098nasdhnasptyansptanpwe98tn23985150924vtwn",
           "created_timestamp" : "February 20, 2014",
           "last_modified_timestamp" : "February 20, 2014",
           "id": "2",

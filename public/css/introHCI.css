@@ -79,3 +79,19 @@ body {
 #menuButton {
   border:none;
 }
+
+#underlay {
+  position: absolute;
+  top: 0;;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  opacity: .50;
+  filter: alpha(opacity=50);
+  -moz-opacity: .50;
+  z-index: 101;
+  display: none;
+}
