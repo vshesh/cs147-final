@@ -9,7 +9,6 @@ exports.viewById = function(req, res) {
 
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
-  	console.log(theBody.result);
   	var entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
@@ -17,6 +16,7 @@ exports.viewById = function(req, res) {
   		"website": theBody.result.website, 
   		"reviews" : theBody.result.reviews,
   		"phone" : theBody.result.international_phone_number.substr(3),
+
   	};
   	console.log(entry);
   	res.render('info', entry);

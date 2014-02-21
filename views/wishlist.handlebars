@@ -36,25 +36,26 @@
 						<a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>
 					</div>
 				</div>
-			<a  href="/info/{{g_places_id}}">
-				<div class="photo"> 
-					<img src="http://lorempixel.com/400/400/food/{{id}}">
-				</div>
-				<div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">
-					<ul >		
-						<li>{{name}}</li>
-						<li>{{cuisines}}</li>
-						<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
-						<li>{{rating}}</li>
-					</ul>
-				</div>
-				<div title="These are details about restaraunts" rel="tooltip" class= "right-info">
-					<ul>
-						<li>{{distance}}</li>
-						<li>{{hours}}</li>
-						<li>{{price}}</li>
+
+
+			<a  class = "place" gid = "{{g_places_id}}" id = "{{g_places_ref}}"  href="/info/{{g_places_id}}">
+					<!--<div class="photo"> 
+						<img src="http://lorempixel.com/400/400/food/{{id}}">
+					</div>
+					<div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">
+						<ul >		
+							<li>{{name}}</li>
+							<li>{{cuisines}}</li>
+							<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
 						</ul>
 					</div>
+					<div title="These are details about restaraunts" rel="tooltip" class= "right-info">
+						<ul>
+							<li>{{distance}}</li>
+							<li>{{hours}}</li>
+							<li>{{price}}</li>
+						</ul>
+					</div>-->
 
 				</a>
 
@@ -62,6 +63,50 @@
 			</div>
 			{{/each}}
 		</div>
+
+	<script type="text/javascript">
+	$(function(){
+		$('.place').each(function(index){
+			console.log(index);
+			var placeID = $(this).attr('gid');
+			console.log(placeID);
+			$.get('/places/details/' + placeID, callback);
+			function callback(result, err){
+				var theBody = JSON.parse(result)
+				$('#' + theBody.result.id).length
+				$('#' + theBody.result.id).html( $('#' + theBody.result.id).html() + createResultDiv(theBody.result) );
+
+			}
+		});
+	});
+	function createResultDiv(place) {
+      var price = place.price_level ? Array(place.price_level+1).join('$') : "";
+      var hours = place.opening_hours ? place.opening_hours : "";
+      var opennow = hours.open_now;
+      var displayopen = "";
+      if (opennow != undefined) {
+        displayopen = opennow ? "open" : "not open";
+      }
+      return '    <div class="photo"> '+
+      '      <img src="'+place.icon+'">'+
+      '    </div>'+
+      '    <div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">'+
+      '      <ul >   '+
+      '        <li>'+place.name +'</li>'+
+      '        <li>'+(place.types? place.types.toString(): "")+'</li>'+
+      '        <li>'+(place.rating? place.rating : "")+'</li>'+
+      '      </ul>'+
+      '    </div>'+
+      '    <div title="These are details about restaraunts" rel="tooltip" class= "right-info">'+
+      '      <ul>'+
+      '        <li>'+'1.2 mi'+'</li>'+
+      '        <li>'+displayopen+'</li>'+
+      '        <li>'+price+'</li>'+
+      '      </ul>'+
+      '    </div>';
+	}
+	</script>
+
 
 		<!-- Req for menubar-->
 		<script src="/js/menubar/modernizr.custom.js"></script>

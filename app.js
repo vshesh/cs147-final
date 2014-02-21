@@ -11,7 +11,7 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
 var request = require('request');
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose');
 
 //routes
 var index = require('./routes/index');
@@ -27,10 +27,10 @@ var help = require('./routes/help');
 var secrets = require('./secrets');
 
 //Mongo Database
-var local_database_name = 'cs147-final';
+/*var local_database_name = 'cs147-final';
 var local_database_uri  = 'mongodb://localhost/' + local_database_name
 var database_uri = process.env.MONGOLAB_URI || local_database_uri
-mongoose.connect(database_uri);
+mongoose.connect(database_uri);*/
 
 
 
@@ -68,14 +68,18 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GoogleStrategy({
 		clientID: secrets.googleID,
 		clientSecret: secrets.googleSecret,
-		callbackURL: "http://localhost:3000/auth/google/callback"
+		callbackURL: "https://umami.herokuapp.com/auth/google/callback"
 	},
 	function(accessToken, refreshToken, profile, done) {
 			console.log(profile);
-			login.findOrCreate({googleId: profile.id, name: profile.displayName}, function(err, user){
+			process.nextTick(function(){
+				console.log(profile);
+				return done(null, profile);
+			});
+			/*login.findOrCreate({googleId: profile.id, name: profile.displayName}, function(err, user){
 				console.log("created a user!");
 				return done(err, user);
-		});
+		});*/
 	}
 ));
 
