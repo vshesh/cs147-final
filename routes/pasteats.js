@@ -1,7 +1,8 @@
 var models = require('../models.js');
+var data = require('../data/data.json');
 
 exports.view = function(req, res) {
-  res.render('pasteats');
+  res.render('pasteats', data[0]);
 }
 
 exports.viewById = function(req, res) {
