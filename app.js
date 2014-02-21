@@ -68,7 +68,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GoogleStrategy({
 		clientID: secrets.googleID,
 		clientSecret: secrets.googleSecret,
-		callbackURL: "https://umami.herokuapp.com/auth/google/callback"
+		callbackURL: "http://localhost:3000/auth/google/callback"
 	},
 	function(accessToken, refreshToken, profile, done) {
 			console.log(profile);
@@ -93,6 +93,7 @@ app.get('/', index.view);
 app.get('/login', login.view);
 app.get('/wishlist', wishlist.view);
 app.post('/wishlist', wishlist.loginUser);
+app.get('/wishlist/add', wishlist.add);
 app.get('/info/:id', info.viewById);
 app.get('/mapview', mapview.view);
 app.get('/pasteats', pasteats.view);
@@ -112,6 +113,8 @@ app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+
 
 // places autocomplete request endpoints. 
 // NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)

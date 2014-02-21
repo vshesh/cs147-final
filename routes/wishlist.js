@@ -5,10 +5,10 @@ var request = require('request');
 var findByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
         if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
-            return i;
+            return array[i];
         }
     }
-    return -1;
+    return undefined;
 }
 
 exports.view = function(req, res) {
@@ -57,10 +57,33 @@ exports.loginUser = function(req, res) {
 
 
 exports.add = function(req, res) {
+//	console.log(req.user);
+	// FIX THE NAMING
 	var newentry = {
-		
+		"g_places_ref" : req.query.gid,
+		"g_places_id" : req.query.gref,
+		"created_timestamp" : Date.now()
+	};
+	var user = findByAttr(data, 'google_id', req.user.id);
+	console.log(user.wishlist.length);
+	var entry = findByAttr(user.wishlist, 'g_places_ref', req.query.gid);
+	if (entry == undefined) {
+		user.wishlist.push(newentry);
+		console.log(user.wishlist[user.wishlist.length-1]);
 	}
+	res.send(200);
 }
+
+exports.remove = function(req, res) {
+	
+}
+
+
+
+
+
+
+
 
 
 
