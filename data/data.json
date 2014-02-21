@@ -12,7 +12,7 @@
           "hours": "12p - 9p",
           "price":"$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
-          "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
+          "g_places_id" : "CnRsAAAA98C4wD-VFvzGq-KHVEFhlHuy1TD1W6UYZw7KjuvfVsKMRZkbCVBVDxXFOOCM108n9PuJMJxeAxix3WB6B16c1p2bY1ZQyOrcu1d9247xQhUmPgYjN37JMo5QBsWipTsnoIZA9yAzA-0pnxFM6yAcDhIQbU0z05f3xD3m9NQnhEDjvBoUw-BdcocVpXzKFcnMXUpf-nkyF1w",
           "created_timestamp" : "February 20, 2014"
         }, 
         {
@@ -23,7 +23,7 @@
           "hours": "11a - 9p",
           "price":"$$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
-          "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
+          "g_places_id" : "CnRsAAAA98C4wD-VFvzGq-KHVEFhlHuy1TD1W6UYZw7KjuvfVsKMRZkbCVBVDxXFOOCM108n9PuJMJxeAxix3WB6B16c1p2bY1ZQyOrcu1d9247xQhUmPgYjN37JMo5QBsWipTsnoIZA9yAzA-0pnxFM6yAcDhIQbU0z05f3xD3m9NQnhEDjvBoUw-BdcocVpXzKFcnMXUpf-nkyF1w",
           "created_timestamp" : "February 20, 2014"
         }, 
         {
@@ -34,7 +34,7 @@
           "hours": "10a - 7p",
           "price":"$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
-          "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
+          "g_places_id" : "CnRsAAAA98C4wD-VFvzGq-KHVEFhlHuy1TD1W6UYZw7KjuvfVsKMRZkbCVBVDxXFOOCM108n9PuJMJxeAxix3WB6B16c1p2bY1ZQyOrcu1d9247xQhUmPgYjN37JMo5QBsWipTsnoIZA9yAzA-0pnxFM6yAcDhIQbU0z05f3xD3m9NQnhEDjvBoUw-BdcocVpXzKFcnMXUpf-nkyF1w",
           "created_timestamp" : "February 20, 2014"
         },
         {
@@ -42,10 +42,10 @@
           "name" : "The CoHo",
           "cuisines": "Sandwiches, Coffee, Salad",
           "distance":"0.1 mi",
-          "hours": "6am - 12am",
+          "hours": "6a - 12a",
           "price":"$$",
           "yelp_id" : "2981n2c98cwpaoiejc;slijmpc9u2398rn2c9tpyyyp",
-          "g_places_id" : "sljfhkasjfhesladfkj211111p2ou1n23pov1u2345u145893459",
+          "g_places_id" : "CnRsAAAA98C4wD-VFvzGq-KHVEFhlHuy1TD1W6UYZw7KjuvfVsKMRZkbCVBVDxXFOOCM108n9PuJMJxeAxix3WB6B16c1p2bY1ZQyOrcu1d9247xQhUmPgYjN37JMo5QBsWipTsnoIZA9yAzA-0pnxFM6yAcDhIQbU0z05f3xD3m9NQnhEDjvBoUw-BdcocVpXzKFcnMXUpf-nkyF1w",
           "created_timestamp" : "February 20, 2014"
         }
       ],

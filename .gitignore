@@ -52,7 +52,7 @@ lib-cov
 
 # Keeping our secrets secret #
 ##############################
-secrets.js
+#secrets.js
 
 pids
 logs
