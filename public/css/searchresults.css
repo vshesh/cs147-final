@@ -36,6 +36,7 @@ ul, li {
   width: 28%;
   float:left;
   height: 59px;
+  overflow: hidden;
 }
 
 .left-info ul li:first-child {

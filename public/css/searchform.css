@@ -1,6 +1,7 @@
 .container {
   text-align: center;
   margin: auto;
+  margin-top: 40px;
 }
 
 .searchName, .priceWrapper, .cuisineWrapper {
