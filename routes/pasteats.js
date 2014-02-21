@@ -27,7 +27,8 @@ exports.add = function(req, res) {
 		'created_timestamp' : Date.now(),
 		'title' : req.body.title,
 		'summary': req.body.summary,
-		'image' : req.body.image
+		'image' : req.body.image,
+		'caption': req.body.caption
 	};
 
 	var user = findByAttr(data, 'google_id', req.user.id);
@@ -38,5 +39,15 @@ exports.add = function(req, res) {
 
 
 exports.remove= function(req, res) {
-	
+	console.log("allo!");
+	console.log(req);
+	var user = data[findByAttr(data, 'google_id', req.user.id)];
+	console.log(user);
+	var index = findByAttr(user.pasteats, 'created_timestamp', req.body.timestamp);
+	if (index != -1) {
+		console.log('found the index alright');
+		user.pasteats.splice(index, 1);
+		res.send(200);
+	}
+	res.send(201);
 }

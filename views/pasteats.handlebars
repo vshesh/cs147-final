@@ -14,6 +14,20 @@
     <link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="spreadsheet">
 </head>
 
+<script type="text/javascript">
+    $(function(){
+        $('.glyphicon-trash').each(function(i, e){
+            $(e).click(function(ev){
+                ev.preventDefault();
+                $.post('/pasteats/remove', {timestamp: $(this).parent().parent().attr('id')}, 
+                        function(result, err){
+                            if (err) console.log(err)
+                });
+            });
+        });
+    });
+</script>
+
 <body>
     {{> menupanel-partial}}
     
@@ -50,7 +64,7 @@
             </div>
 
         <div class="swipe-tile" id="swipe1">
-            <div class="pasteats-entry">
+            <div class="pasteats-entry" id="{{created_timestamp}}">
                 <div class= "entry-text row-fluid">
                     <div class= "col-xs-8"><b>{{title}}</b></div>
                     <div class= "col-xs-4">{{created_timestamp}}</div>

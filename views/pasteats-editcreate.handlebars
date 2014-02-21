@@ -31,7 +31,8 @@
       console.log("inside past eats");
       var summary = $('#summary').val();
       var image = 'http://lorempixel.com/400/400/food/8';
-      $.post('/pasteats-editcreate/add', {title: title, summary: summary, image:image}, callback);
+      var caption = $('#caption').val();
+      $.post('/pasteats-editcreate/add', {title: title, summary: summary, image:image, caption:caption}, callback);
     });
 
     function callback(err){
