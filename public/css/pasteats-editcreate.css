@@ -6,7 +6,7 @@ form {
 	margin-top: 30px;
 }
 
-.textfield, textarea, #upload, #filewrapper{
+.textfield, textarea, #upload, #add, #filewrapper{
   color: #333;
   font-size: 13px;
   font-family: 'Noto Sans', sans-serif;

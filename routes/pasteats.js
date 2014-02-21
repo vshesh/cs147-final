@@ -5,18 +5,35 @@ exports.view = function(req, res) {
   res.render('pasteats', data[0]);
 }
 
+var findByAttr = function(array, attr, value) {
+    for(var i = 0; i < array.length; i++) {
+        if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
+            return array[i];
+        }
+    }
+    return undefined;
+}
+
 exports.viewById = function(req, res) {
   var id = req.params.id;
   res.render('pasteats-entry');
 }
 
 exports.add = function(req, res) {
-	models.User.find({google_id: req.user.google_id})
-		.update({ })
-		.exec(function(err) {
-			if (err) {console.log(err); res.send(500);}
-			else { res.send(200);}
-		});
+	console.log("adding new past eat");
+	console.log(req);
+
+	var newEntry = {
+		'created_timestamp' : Date.now(),
+		'title' : req.body.title,
+		'summary': req.body.summary,
+		'image' : req.body.image
+	};
+
+	var user = findByAttr(data, 'google_id', req.user.id);
+	user.pasteats.push(newEntry);
+
+	res.redirect('/pasteats');
 }
 
 
