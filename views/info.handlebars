@@ -86,7 +86,6 @@
             <hr>
             <ul>
               <li>{{author_name}}</li>
-              <li>1/2/14</li>
               <li><span class="glyphicon glyphicon-star"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-empty"></span><span class="glyphicon glyphicon-star-empty"></span></li>
               <li>Rating: {{rating}}</li>
               <li> {{text}}</li>
@@ -104,7 +103,7 @@
   		<script src="../js/info2.js"></script>
       <script type="text/javascript">
         $(document).ready(function() {
-          $.get('/wishlist/find/', {gid: "{{id}}"}, function(result, err) {
+          $.get('/wishlist/find/', {gid: "{{id}}", gref: "{{ref}}"}, function(result, err) {
             console.log('find callback called');
             console.log(result);
             if (err != "success") {console.log(err); return;}

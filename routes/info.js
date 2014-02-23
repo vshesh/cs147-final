@@ -3,24 +3,25 @@ var models = require('../models');
 var request = require('request');
 
 exports.viewById = function(req, res) {
-  var id = req.params.id;
+  var ref = req.params.id;
 
-  request("https://maps.googleapis.com/maps/api/place/details/json?reference="  + id + "&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", callback);
+  request("https://maps.googleapis.com/maps/api/place/details/json?reference="  + ref + "&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", callback);
 
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
+    console.log(theBody.result.opening_hours);
   	var entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
-  		"hours" : " " + theBody.result.opening_hours.periods[1].open.time + " - " + theBody.result.opening_hours.periods[1].close.time,
+  		"hours" : (theBody.result.opening_hours ? " " + theBody.result.opening_hours.periods[1].open.time + " - " + theBody.result.opening_hours.periods[1].close.time : ""),
   		"website": theBody.result.website, 
   		"reviews" : theBody.result.reviews,
   		"phone" : theBody.result.international_phone_number.substr(3),
       "id" : theBody.result.id,
       "ref" : theBody.result.reference,
-      "open" : theBody.result.opening_hours.open_now
+      "open" : (theBody.result.opening_hours.open_now? "Open" : "Closed")
   	};
-  	console.log(entry);
+  	// console.log(entry);
   	res.render('info', entry);
 
   }

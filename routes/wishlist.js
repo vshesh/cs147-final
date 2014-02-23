@@ -13,7 +13,8 @@ var findByAttr = function(array, attr, value) {
 
 exports.view = function(req, res) {
   req.session.lastPage = '/login';
-  res.render('wishlist', data[0]);
+  var user = data[findByAttr(data, 'google_id', req.user.google_id)];
+  res.render('wishlist', user);
 
   /*data.filter(function(user){
   	console.log(user.google_id);
@@ -73,13 +74,16 @@ exports.add = function(req, res) {
 //	console.log(req.user);
 	// FIX THE NAMING
 	var newentry = {
-		"g_places_ref" : req.query.gid,
-		"g_places_id" : req.query.gref,
+		"g_places_ref" : req.query.gref,
+		"g_places_id" : req.query.gid,
 		"created_timestamp" : Date.now()
 	};
-	var user = data[findByAttr(data, 'google_id', req.user.id)];
+
+	console.log(req);
+	var user = data[findByAttr(data, 'google_id', req.user.google_id)];
+	console.log(user);
 	console.log(user.wishlist.length);
-	var entry = user.wishlist[findByAttr(user.wishlist, 'g_places_ref', req.query.gid)];
+	var entry = user.wishlist[findByAttr(user.wishlist, 'g_places_id', req.query.gid)];
 	if (entry == undefined) {
 		user.wishlist.push(newentry);
 		console.log(user.wishlist[user.wishlist.length-1]);
@@ -92,7 +96,7 @@ exports.remove = function(req, res) {
 	console.log(user.wishlist.length);
 	console.log(req.query);
 	console.log(user.wishlist[0]);
-	var index = findByAttr(user.wishlist, 'g_places_ref', req.query.gid);
+	var index = findByAttr(user.wishlist, 'g_places_id', req.query.gid);
 	if (index != -1) {
 		console.log('found the index alright');
 		user.wishlist.splice(index, 1);
@@ -103,8 +107,8 @@ exports.remove = function(req, res) {
 
 exports.find = function(req, res) {
   console.log('ajax: finding id');
-	var user = data[findByAttr(data, 'google_id', req.user.id)];
-	var index = findByAttr(user.wishlist, 'g_places_ref', req.query.gid);
+	var user = data[findByAttr(data, 'google_id', req.user.google_id)];
+	var index = findByAttr(user.wishlist, 'g_places_id', req.query.gid);
   console.log(index);
 	if (index == -1) {
 		console.log('not in wishlist');
