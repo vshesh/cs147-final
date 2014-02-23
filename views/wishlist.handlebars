@@ -124,7 +124,7 @@
       var opennow = hours.open_now;
       var displayopen = "";
       if (opennow != undefined) {
-        displayopen = opennow ? "open" : "closed";
+        displayopen = opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>";
       }
       return '    <div class="photo"> '+
       '      <img src="'+place.icon+'">'+

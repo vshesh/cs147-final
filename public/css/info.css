@@ -81,12 +81,9 @@ hr {
 	margin-bottom: 10px;
 }
 
-#menuButton {
-	margin-left: .5em;
-}
-
 .navbar-brand {
+	float: left;
 	overflow: hidden;
-	width: 85%;
+	width: 80%;
 	height: 38px;
 }

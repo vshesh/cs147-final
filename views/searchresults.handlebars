@@ -67,7 +67,7 @@
       var opennow = hours.open_now;
       var displayopen = "";
       if (opennow != undefined) {
-        displayopen = opennow ? "open" : "closed";
+        displayopen = opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>";
       }
       return '<div class="wishlist-entry" gid="'+place.id+'" gref="'+place.reference+'"><div class="swipe-options">'+
       '  <div class="option"> '+
