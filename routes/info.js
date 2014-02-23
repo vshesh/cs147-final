@@ -3,9 +3,9 @@ var models = require('../models');
 var request = require('request');
 
 exports.viewById = function(req, res) {
-  var id = req.params.id;
+  var ref = req.params.id;
 
-  request("https://maps.googleapis.com/maps/api/place/details/json?reference="  + id + "&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", callback);
+  request("https://maps.googleapis.com/maps/api/place/details/json?reference="  + ref + "&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", callback);
 
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
