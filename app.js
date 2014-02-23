@@ -68,14 +68,14 @@ passport.use(new GoogleStrategy({
 	},
 	function(accessToken, refreshToken, profile, done) {
 			console.log(profile);
-			process.nextTick(function(){
+			/*process.nextTick(function(){
 				console.log(profile);
 				return done(null, profile);
-			});
-			/*login.findOrCreate({googleId: profile.id, name: profile.displayName}, function(err, user){
+			});*/
+		login.findOrCreate({googleId: profile.id, name: profile.displayName}, function(err, user){
 				console.log("created a user!");
 				return done(err, user);
-		});*/
+		});
 	}
 ));
 

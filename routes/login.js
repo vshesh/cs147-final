@@ -1,18 +1,46 @@
 var data = require('../data/data.json');
 var models = require('../models');
 
+var findByAttr = function(array, attr, value) {
+    for(var i = 0; i < array.length; i++) {
+        if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
 exports.view = function(req, res) {
   var name = req.params.name;
   res.render('login');
 };
 
 exports.findOrCreate = function(req, res){
-		models.User
+		
+
+		var user = data[findByAttr(data, 'google_id', req.googleId)];
+		if(user == undefined){
+			console.log('about to make a new user!');
+			var newUser = {
+				'name': req.name,
+				'google_id': req.googleId,
+				'access_token': null,
+				'wishlist': [],
+				'pasteats': []
+			}
+			console.log(newUser);
+			data.push(newUser);
+		}
+
+		res(false, data[data.length-1]);
+
+		/*models.User
 		.find({'google_id':req.googleId})
 		.sort()
 		.exec(userCallback);
 
-		
+
 
 		function userCallback(err, user){
 			console.log(user);
@@ -31,5 +59,5 @@ exports.findOrCreate = function(req, res){
 					res(false, this);
 				});
 			}
-		}
+		}*/
 }

@@ -12,7 +12,7 @@ exports.viewById = function(req, res) {
   	var entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
-  		"hours" : " " + theBody.result.opening_hours.periods[1].open.time + " - " + theBody.result.opening_hours.periods[1].close.time,
+  		"hours" : (theBody.result.opening_hours ? " " + theBody.result.opening_hours.periods[1].open.time + " - " + theBody.result.opening_hours.periods[1].close.time : ""),
   		"website": theBody.result.website, 
   		"reviews" : theBody.result.reviews,
   		"phone" : theBody.result.international_phone_number.substr(3),

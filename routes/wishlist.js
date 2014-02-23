@@ -13,8 +13,8 @@ var findByAttr = function(array, attr, value) {
 
 exports.view = function(req, res) {
   req.session.lastPage = '/login';
-  console.log(data[0]);
-  res.render('wishlist', data[0]);
+  var user = data[findByAttr(data, 'google_id', req.user.google_id)];
+  res.render('wishlist', user);
 
   /*data.filter(function(user){
   	console.log(user.google_id);
@@ -78,7 +78,10 @@ exports.add = function(req, res) {
 		"g_places_id" : req.query.gid,
 		"created_timestamp" : Date.now()
 	};
-	var user = data[findByAttr(data, 'google_id', req.user.id)];
+
+	console.log(req);
+	var user = data[findByAttr(data, 'google_id', req.user.google_id)];
+	console.log(user);
 	console.log(user.wishlist.length);
 	var entry = user.wishlist[findByAttr(user.wishlist, 'g_places_id', req.query.gid)];
 	if (entry == undefined) {
@@ -104,7 +107,7 @@ exports.remove = function(req, res) {
 
 exports.find = function(req, res) {
   console.log('ajax: finding id');
-	var user = data[findByAttr(data, 'google_id', req.user.id)];
+	var user = data[findByAttr(data, 'google_id', req.user.google_id)];
 	var index = findByAttr(user.wishlist, 'g_places_ref', req.query.gref);
   console.log(index);
 	if (index == -1) {
