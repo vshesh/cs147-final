@@ -32,7 +32,7 @@ exports.add = function(req, res) {
 	};
 
 	var user = findByAttr(data, 'google_id', req.user.id);
-	user.pasteats.push(newEntry);
+	user.pasteats.unshift(newEntry);
 
 	res.redirect('/pasteats');
 }

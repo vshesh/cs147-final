@@ -108,3 +108,10 @@ a:active {
   color:#888;
   padding: 10px;
 }
+
+.btn:active, .btn.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

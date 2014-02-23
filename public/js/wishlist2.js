@@ -75,16 +75,22 @@ $(function(){
    // geoFindMe();
    swipeTiles();
    $('.glyphicon-remove').each(function(i,e) {
-    $(this).click(function (eve) {
+    $(e).click(function(ev) {
+      ev.preventDefault();
       console.log("remove");
+      $.get('/wishlist/remove/', {
+        gid: $(this).parent().parent().parent().attr('gid'),
+        gref: $(this).parent().parent().parent().attr('gref')
+      }, function(result, err) {if (err) console.log(err);});
+        
       var parent_tile = $(this).parent().parent().parent();
-      parent_tile.fadeOut(500, function(){
-        console.log("hiding");
-        parent_tile.hide(500);
+      parent_tile.fadeOut(300, function(){
+      console.log("hiding");
+      parent_tile.hide(300);
       });
-    });
     swiped = false;
   });
+ });
  };
 
  function swipeTiles() {

@@ -26,7 +26,7 @@ iframe, object{
 }
 
 .col-xs-6 {
-	margin: 1em 0 0 0;
+	margin: 1em 0 .5em 0;
 }
 
 .two-col {
@@ -42,16 +42,22 @@ iframe, object{
 	float:left;
 }
 
-.col-xs-4 {
+.web-call {
+	width: 49%;
 	color: #f46b4f;
 	background-color: #f8f8f8;
 	margin-bottom: .5em;
 	height:100%;
 	vertical-align:middle;
 	text-align:center;
-	padding:6px 12px;
+	padding:6px 0px;
 	font-size:14px;
 	line-height: 1.428571429;
+	border:none;
+}
+
+.web-call:active {
+	border: none;
 }
 
 .row-fluid .col-xs-6:nth-child(2) {
@@ -86,4 +92,8 @@ hr {
 	overflow: hidden;
 	width: 80%;
 	height: 38px;
+}
+
+#menuButton {
+	padding: .75em;
 }
