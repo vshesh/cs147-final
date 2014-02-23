@@ -71,7 +71,7 @@
       }
       return '<div class="wishlist-entry" gid="'+place.id+'" gref="'+place.reference+'"><div class="swipe-options">'+
       '  <div class="option"> '+
-      '    <span class="glyphicon glyphicon-plus"></span></div>'+
+      '    <span class="glyphicon glyphicon-plus-sign"></span></div>'+
       '    <div class="option">'+
       '      <a href="/pasteats-editcreate/' + place.reference + '""><span class="glyphicon glyphicon-pencil"></span></a>'+
       '    </div>'+
@@ -146,7 +146,7 @@
 
     function setupActions() {
       console.log('running setupActions');
-      $('.glyphicon-plus').each(function(i,e) {
+      $('.glyphicon-plus-sign').each(function(i,e) {
         $(e).click(function(ev) {
           ev.preventDefault();
           $.ajax({
@@ -164,15 +164,17 @@
         });
       });
 
-    $('.glyphicon-pencil').each(function(i,e) {
-      $(e).click(function(ev) {
-        ev.preventDefault();
-        top.location.href = '/pasteats-editcreate/' + $(this).parent().parent().parent().parent().attr('gref');
+      $('.glyphicon-pencil').each(function(i,e) {
+        $(e).click(function(ev) {
+          ev.preventDefault();
+          top.location.href = '/pasteats-editcreate/' + $(this).parent().parent().parent().parent().attr('gref');
+        });
       });
-    });
 
+      $('wishlist-entry').click(function(i,e) {
+        top.location.href = '/info/' + $(this).attr('gref');
+      });
     }
-
   </script>
 </head>
 

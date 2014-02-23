@@ -117,6 +117,7 @@ app.post('/pasteats-editcreate/add', pasteats.add);
 
 app.post('/pasteats/remove', pasteats.remove);
 app.get('/wishlist/add/:id', wishlist.add);
+app.get('/wishlist/find', wishlist.find);
 
 // places autocomplete request endpoints. 
 // NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)

@@ -31,7 +31,7 @@ function trash(e) {
 function deleteEntry(e) {
   //this will eventually actually delete the entry
   console.log("deleting");
-  $("#swipe1").fadeOut(500, function(){
+  $("swipe1").fadeOut(500, function(){
     console.log("hiding");
     $("#swipe1").hide(500);
   });
