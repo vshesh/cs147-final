@@ -55,7 +55,7 @@
 	<div class="container">
 		{{#each wishlist}}
 		<!-- FREAKING FIX THE NAMES ALREADY THIS IS RIDICULOUS -->
-		<div class="wishlist-entry" id="swipe{{id}}" gid = "{{g_places_ref}}" gref = "{{g_places_id}}">
+		<div class="wishlist-entry" id="swipe{{id}}" gref = "{{g_places_ref}}" gid = "{{g_places_id}}">
 			
 			<div class="swipe-options">
 				<div class="option"> 
@@ -65,8 +65,8 @@
 					</div>
 				</div>
 
-			<a  class = "place" gid = "{{g_places_id}}" id = "{{g_places_ref}}"  href="/info/{{g_places_id}}">
-				 <!-- details of each wishlist tile go here -->
+			<a  class = "place" gref = "{{g_places_ref}}" id = "{{g_places_id}}"  href="/info/{{g_places_ref}}">
+						 <!-- details of each wishlist tile go here -->
 				</a>
 
 
@@ -78,14 +78,14 @@
 	$(function(){
 		$('.place').each(function(index){
 			console.log(index);
-			var placeID = $(this).attr('gid');
-			console.log(placeID);
-			$.get('/places/details/' + placeID, callback);
+			var placeRef = $(this).attr('gref');
+			console.log(placeRef);
+			$.get('/places/details/' + placeRef, callback);
 			function callback(result, err){
 				if(err)console.log(err);
 				var theBody = JSON.parse(result);
 				console.log(theBody.result.name);
-				$('#' + theBody.result.id).length;
+				console.log($('#' + theBody.result.id).length);
 				$('#' + theBody.result.id).html( $('#' + theBody.result.id).html() + createResultDiv(theBody.result) );
 			}
 		});

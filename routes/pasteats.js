@@ -37,7 +37,6 @@ exports.add = function(req, res) {
 	res.redirect('/pasteats');
 }
 
-
 exports.remove= function(req, res) {
 	console.log("allo!");
 	console.log(req);
