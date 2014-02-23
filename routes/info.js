@@ -18,6 +18,7 @@ exports.viewById = function(req, res) {
   		"phone" : theBody.result.international_phone_number.substr(3),
       "id" : theBody.result.id,
       "ref" : theBody.result.reference,
+      "open" : theBody.result.opening_hours.open_now
   	};
   	console.log(entry);
   	res.render('info', entry);

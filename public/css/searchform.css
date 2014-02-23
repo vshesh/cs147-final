@@ -114,3 +114,14 @@ html, body, #map-canvas {
   height: 32px;
   outline: none;
 }
+
+.glyphicons-remove-sign {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  height: 5px;
+  width: 5px;
+}
+
+
+
