@@ -271,7 +271,7 @@
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         var location = $('#pac-input').val();
         // redirect as a get request
-        window.location  = '/search/results?keyword='+cuisines+" "+location+" food";
+        window.location  = '/search/results?keyword='+(cuisines === "" ? "food" : cuisines)+" "+location;
       });
       $('#autocomplete-clear').click(function(e) {
         e.preventDefault();
