@@ -31,6 +31,8 @@
       var summary = $('#summary').val();
       var image = 'http://lorempixel.com/400/400/food/8';
       var caption = $('#caption').val();
+      var photo = $('#file').val();
+
       $.post('/pasteats-editcreate/add', {title: title, summary: summary, image:image, caption:caption}, callback);
     });
 
