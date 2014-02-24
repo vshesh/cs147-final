@@ -69,13 +69,10 @@ passport.use(new GoogleStrategy({
 		callbackURL: secrets.local
 	},
 	function(accessToken, refreshToken, profile, done) {
-			console.log(profile);
 			/*process.nextTick(function(){
-				console.log(profile);
 				return done(null, profile);
 			});*/
 		login.findOrCreate({googleId: profile.id, name: profile.displayName}, function(err, user){
-				console.log("created a user!");
 				return done(err, user);
 		});
 	}
@@ -90,7 +87,7 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/login', login.view);
 app.get('/wishlist', wishlist.view);
-app.post('/wishlist', wishlist.loginUser);
+//app.post('/wishlist', wishlist.loginUser);
 app.get('/wishlist/add', wishlist.add);
 app.get('/wishlist/remove', wishlist.remove);
 app.get('/info/:id', info.viewById);

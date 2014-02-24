@@ -21,7 +21,6 @@ exports.viewById = function(req, res) {
       "ref" : theBody.result.reference,
       "open" : (theBody.result.opening_hours.open_now? "Open" : "Closed")
   	};
-  	// console.log(entry);
   	res.render('info', entry);
 
   }
