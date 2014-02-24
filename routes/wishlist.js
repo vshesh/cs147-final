@@ -51,8 +51,6 @@ exports.view = function(req, res) {
 
 
 exports.add = function(req, res) {
-//	console.log(req.user);
-	// FIX THE NAMING
 	var newentry = {
 		"g_places_ref" : req.query.gref,
 		"g_places_id" : req.query.gid,

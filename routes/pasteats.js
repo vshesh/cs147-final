@@ -21,8 +21,6 @@ var findIndexByAttr = function(array, attr, value) {
 
 exports.view = function(req, res) {
 	var user = findByAttr(data, 'google_id', req.user.google_id);
-	console.log("this is for the view");
-	console.log(user);
   res.render('pasteats', user);
 }
 

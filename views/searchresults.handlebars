@@ -49,7 +49,6 @@
     }
 
     function callback(results, status) {
-      console.log(results);
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
           createMarker(results[i]);
@@ -111,14 +110,12 @@
       });
     }
     function swipeTiles() {
-      console.log('running swipeTiles');
       $('.wishlist-entry').each(function(i,e) {
         $(this).css({
           left: -width +"px"
         });
         Hammer(e).on("swiperight", function(ev) {
         if(!swiped) {
-          console.log('swiperight');
           $(this).animate({
             left: "0px"
           }, 500, 'easeOutCirc');
@@ -129,7 +126,6 @@
       $('.wishlist-entry').each(function(i,e) {
         Hammer(e).on("swipeleft", function(ev) {
         if(swiped) {
-          console.log("swipeleft");
           $(this).animate({
             left: -width + "px",
           }, 500, 'easeOutCirc');
@@ -145,7 +141,6 @@
     });
 
     function setupActions() {
-      console.log('running setupActions');
       $('.glyphicon-plus-sign').each(function(i,e) {
         $(e).click(function(ev) {
           ev.preventDefault();
@@ -156,7 +151,6 @@
               gref: $(this).parent().parent().parent().attr('gref')
             }, 
             complete: function(result, err) {
-              console.log('callback called');
               if (err) console.log(err);
               top.location.href = '/wishlist'
             }

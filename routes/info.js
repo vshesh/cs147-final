@@ -9,7 +9,6 @@ exports.viewById = function(req, res) {
 
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
-    console.log(theBody.result.opening_hours);
   	var entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
