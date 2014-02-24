@@ -19,7 +19,6 @@ exports.viewById = function(req, res) {
       "id" : theBody.result.id,
       "ref" : theBody.result.reference,
   	};
-  	console.log(entry);
   	res.render('info', entry);
 
   }

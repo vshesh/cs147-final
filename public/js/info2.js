@@ -8,10 +8,8 @@ $(document).ready(function() {
  * Function that is called when the document is ready.
  */
 function initializePage() {
-	console.log("Javascript connected!");
 
 	$('#menuButton').click(function (e) {
-		console.log("back clicked");
     window.history.back();
     e.preventDefault();
   });

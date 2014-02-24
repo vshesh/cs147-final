@@ -3,7 +3,6 @@ $(document).ready(function() {
 });
 
 function initializePage() {
-  console.log("Javascript connected!");
 
   $('#previewbox').hide()
 
@@ -47,7 +46,6 @@ function initializePage() {
   });
 
   $("#btnYes").click(function (e) {
-    console.log("back confirmed");
     window.history.back();
     e.preventDefault();
   });
@@ -73,7 +71,6 @@ function handleFiles(files) {
      }
  }
  function discard(e) {
-        console.log("discard");
         ShowDialog(false);
         e.preventDefault();
 }

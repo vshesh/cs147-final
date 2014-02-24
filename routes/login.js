@@ -1,7 +1,7 @@
 var data = require('../data/data.json');
 var models = require('../models');
 
-var findByAttr = function(array, attr, value) {
+var findIndexByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
         if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
             return i;
@@ -19,9 +19,8 @@ exports.view = function(req, res) {
 exports.findOrCreate = function(req, res){
 		
 
-		var user = data[findByAttr(data, 'google_id', req.googleId)];
+		var user = data[findIndexByAttr(data, 'google_id', req.googleId)];
 		if(user == undefined){
-			console.log('about to make a new user!');
 			var newUser = {
 				'name': req.name,
 				'google_id': req.googleId,
@@ -29,7 +28,6 @@ exports.findOrCreate = function(req, res){
 				'wishlist': [],
 				'pasteats': []
 			}
-			console.log(newUser);
 			data.push(newUser);
 		}
 
