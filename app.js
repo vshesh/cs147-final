@@ -49,6 +49,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.session());
+// custom auth middelware
+app.use(ensureAuthenticated);
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(partials());
@@ -156,6 +158,20 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
+  if (typeof String.prototype.startsWith != 'function') {
+    String.prototype.startsWith = function (str){
+      return this.slice(0, str.length) == str;
+    };
+  }
+  // UBER HACK for the middleware to allow css,js to pass through but not 
+  // anything else.
+  if (req.path === '/login' || 
+      req.path.startsWith('/js/bootstrap') || 
+      req.path.startsWith('/css/bootstrap') || 
+      req.path.startsWith('/css/introHCI') ||
+      req.path.startsWith('/css/login') || 
+      req.path.startsWith('/auth') || 
+      req.isAuthenticated()) { return next(); }
+  
   res.redirect('/login');
 }
