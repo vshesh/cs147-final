@@ -108,7 +108,7 @@ exports.remove = function(req, res) {
 exports.find = function(req, res) {
   console.log('ajax: finding id');
 	var user = data[findByAttr(data, 'google_id', req.user.google_id)];
-	var index = findByAttr(user.wishlist, 'g_places_ref', req.query.gref);
+	var index = findByAttr(user.wishlist, 'g_places_id', req.query.gid);
   console.log(index);
 	if (index == -1) {
 		console.log('not in wishlist');

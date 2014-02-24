@@ -9,6 +9,7 @@ exports.viewById = function(req, res) {
 
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
+    console.log(theBody.result.opening_hours);
   	var entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
@@ -19,8 +20,9 @@ exports.viewById = function(req, res) {
       "id" : theBody.result.id,
       "photos": theBody.result.photos[0];
       "ref" : theBody.result.reference,
+      "open" : (theBody.result.opening_hours.open_now? "Open" : "Closed")
   	};
-  	console.log(entry);
+  	// console.log(entry);
   	res.render('info', entry);
 
   }
