@@ -35,6 +35,7 @@
   				<div class= "col-xs-6">
   					<ul>
   						<li>{{hours}}</li>
+  						<li>{{open}}</li>
               <li>{{distance}}</li>
   					</ul>
   				</div>
@@ -44,7 +45,7 @@
 
         <div class = "row-fluid">
           <div class="two-col" id ="add-remove">
-              <span class="glyphicon glyphicon-plus-sign"></span> &nbsp;
+              <span class="glyphicon"></span> &nbsp;
               Wishlist
           </div>
           <a href="/pasteats-editcreate/2"><div class="two-col">
@@ -102,7 +103,7 @@
   		<script src="../js/info2.js"></script>
       <script type="text/javascript">
         $(document).ready(function() {
-          $.get('/wishlist/find/', {gref: "{{ref}}"}, function(result, err) {
+          $.get('/wishlist/find/', {gid: "{{id}}", gref: "{{ref}}"}, function(result, err) {
             console.log('find callback called');
             console.log(result);
             if (err != "success") {console.log(err); return;}
