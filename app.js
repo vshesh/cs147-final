@@ -85,7 +85,7 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/login', login.view);
 app.get('/wishlist', wishlist.view);
-app.post('/wishlist', wishlist.loginUser);
+//app.post('/wishlist', wishlist.loginUser);
 app.get('/wishlist/add', wishlist.add);
 app.get('/wishlist/remove', wishlist.remove);
 app.get('/info/:id', info.viewById);
