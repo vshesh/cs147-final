@@ -22,7 +22,6 @@ $(function(){
       if( !tip || tip === '') return false;
 
       target.removeAttr('title');
-      console.log($(this).attr('class'));
       tooltip.css('opacity', 0).html(tip).appendTo('body');
 
       var initTooltip = function(){
@@ -50,7 +49,6 @@ $(function(){
           tooltip.addClass('top');
         } else tooltip.removeClass('top');
 
-        console.log('made it to before animate in!');
         tooltip.css( {left:posLeft, top:posTop}).animate({top: '+= 10', opacity: 1}, 50);
       };
 
@@ -71,27 +69,24 @@ $(function(){
 });
 
  function initializePage() {
-   console.log("Javascript connected!");
    // geoFindMe();
    swipeTiles();
    $('.glyphicon-remove').each(function(i,e) {
     $(e).click(function(ev) {
       ev.preventDefault();
-      console.log("remove");
       $.get('/wishlist/remove/', {
         gid: $(this).parent().parent().parent().attr('gid'),
         gref: $(this).parent().parent().parent().attr('gref')
-      }, function(result, err) {if (err) console.log(err);});
-        
+      }, function(result,err) {if (err) console.log(err);});
+
       var parent_tile = $(this).parent().parent().parent();
       parent_tile.fadeOut(300, function(){
-      console.log("hiding");
-      parent_tile.hide(300);
+        parent_tile.hide(300);
       });
     swiped = false;
   });
  });
- };
+ }
 
  function swipeTiles() {
 
@@ -101,7 +96,6 @@ $(function(){
     });
     Hammer(e).on("swiperight", function(ev) {
     if(!swiped) {
-      console.log('swiperight');
       $(this).animate({
         left: "0px"
       }, 500, 'easeOutCirc');
@@ -112,7 +106,6 @@ $(function(){
   $('.wishlist-entry').each(function(i,e) {
     Hammer(e).on("swipeleft", function(ev) {
     if(swiped) {
-      console.log("swipeleft");
       $(this).animate({
         left: -width + "px",
       }, 500, 'easeOutCirc');

@@ -1,10 +1,6 @@
 var models = require('../models.js');
 var data = require('../data/data.json');
 
-exports.view = function(req, res) {
-  res.render('pasteats', data[0]);
-}
-
 var findByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
         if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
@@ -14,14 +10,28 @@ var findByAttr = function(array, attr, value) {
     return undefined;
 }
 
+var findIndexByAttr = function(array, attr, value) {
+    for(var i = 0; i < array.length; i++) {
+        if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
+            return i;
+        }
+    }
+    return undefined;
+}
+
+exports.view = function(req, res) {
+	var user = findByAttr(data, 'google_id', req.user.google_id);
+  res.render('pasteats', user);
+}
+
+
+
 exports.viewById = function(req, res) {
   var id = req.params.id;
   res.render('pasteats-entry');
 }
 
 exports.add = function(req, res) {
-	console.log("adding new past eat");
-	console.log(req);
 
 	var newEntry = {
 		'created_timestamp' : Date.now(),
@@ -31,20 +41,16 @@ exports.add = function(req, res) {
 		'caption': req.body.caption
 	};
 
-	var user = findByAttr(data, 'google_id', req.user.id);
+	var user = findByAttr(data, 'google_id', req.user.google_id);
 	user.pasteats.unshift(newEntry);
 
 	res.redirect('/pasteats');
 }
 
 exports.remove= function(req, res) {
-	console.log("allo!");
-	console.log(req);
-	var user = data[findByAttr(data, 'google_id', req.user.id)];
-	console.log(user);
-	var index = findByAttr(user.pasteats, 'created_timestamp', req.body.timestamp);
+	var user = findByAttr(data, 'google_id', req.user.google_id);
+	var index = findIndexByAttr(user.pasteats, 'created_timestamp', req.body.timestamp);
 	if (index != -1) {
-		console.log('found the index alright');
 		user.pasteats.splice(index, 1);
 		res.send(200);
 	}

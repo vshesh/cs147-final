@@ -2,7 +2,7 @@ var data = require('../data/data.json');
 var models = require('../models');
 var request = require('request');
 
-var findByAttr = function(array, attr, value) {
+var findIndexByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
         if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
             return i;
@@ -13,21 +13,9 @@ var findByAttr = function(array, attr, value) {
 
 exports.view = function(req, res) {
   req.session.lastPage = '/login';
-  var user = data[findByAttr(data, 'google_id', req.user.google_id)];
+  var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
   res.render('wishlist', user);
 
-  /*data.filter(function(user){
-  	console.log(user.google_id);
-  	console.log(req.user.google_id);
-  	if(user.google_id === req.user.google_id){
-  	  		res.render("wishlist", user);
-  	  		return true;
-
-  	 }
-
-  	else return false;
-
-  });*/
 	/*models.User
 		.find({'google_id':req.user.google_id})
 		.sort()
@@ -62,43 +50,25 @@ exports.view = function(req, res) {
 }
 
 
-exports.loginUser = function(req, res) {
-	console.log(req.body.authToken);
-	data.users[0].access_token = req.body.authToken;
-	console.log(data.users[0]);
-	res.end('true');
-}
-
-
 exports.add = function(req, res) {
-//	console.log(req.user);
-	// FIX THE NAMING
 	var newentry = {
 		"g_places_ref" : req.query.gref,
 		"g_places_id" : req.query.gid,
 		"created_timestamp" : Date.now()
 	};
 
-	console.log(req);
-	var user = data[findByAttr(data, 'google_id', req.user.google_id)];
-	console.log(user);
-	console.log(user.wishlist.length);
-	var entry = user.wishlist[findByAttr(user.wishlist, 'g_places_id', req.query.gid)];
+	var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
+	var entry = user.wishlist[findIndexByAttr(user.wishlist, 'g_places_id', req.query.gid)];
 	if (entry == undefined) {
 		user.wishlist.push(newentry);
-		console.log(user.wishlist[user.wishlist.length-1]);
 	}
 	res.send(200);
 }
 
 exports.remove = function(req, res) {
-	var user = data[findByAttr(data, 'google_id', req.user.id)];
-	console.log(user.wishlist.length);
-	console.log(req.query);
-	console.log(user.wishlist[0]);
-	var index = findByAttr(user.wishlist, 'g_places_id', req.query.gid);
+	var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
+	var index = findIndexByAttr(user.wishlist, 'g_places_id', req.query.gid);
 	if (index != -1) {
-		console.log('found the index alright');
 		user.wishlist.splice(index, 1);
 		res.send(200);
 	}
@@ -106,15 +76,11 @@ exports.remove = function(req, res) {
 }
 
 exports.find = function(req, res) {
-  console.log('ajax: finding id');
-	var user = data[findByAttr(data, 'google_id', req.user.google_id)];
-	var index = findByAttr(user.wishlist, 'g_places_id', req.query.gid);
-  console.log(index);
+	var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
+	var index = findIndexByAttr(user.wishlist, 'g_places_ref', req.query.gref);
 	if (index == -1) {
-		console.log('not in wishlist');
 		res.json({found: false});
 	} else {
-		console.log('in wishlist');
 		res.json({found: true});
 	}
 }

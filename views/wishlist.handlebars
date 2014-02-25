@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	{{title}}
+	{{>title}}
 	<meta charset="utf-8">
 	<meta name="google-signin-clientid" content="101989331854-aqje8r3qpvudqru12luln8q88kdm7btd.apps.googleusercontent.com" />
 	<meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login" />
@@ -77,15 +77,10 @@
 	<script type="text/javascript">
 	$(function(){
 		$('.place').each(function(index){
-			console.log(index);
 			var placeRef = $(this).attr('gref');
-			console.log(placeRef);
 			$.get('/places/details/' + placeRef, callback);
 			function callback(result, err){
-				if(err)console.log(err);
 				var theBody = JSON.parse(result);
-				console.log(theBody.result.name);
-				console.log($('#' + theBody.result.id).length);
 				$('#' + theBody.result.id).html( $('#' + theBody.result.id).html() + createResultDiv(theBody.result) );
 			}
 		});

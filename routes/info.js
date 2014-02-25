@@ -4,12 +4,11 @@ var request = require('request');
 
 exports.viewById = function(req, res) {
   var ref = req.params.id;
-  var entry;
   request("https://maps.googleapis.com/maps/api/place/details/json?reference="  + ref + "&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", callback);
 
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
-  	entry = {
+  	var entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
   		"hours" : (theBody.result.opening_hours ? " " + theBody.result.opening_hours.periods[1].open.time + " - " + theBody.result.opening_hours.periods[1].close.time : ""),
@@ -20,8 +19,7 @@ exports.viewById = function(req, res) {
       "ref" : theBody.result.reference,
       "photos" : theBody.result.photos,
   	};
-  	console.log(entry);
-    res.render('info', entry);
+  	res.render('info', entry);
 
   };
   //res.render('info', data[0].wishlist[id-1]);

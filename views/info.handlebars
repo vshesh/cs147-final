@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Place Info</title>
+	<title>About {{name}}</title>
 
 	<!-- Bootstrap -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -97,11 +97,8 @@
       <script type="text/javascript">
         $(document).ready(function() {
           $.get('/wishlist/find/', {gid: "{{id}}", gref: "{{ref}}"}, function(result, err) {
-            console.log('find callback called');
-            console.log(result);
             if (err != "success") {console.log(err); return;}
             if (result.found) {
-              console.log("found");
               $('#add-remove span').removeClass("glyphicon-plus-sign").addClass("glyphicon-remove");
               $('#add-remove').click(function(e) {
                 e.preventDefault();
@@ -120,7 +117,6 @@
                     gref: "{{ref}}"
                   }, 
                   complete: function(result, err) {
-                    console.log('callback called');
                     if (err) console.log(err);
                     top.location.href = '/wishlist'
                   }

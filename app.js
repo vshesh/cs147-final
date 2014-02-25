@@ -49,6 +49,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.session());
+// custom auth middelware
+app.use(ensureAuthenticated);
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(partials());
@@ -67,13 +69,10 @@ passport.use(new GoogleStrategy({
 		callbackURL: secrets.local
 	},
 	function(accessToken, refreshToken, profile, done) {
-			console.log(profile);
 			/*process.nextTick(function(){
-				console.log(profile);
 				return done(null, profile);
 			});*/
 		login.findOrCreate({googleId: profile.id, name: profile.displayName}, function(err, user){
-				console.log("created a user!");
 				return done(err, user);
 		});
 	}
@@ -88,7 +87,7 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/login', login.view);
 app.get('/wishlist', wishlist.view);
-app.post('/wishlist', wishlist.loginUser);
+//app.post('/wishlist', wishlist.loginUser);
 app.get('/wishlist/add', wishlist.add);
 app.get('/wishlist/remove', wishlist.remove);
 app.get('/info/:id', info.viewById);
@@ -156,6 +155,20 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
+  if (typeof String.prototype.startsWith != 'function') {
+    String.prototype.startsWith = function (str){
+      return this.slice(0, str.length) == str;
+    };
+  }
+  // UBER HACK for the middleware to allow css,js to pass through but not 
+  // anything else.
+  if (req.path === '/login' || 
+      req.path.startsWith('/js/bootstrap') || 
+      req.path.startsWith('/css/bootstrap') || 
+      req.path.startsWith('/css/introHCI') ||
+      req.path.startsWith('/css/login') || 
+      req.path.startsWith('/auth') || 
+      req.isAuthenticated()) { return next(); }
+  
   res.redirect('/login');
 }
