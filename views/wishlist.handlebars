@@ -66,24 +66,7 @@
 				</div>
 
 			<a  class = "place" gref = "{{g_places_ref}}" id = "{{g_places_id}}"  href="/info/{{g_places_ref}}">
-					<!--<div class="photo"> 
-						<img src="http://lorempixel.com/400/400/food/{{id}}">
-					</div>
-					<div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">
-						<ul >		
-							<li>{{name}}</li>
-							<li>{{cuisines}}</li>
-							<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
-						</ul>
-					</div>
-					<div title="These are details about restaraunts" rel="tooltip" class= "right-info">
-						<ul>
-							<li>{{distance}}</li>
-							<li>{{hours}}</li>
-							<li>{{price}}</li>
-						</ul>
-					</div>-->
-
+						 <!-- details of each wishlist tile go here -->
 				</a>
 
 
@@ -119,7 +102,7 @@
       var opennow = hours.open_now;
       var displayopen = "";
       if (opennow != undefined) {
-        displayopen = opennow ? "open" : "closed";
+        displayopen = opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>";
       }
       return '    <div class="photo"> '+
       '      <img src="'+place.icon+'">'+
