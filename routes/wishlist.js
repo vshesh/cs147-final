@@ -13,6 +13,8 @@ var findIndexByAttr = function(array, attr, value) {
 
 exports.view = function(req, res) {
   req.session.lastPage = '/login';
+  console.log(req.user);
+  console.log(data);
   var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
   res.render('wishlist', user);
 

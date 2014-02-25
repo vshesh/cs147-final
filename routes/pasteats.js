@@ -33,8 +33,10 @@ exports.viewById = function(req, res) {
 
 exports.add = function(req, res) {
 
+	var time = new Date();
 	var newEntry = {
 		'created_timestamp' : Date.now(),
+		'formatted_date': time.getMonth() + "/" + time.getDate() + "/" + (time.getYear() + 1900),
 		'title' : req.body.title,
 		'summary': req.body.summary,
 		'image' : req.body.image,
