@@ -4,13 +4,12 @@ var request = require('request');
 
 exports.viewById = function(req, res) {
   var ref = req.params.id;
-
+  var entry;
   request("https://maps.googleapis.com/maps/api/place/details/json?reference="  + ref + "&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", callback);
 
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
-    console.log(theBody.result.opening_hours);
-  	var entry = {
+  	entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
   		"hours" : (theBody.result.opening_hours ? " " + theBody.result.opening_hours.periods[1].open.time + " - " + theBody.result.opening_hours.periods[1].close.time : ""),
@@ -18,16 +17,15 @@ exports.viewById = function(req, res) {
   		"reviews" : theBody.result.reviews,
   		"phone" : theBody.result.international_phone_number.substr(3),
       "id" : theBody.result.id,
-      "photos": theBody.result.photos[0];
       "ref" : theBody.result.reference,
-      "open" : (theBody.result.opening_hours.open_now? "Open" : "Closed")
+      "photos" : theBody.result.photos,
   	};
-  	// console.log(entry);
-  	res.render('info', entry);
+  	console.log(entry);
+    res.render('info', entry);
 
-  }
+  };
   //res.render('info', data[0].wishlist[id-1]);
   //This renders a page with the id
   //Continue to edit the default info page
   //Edit app.js to match everything else (so that you can do info/:id)
-}
+};
