@@ -49,7 +49,6 @@ exports.viewById = function(req, res) {
 
 
 exports.add = function(req, res) {
-	
 
 	var time = new Date();
 	var newEntry = {
@@ -58,7 +57,8 @@ exports.add = function(req, res) {
 		'title' : req.body.title,
 		'summary': req.body.summary,
 		'image' : req.body.image,
-		'caption': req.body.caption
+		'caption': req.body.caption,
+		'gid': req.body.gid
 	};
 
 	var user = findByAttr(data, 'google_id', req.user.google_id);

@@ -32,8 +32,11 @@
       var image = 'http://lorempixel.com/400/400/food/8';
       var caption = $('#caption').val();
       var photo = $('#file').val();
+      $.get('/wishlist/remove', { gid: '{{id}}' }, function(err, result){
+        if (err) console.log(err);
+      });
 
-      $.post('/pasteats-editcreate/add', {title: title, summary: summary, image:image, caption:caption}, callback);
+      $.post('/pasteats-editcreate/add', {title: title, summary: summary, image:image, caption:caption, gid: '{{id}}'}, callback);
     });
 
     function callback(err){

@@ -161,7 +161,7 @@
       $('.glyphicon-pencil').each(function(i,e) {
         $(e).click(function(ev) {
           ev.preventDefault();
-          top.location.href = '/pasteats-editcreate/' + $(this).parent().parent().parent().parent().attr('gref');
+          top.location.href = '/pasteats-editcreate/' + $(this).parent().parent().parent().parent().attr('id');
         });
       });
 
