@@ -66,7 +66,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GoogleStrategy({
 		clientID: secrets.googleID,
 		clientSecret: secrets.googleSecret,
-		callbackURL: secrets.umami
+		callbackURL: secrets.local
 	},
 	function(accessToken, refreshToken, profile, done) {
 			/*process.nextTick(function(){
