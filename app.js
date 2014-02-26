@@ -25,6 +25,7 @@ var pasteats_editcreate = require('./routes/pasteats-editcreate');
 var search = require('./routes/search');
 var help = require('./routes/help');
 var secrets = require('./secrets');
+var fs = require('fs');
 
 //Mongo Database
 /*var local_database_name = 'cs147-final';
@@ -47,6 +48,7 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.multipart());
 app.use(express.methodOverride());
 app.use(express.session());
 // custom auth middelware
@@ -118,6 +120,14 @@ app.post('/pasteats-editcreate/add', pasteats.add);
 app.post('/pasteats/remove', pasteats.remove);
 app.get('/wishlist/add/:id', wishlist.add);
 app.get('/wishlist/find', wishlist.find);
+
+app.get('/data/images/:file', function (req, res){
+  file = req.params.file;
+  var img = fs.readFileSync(__dirname + "/routes/data/images/" + file);
+  res.writeHead(200, {'Content-Type': 'image/jpg' });
+  res.end(img, 'binary');
+
+});
 
 // places autocomplete request endpoints. 
 // NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)
