@@ -15,7 +15,6 @@ var request = require('request');
 
 //routes
 var index = require('./routes/index');
-var project = require('./routes/project');
 var login = require('./routes/login');
 var wishlist = require('./routes/wishlist');
 var info = require('./routes/info');
@@ -25,13 +24,12 @@ var pasteats_editcreate = require('./routes/pasteats-editcreate');
 var search = require('./routes/search');
 var help = require('./routes/help');
 var fs = require('fs');
-var settings;
 
 //This code lets us test on local, or use heroku properly.
-if(fs.existsSync('../settings.js)'){
-  settings = require('../settings.js');
+var settings;
+if(fs.existsSync('./settings.js')){
+  settings = require('./settings.js');
 }else{
-  }else{
   settings = {};
   settings.amazonID = process.env.S3Key;
   settings.amazonSecret = process.env.S3Secret;
@@ -39,7 +37,6 @@ if(fs.existsSync('../settings.js)'){
   settings.googleID = process.env.googleID;
   settings.googleSecret = process.env.googleSecret;
   settings.googleServer = process.env.googleServer;
-}
 }
 
 //Mongo Database

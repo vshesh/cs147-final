@@ -4,7 +4,7 @@ var fs = require('fs');
 var secrets = require('../secrets.js');
 var AWS = require('aws-sdk');
 var settings;
-if(fs.existsSync('../settings.js')){
+if(fs.existsSync('./settings.js')){
 	settings = require('../settings.js');
 }else{
 	settings = {};
@@ -13,8 +13,8 @@ if(fs.existsSync('../settings.js')){
 }
 
 AWS.config.update({
-	accessKeyId: secrets.amazonID,
-	secretAccessKey: secrets.amazonSecret,
+	accessKeyId: settings.amazonID,
+	secretAccessKey: settings.amazonSecret,
 	region: 'us-west-2',
 });
 
@@ -67,8 +67,6 @@ exports.viewById = function(req, res) {
 
 exports.add = function(req, res) {
 
-	console.log(req.body);
- 	console.log(req.files);
 	var time = new Date();
  	var newEntry = {
 		'created_timestamp' : Date.now(),
@@ -98,7 +96,6 @@ exports.add = function(req, res) {
 	 			newEntry['image'] = fileName;
 	 			user.pasteats.unshift(newEntry);
 	 			res.redirect('/pasteats');
- 				console.log(response);
 
  			});
 
