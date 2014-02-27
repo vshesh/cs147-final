@@ -54,14 +54,13 @@
 
 	<div class="container">
 		{{#each wishlist}}
-		<!-- FREAKING FIX THE NAMES ALREADY THIS IS RIDICULOUS -->
 		<div class="wishlist-entry" id="swipe{{id}}" gref = "{{g_places_ref}}" gid = "{{g_places_id}}">
 			
 			<div class="swipe-options">
 				<div class="option"> 
 					<span class="glyphicon glyphicon-remove"></span></div>
 					<div class="option">
-						<a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>
+						<a href="/pasteats-editcreate/{{g_places_id}}"><span class="glyphicon glyphicon-pencil"></span></a>
 					</div>
 				</div>
 
@@ -72,6 +71,36 @@
 
 			</div>
 			{{/each}}
+			<div class="wishlist-entry" id="instructions" gref = "sample" gid = "sample">
+			
+					<div class="swipe-options">
+						<div class="option"> 
+							<span class="glyphicon glyphicon-remove"></span></div>
+							<div class="option">
+								<a href="/"><span class="glyphicon glyphicon-pencil"></span></a>
+							</div>
+						</div>
+
+				<a  class = "place" gref = "sample" id = "sample"  href="/wishlist">
+						 <div class="photo"></div>
+						 <div class="left-info">
+						 	<ul>
+						 		<li>Press the <span class="glyphicon glyphicon-plus"></span> button to add to your wishlist!</li>
+						 		<li>Swipe the item the right to remove a restaurant off your list. </li>
+						 		<li>Or you can add an entry to your FoodJournal!</li>
+						 	</ul>
+						 </div>
+						 <div class="right-info">
+						 	<ul>
+						 		<li></li>
+						 		<li></li>
+						 	</ul>
+						 </div>
+				</a>
+
+
+			</div>
+
 		</div>
 
 	<script type="text/javascript">
@@ -101,6 +130,7 @@
       var hours = place.opening_hours ? place.opening_hours : "";
       var opennow = hours.open_now;
       var displayopen = "";
+      var ratingWord = "Rating: "
       if (opennow != undefined) {
         displayopen = opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>";
       }
@@ -111,7 +141,7 @@
       '      <ul >   '+
       '        <li>'+place.name +'</li>'+
       '        <li>'+(place.types? place.types.toString(): "")+'</li>'+
-      '        <li>'+(place.rating? place.rating : "")+'</li>'+
+      '        <li>'+(place.rating? ratingWord + place.rating : "")+'</li>'+
       '      </ul>'+
       '    </div>'+
       '    <div title="These are details about restaraunts" rel="tooltip" class= "right-info">'+

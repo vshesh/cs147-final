@@ -25,14 +25,19 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('#upload').click(function(e){
+    /*$('#upload').click(function(e){
       e.preventDefault();
       var title = $('#titleText').val();
       var summary = $('#summary').val();
       var image = 'http://lorempixel.com/400/400/food/8';
       var caption = $('#caption').val();
-      $.post('/pasteats-editcreate/add', {title: title, summary: summary, image:image, caption:caption}, callback);
-    });
+      var photo = $('#file').val();
+      $.get('/wishlist/remove', { gid: '{{id}}' }, function(err, result){
+        if (err) console.log(err);
+      });
+
+      $.post('/pasteats-editcreate/add', {title: title, summary: summary, image:image, caption:caption, gid: '{{id}}'}, callback);
+    });*/
 
     function callback(err){
       $(location).attr('href', '/pasteats');
@@ -57,16 +62,16 @@
             </tr>
         </table>
     </div>
-    <div id="entryForm">
-      <input id = "titleText" type="text" name="title" class="textfield" placeholder="Title" required maxlength="20">
-      <textarea id="summary" placeholder="Your eloquent text"></textarea>
+    <form action="/pasteats-editcreate/add" method="post" enctype="multipart/form-data">
+      <input type="text" name="title" class="textfield" placeholder="Title" required maxlength="20">
+      <textarea type="text" name="summary" id="summary" placeholder="Your eloquent text"></textarea>
       <div id="filewrapper">Add Photo</div>
-      <input type="file" accept="image/*" id="file">
+      <input type="file" name='photo' accept="image/*" id="file">
       <div id="previewbox">
         <img id="preview">
         <input type="text" name="caption" id="caption" placeholder="Caption the image">
       </div>
-        <button id="upload">Submit </button>
-    </div>
+        <input type="submit" id="upload" value="Submit">
+    </form>
     </div>
 </body>

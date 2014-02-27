@@ -54,6 +54,10 @@ lib-cov
 ##############################
 #secrets.js
 
+#image folder#
+##############
+routes/data/*
+
 pids
 logs
 results

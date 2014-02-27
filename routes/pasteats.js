@@ -1,6 +1,8 @@
 var models = require('../models.js');
 var data = require('../data/data.json');
+var fs = require('fs');
 
+//Returns data value
 var findByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
         if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
@@ -10,6 +12,7 @@ var findByAttr = function(array, attr, value) {
     return undefined;
 }
 
+//Returns int
 var findIndexByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
         if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
@@ -18,6 +21,19 @@ var findIndexByAttr = function(array, attr, value) {
     }
     return undefined;
 }
+
+//Allows for easy access to month names in the Date prototype.
+Date.prototype.monthNames = [
+    "January", "February", "March",
+    "April", "May", "June",
+    "July", "August", "September",
+    "October", "November", "December"
+];
+
+Date.prototype.getMonthName = function() {
+	    return this.monthNames[this.getMonth()];
+};
+
 
 exports.view = function(req, res) {
 	var user = findByAttr(data, 'google_id', req.user.google_id);
@@ -31,20 +47,46 @@ exports.viewById = function(req, res) {
   res.render('pasteats-entry');
 }
 
+
+
 exports.add = function(req, res) {
 
-	var newEntry = {
+	console.log(req.body);
+ 	console.log(req.files);
+	var time = new Date();
+ 	var newEntry = {
 		'created_timestamp' : Date.now(),
+		'formatted_date': time.getMonthName() + " " + time.getDate() + ", " + time.getFullYear(),
 		'title' : req.body.title,
 		'summary': req.body.summary,
-		'image' : req.body.image,
-		'caption': req.body.caption
+		'caption': req.body.caption,
+		'gid': req.body.gid
 	};
+ 	fs.readFile(req.files.photo.path, function(err, photoData){
+ 		var oldImageName = req.files.photo.name;
+ 		if(oldImageName){
+ 			var nowTime = Date.now();
+ 			var newPath = __dirname + "/data/images/" + nowTime + ".jpg";
+ 			fs.writeFile(newPath, photoData, function(err){
+	 			if(err)console.log(err);
+	 			console.log(newPath);
+	 			var user = findByAttr(data, 'google_id', req.user.google_id);
+	 			newEntry['image'] = "/data/images/" + nowTime + ".jpg";
+	 			user.pasteats.unshift(newEntry);
+	 			res.redirect('/pasteats');
+ 		}); 	
+ 			
+ 		}else{
+ 			var user = findByAttr(data, 'google_id', req.user.google_id);
+	 			newEntry['image'] = "";
+	 			user.pasteats.unshift(newEntry);
+	 			res.redirect('/pasteats');
+ 		}	
+	});
 
-	var user = findByAttr(data, 'google_id', req.user.google_id);
-	user.pasteats.unshift(newEntry);
+	
 
-	res.redirect('/pasteats');
+	//res.redirect('/pasteats');
 }
 
 exports.remove= function(req, res) {

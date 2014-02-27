@@ -25,6 +25,8 @@ var pasteats_editcreate = require('./routes/pasteats-editcreate');
 var search = require('./routes/search');
 var help = require('./routes/help');
 var secrets = require('./secrets');
+var fs = require('fs');
+var knox = require('knox');
 
 //Mongo Database
 /*var local_database_name = 'cs147-final';
@@ -47,6 +49,7 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.multipart());
 app.use(express.methodOverride());
 app.use(express.session());
 // custom auth middelware
@@ -54,6 +57,7 @@ app.use(ensureAuthenticated);
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(partials());
+
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -66,7 +70,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GoogleStrategy({
 		clientID: secrets.googleID,
 		clientSecret: secrets.googleSecret,
-		callbackURL: secrets.local
+		callbackURL: secrets.umami
 	},
 	function(accessToken, refreshToken, profile, done) {
 			/*process.nextTick(function(){
@@ -107,6 +111,7 @@ app.get('/auth/google/callback', passport.authenticate('google', {failureRedirec
 
 app.get('/logout', function(req, res){
   req.logout();
+  console.log(req.user);
   res.redirect('/');
 });
 
@@ -117,6 +122,14 @@ app.post('/pasteats-editcreate/add', pasteats.add);
 app.post('/pasteats/remove', pasteats.remove);
 app.get('/wishlist/add/:id', wishlist.add);
 app.get('/wishlist/find', wishlist.find);
+
+app.get('/data/images/:file', function (req, res){
+  file = req.params.file;
+  var img = fs.readFileSync(__dirname + "/routes/data/images/" + file);
+  res.writeHead(200, {'Content-Type': 'image/jpg' });
+  res.end(img, 'binary');
+
+});
 
 // places autocomplete request endpoints. 
 // NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)

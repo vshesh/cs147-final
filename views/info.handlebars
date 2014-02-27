@@ -51,7 +51,7 @@
               <span class="glyphicon glyphicon-plus-sign"></span> &nbsp;
               Wishlist
           </div>
-          <a href="/pasteats-editcreate/2"><div class="btn btn-default two-col">
+          <a href="/pasteats-editcreate/{{id}}"><div class="btn btn-default two-col">
               Post &nbsp; &nbsp;<span class="glyphicon glyphicon-pencil"></span>
               
             </div></a>
@@ -105,6 +105,7 @@
                 $.get('/wishlist/remove/', {gid: "{{id}}", gref: "{{ref}}",},
                  function(result, err) {
                   if (err) console.log(err);
+                  top.location.href = '/wishlist';
                 });
               });
             } else {
@@ -118,7 +119,7 @@
                   }, 
                   complete: function(result, err) {
                     if (err) console.log(err);
-                    top.location.href = '/wishlist'
+                    top.location.href = '/wishlist';
                   }
                 });
               });

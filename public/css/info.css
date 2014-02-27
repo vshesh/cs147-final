@@ -73,6 +73,8 @@ ul, li {
 
 .photo {
 	width: 33%;
+	display: table-cell;
+	vertical-align: middle;
 	float: left;
 	margin-left: 2.4em;
 	overflow:hidden;

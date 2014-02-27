@@ -13,6 +13,8 @@ var findIndexByAttr = function(array, attr, value) {
 
 exports.view = function(req, res) {
   req.session.lastPage = '/login';
+  console.log(req.user);
+  console.log(data);
   var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
   res.render('wishlist', user);
 
@@ -68,6 +70,7 @@ exports.add = function(req, res) {
 exports.remove = function(req, res) {
 	var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
 	var index = findIndexByAttr(user.wishlist, 'g_places_id', req.query.gid);
+	console.log(index);
 	if (index != -1) {
 		user.wishlist.splice(index, 1);
 		res.send(200);
@@ -77,7 +80,7 @@ exports.remove = function(req, res) {
 
 exports.find = function(req, res) {
 	var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
-	var index = findIndexByAttr(user.wishlist, 'g_places_ref', req.query.gref);
+	var index = findIndexByAttr(user.wishlist, 'g_places_id', req.query.gid);
 	if (index == -1) {
 		res.json({found: false});
 	} else {

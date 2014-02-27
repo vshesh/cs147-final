@@ -55,8 +55,8 @@
       ],
       "pasteats": [
         {
+          "formatted_date" : "February 20, 2014",
           "created_timestamp" : "February 20, 2014",
-          "last_modified_timestamp" : "February 20, 2014",
           "id": "1",
           "title": "Amazing food!",
           "summary": "I really loved this place, I'm glad I put it on my Umami (tm) list!",
@@ -64,8 +64,8 @@
           "caption": "Yum ;D"
         },
         {
-          "created_timestamp" : "February 20, 2014",
-          "last_modified_timestamp" : "February 14, 2014",
+          "formatted_date" : "February 20, 2014",
+          "created_timestamp" : "February 14, 2014",
           "id": "2",
           "title": "FoodGASMMMIC",
           "summary": "There really is no better way to describe this.",
