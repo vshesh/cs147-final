@@ -15,8 +15,6 @@ body {
 .container, .container-fluid{
 	padding: 0px;
 	width: 100%;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
 }
 
 .navbar-header {
