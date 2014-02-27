@@ -1,7 +1,6 @@
 var models = require('../models.js');
 var data = require('../data/data.json');
 var fs = require('fs');
-var secrets = require('../secrets.js');
 var AWS = require('aws-sdk');
 var settings;
 if(fs.existsSync('./settings.js')){
