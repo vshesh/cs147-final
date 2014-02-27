@@ -1,4 +1,6 @@
 //Returns int
+var data = require('../data/data.json');
+
 var findIndexByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
         if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
