@@ -1,7 +1,6 @@
 var models = require('../models.js');
 var data = require('../data/data.json');
 var fs = require('fs');
-var knox = require('knox');
 
 //Returns data value
 var findByAttr = function(array, attr, value) {
@@ -53,34 +52,36 @@ exports.viewById = function(req, res) {
 exports.add = function(req, res) {
 
 	console.log(req.body);
-	console.log(req.files);
-	fs.readFile(req.files.photo.path, function(err, photoData){
-		var oldImageName = req.files.photo.name;
-		if(!oldImageName){
-			console.log("Error reading the name");
-			res.end();
-		}
-
-		var nowTime = Date.now();
-		var newPath = __dirname + "/data/images/" + nowTime + ".jpg";
-		fs.writeFile(newPath, photoData, function(err){
-			if(err)console.log(err);
-			console.log(newPath);
-			var time = new Date();
-			var newEntry = {
-				'created_timestamp' : Date.now(),
-				'formatted_date': time.getMonthName() + " " + time.getDate() + ", " + time.getFullYear(),
-				'title' : req.body.title,
-				'summary': req.body.summary,
-				'image' : "/data/images/" + nowTime + ".jpg",
-				'caption': req.body.caption,
-				'gid': req.body.gid
-			};
-
-			var user = findByAttr(data, 'google_id', req.user.google_id);
-			user.pasteats.unshift(newEntry);
-			res.redirect('/pasteats');
-		}) 
+ 	console.log(req.files);
+	var time = new Date();
+ 	var newEntry = {
+		'created_timestamp' : Date.now(),
+		'formatted_date': time.getMonthName() + " " + time.getDate() + ", " + time.getFullYear(),
+		'title' : req.body.title,
+		'summary': req.body.summary,
+		'caption': req.body.caption,
+		'gid': req.body.gid
+	};
+ 	fs.readFile(req.files.photo.path, function(err, photoData){
+ 		var oldImageName = req.files.photo.name;
+ 		if(oldImageName){
+ 			var nowTime = Date.now();
+ 			var newPath = __dirname + "/data/images/" + nowTime + ".jpg";
+ 			fs.writeFile(newPath, photoData, function(err){
+	 			if(err)console.log(err);
+	 			console.log(newPath);
+	 			var user = findByAttr(data, 'google_id', req.user.google_id);
+	 			newEntry['image'] = "/data/images/" + nowTime + ".jpg";
+	 			user.pasteats.unshift(newEntry);
+	 			res.redirect('/pasteats');
+ 		}); 	
+ 			
+ 		}else{
+ 			var user = findByAttr(data, 'google_id', req.user.google_id);
+	 			newEntry['image'] = "";
+	 			user.pasteats.unshift(newEntry);
+	 			res.redirect('/pasteats');
+ 		}	
 	});
 
 	

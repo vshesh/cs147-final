@@ -26,6 +26,7 @@ var search = require('./routes/search');
 var help = require('./routes/help');
 var secrets = require('./secrets');
 var fs = require('fs');
+var knox = require('knox');
 
 //Mongo Database
 /*var local_database_name = 'cs147-final';
@@ -57,6 +58,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(partials());
 
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -68,7 +70,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GoogleStrategy({
 		clientID: secrets.googleID,
 		clientSecret: secrets.googleSecret,
-		callbackURL: secrets.umami
+		callbackURL: secrets.local
 	},
 	function(accessToken, refreshToken, profile, done) {
 			/*process.nextTick(function(){
