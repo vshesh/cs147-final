@@ -6,8 +6,6 @@ body {
   color: #333;
   font-size: 15px;
   font-family: 'Noto Sans', sans-serif;
-  overflow:scroll;
-  -webkit-overflow-scrolling: touch;
 }
 
 .cpb-spmenu {
@@ -17,6 +15,8 @@ body {
 .container, .container-fluid{
 	padding: 0px;
 	width: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .navbar-header {
@@ -85,7 +85,7 @@ body {
 }
 
 #underlay {
-  /*position: absolute;*/
+  position: absolute;
   top: 0;
   left: 0;
   height: 100%;
