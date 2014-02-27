@@ -11,7 +11,7 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
 var request = require('request');
-//var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 //routes
 var index = require('./routes/index');
@@ -40,10 +40,10 @@ if(fs.existsSync('./settings.js')){
 }
 
 //Mongo Database
-/*var local_database_name = 'cs147-final';
+var local_database_name = 'cs147-final';
 var local_database_uri  = 'mongodb://localhost/' + local_database_name
 var database_uri = process.env.MONGOLAB_URI || local_database_uri
-mongoose.connect(database_uri);*/
+mongoose.connect(database_uri);
 
 var app = express();
 
