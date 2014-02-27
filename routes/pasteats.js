@@ -1,6 +1,7 @@
 var models = require('../models.js');
 var data = require('../data/data.json');
 var fs = require('fs');
+var knox = require('knox');
 
 //Returns data value
 var findByAttr = function(array, attr, value) {

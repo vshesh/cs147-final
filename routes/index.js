@@ -1,4 +1,5 @@
 exports.view = function(req, res) {
-  res.render('wishlist');
+  if(req.user) res.render('wishlist');
+  else res.render('login');
 }
 
