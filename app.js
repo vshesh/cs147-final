@@ -26,7 +26,6 @@ var search = require('./routes/search');
 var help = require('./routes/help');
 var secrets = require('./secrets');
 var fs = require('fs');
-var knox = require('knox');
 
 //Mongo Database
 /*var local_database_name = 'cs147-final';
@@ -70,7 +69,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GoogleStrategy({
 		clientID: secrets.googleID,
 		clientSecret: secrets.googleSecret,
-		callbackURL: secrets.umami
+		callbackURL: secrets.local
 	},
 	function(accessToken, refreshToken, profile, done) {
 			/*process.nextTick(function(){
@@ -123,13 +122,6 @@ app.post('/pasteats/remove', pasteats.remove);
 app.get('/wishlist/add/:id', wishlist.add);
 app.get('/wishlist/find', wishlist.find);
 
-app.get('/data/images/:file', function (req, res){
-  file = req.params.file;
-  var img = fs.readFileSync(__dirname + "/routes/data/images/" + file);
-  res.writeHead(200, {'Content-Type': 'image/jpg' });
-  res.end(img, 'binary');
-
-});
 
 // places autocomplete request endpoints. 
 // NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)

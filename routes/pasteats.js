@@ -1,6 +1,14 @@
 var models = require('../models.js');
 var data = require('../data/data.json');
 var fs = require('fs');
+var secrets = require('../secrets.js');
+var AWS = require('aws-sdk');
+
+AWS.config.update({
+	accessKeyId: secrets.amazonID,
+	secretAccessKey: secrets.amazonSecret,
+	region: 'us-west-2',
+});
 
 //Returns data value
 var findByAttr = function(array, attr, value) {
@@ -62,19 +70,35 @@ exports.add = function(req, res) {
 		'caption': req.body.caption,
 		'gid': req.body.gid
 	};
+
+	var s3 = new AWS.S3();
  	fs.readFile(req.files.photo.path, function(err, photoData){
  		var oldImageName = req.files.photo.name;
  		if(oldImageName){
  			var nowTime = Date.now();
- 			var newPath = __dirname + "/data/images/" + nowTime + ".jpg";
- 			fs.writeFile(newPath, photoData, function(err){
-	 			if(err)console.log(err);
-	 			console.log(newPath);
-	 			var user = findByAttr(data, 'google_id', req.user.google_id);
-	 			newEntry['image'] = "/data/images/" + nowTime + ".jpg";
+ 			var fileName = nowTime + "_" + req.user.google_id + ".jpg";
+
+ 			s3.client.putObject({
+ 				Bucket: 'umamiappimages',
+ 				Key: fileName,
+ 				Body: photoData,
+ 				ContentType: 'image/jpeg',
+ 				ACL: 'public-read'
+ 			}, function (err, response){
+ 				if(err)console.log(err);
+ 				var user = findByAttr(data, 'google_id', req.user.google_id);
+	 			newEntry['image'] = fileName;
 	 			user.pasteats.unshift(newEntry);
 	 			res.redirect('/pasteats');
- 		}); 	
+ 				console.log(response);
+
+ 			});
+
+ 			/*fs.writeFile(newPath, photoData, function(err){
+	 			if(err)console.log(err);
+	 			console.log(newPath);
+	 			
+ 			}); */	
  			
  		}else{
  			var user = findByAttr(data, 'google_id', req.user.google_id);
