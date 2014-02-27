@@ -1,3 +1,7 @@
+body {
+	overflow-x: hidden;
+}
+
 .wishlist-entry {
 	padding: 8px 0px;
 	height:75px;
