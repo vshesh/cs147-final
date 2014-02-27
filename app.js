@@ -24,8 +24,23 @@ var pasteats = require('./routes/pasteats');
 var pasteats_editcreate = require('./routes/pasteats-editcreate');
 var search = require('./routes/search');
 var help = require('./routes/help');
-var secrets = require('./secrets');
 var fs = require('fs');
+var settings;
+
+//This code lets us test on local, or use heroku properly.
+if(fs.existsSync('../settings.js)'){
+  settings = require('../settings.js');
+}else{
+  }else{
+  settings = {};
+  settings.amazonID = process.env.S3Key;
+  settings.amazonSecret = process.env.S3Secret;
+  settings.callbackURL = "http://umami.herokuapp.com/auth/google/callback";
+  settings.googleID = process.env.googleID;
+  settings.googleSecret = process.env.googleSecret;
+  settings.googleServer = process.env.googleServer;
+}
+}
 
 //Mongo Database
 /*var local_database_name = 'cs147-final';
@@ -67,14 +82,11 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new GoogleStrategy({
-		clientID: secrets.googleID,
-		clientSecret: secrets.googleSecret,
-		callbackURL: secrets.local
+		clientID: settings.googleID,
+		clientSecret: settings.googleSecret,
+		callbackURL: settings.callbackURL
 	},
 	function(accessToken, refreshToken, profile, done) {
-			/*process.nextTick(function(){
-				return done(null, profile);
-			});*/
 		login.findOrCreate({googleId: profile.id, name: profile.displayName}, function(err, user){
 				return done(err, user);
 		});
@@ -126,12 +138,12 @@ app.get('/wishlist/find', wishlist.find);
 // places autocomplete request endpoints. 
 // NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)
 app.get('/places/autocomplete/:keywords', function(req, res) {
-  request("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+req.params.keywords+"&location=37.76999,-122.44696&radius=500&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", 
+  request("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+req.params.keywords+"&location=37.76999,-122.44696&radius=500&sensor=false&key=" + settings.googleServer, 
         function(error, result, body) {res.json(result.body);});
 })
 
 app.get('/places/details/:id', function(req, res) {
-  request("https://maps.googleapis.com/maps/api/place/details/json?reference=" + req.params.id + "&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", 
+  request("https://maps.googleapis.com/maps/api/place/details/json?reference=" + req.params.id + "&sensor=false&key=" + settings.googleServer, 
         function(error, result, body) {res.json(result.body);});
 })
 

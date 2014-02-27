@@ -3,6 +3,14 @@ var data = require('../data/data.json');
 var fs = require('fs');
 var secrets = require('../secrets.js');
 var AWS = require('aws-sdk');
+var settings;
+if(fs.existsSync('../settings.js')){
+	settings = require('../settings.js');
+}else{
+	settings = {};
+	settings.amazonID = process.env.S3Key;
+	settings.amazonSecret = process.env.S3Secret;
+}
 
 AWS.config.update({
 	accessKeyId: secrets.amazonID,

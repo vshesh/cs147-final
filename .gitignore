@@ -53,6 +53,7 @@ lib-cov
 # Keeping our secrets secret #
 ##############################
 #secrets.js
+settings.js
 
 #image folder#
 ##############
