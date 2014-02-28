@@ -4,7 +4,8 @@ var request = require('request');
 
 var findIndexByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
-        if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
+    	console.log(array[i]);
+        if(array[i].hasOwnProperty(attr) && array[i][attr] == value) {
             return i;
         }
     }
@@ -43,7 +44,7 @@ exports.add = function(req, res) {
 	function userCallback(err, users){
 		if(err){console.log(err); res.send(500)}
 		var wishlist = users[0].wishlist
-		var entry = wishlist[findIndexByAttr(users[0].wishlist, 'g_places_id', req.query.gid)];
+		var entry = wishlist[findIndexByAttr(wishlist, 'g_places_id', req.query.gid)];
 		if (entry == undefined) {
 			wishlist.push(newentry);
 			console.log(wishlist);
@@ -81,9 +82,9 @@ exports.remove = function(req, res) {
 		console.log("user found");
 		if(err){console.log(err); res.send(500)}
 		var wishlist = users[0].wishlist;
-		console.log(wishlist);
+		console.log(wishlist + );
 		console.log(req.query.gid);
-		var index = findIndexByAttr(users[0].wishlist, 'g_places_id', req.query.gid);
+		var index = findIndexByAttr(wishlist, "g_places_id", req.query.gid);
 		console.log("index to be removed: " + index);
 		if(index != -1){
 			console.log(wishlist.length);
