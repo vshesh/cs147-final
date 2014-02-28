@@ -3,9 +3,6 @@ var swiped = false;
 
 $(document).ready(function() {
 	initializePage();
-  $(document).on('touchmove', function(e) {
-    e.preventDefault();
-  });
 });
 
 

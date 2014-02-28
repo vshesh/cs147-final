@@ -54,6 +54,7 @@
 
 	<div class="container">
 		{{#each wishlist}}
+		<div class= "frame">
 		<div class="wishlist-entry" id="swipe{{id}}" gref = "{{g_places_ref}}" gid = "{{g_places_id}}">
 			
 			<div class="swipe-options">
@@ -70,33 +71,16 @@
 
 
 			</div>
+			</div>
 			{{/each}}
-			<div class="wishlist-entry" id="instructions" gref = "sample" gid = "sample">
-			
-					<div class="swipe-options">
-						<div class="option"> 
-							<span class="glyphicon glyphicon-remove"></span></div>
-							<div class="option">
-								<a href="/"><span class="glyphicon glyphicon-pencil"></span></a>
-							</div>
-						</div>
 
-				<a  gref = "sample" id = "sample"  href="/wishlist">
-						 <div class="photo"></div>
-						 <div class="left-info">
+					<div class="hint">
 						 	<ul>
-						 		<li>Press <span class="glyphicon glyphicon-plus"></span> button to add to your wishlist!</li>
-						 		<li>Swipe any item to the right! </li>
-						 		<li><li>
+						 		<li>Tap <span class="glyphicon glyphicon-plus"></span> to add to your wishlist!</li>
+						 		<li>Swipe tiles to the right </li>
+						 		<li>for options</li>
 						 	</ul>
 						 </div>
-						 <div class="right-info">
-						 	<ul>
-						 		<li></li>
-						 		<li></li>
-						 	</ul>
-						 </div>
-				</a>
 
 
 			</div>

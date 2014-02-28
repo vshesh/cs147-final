@@ -40,7 +40,7 @@
           </button>
           <span class="navbar-brand">Past Eats</span>
 
-        <a href="/pasteats-editcreate/2" id="add"><span class="glyphicon glyphicon-plus"></span></a>
+        <a href="/pasteats-editcreate/2" id="add" class="add"><span class="glyphicon glyphicon-plus"></span></a>
       </div>
     </div>
     <div id="underlay"></div>
@@ -72,14 +72,18 @@
                 </div>
                 <img src= "http://s3-us-west-2.amazonaws.com/umamiappimages/{{image}}">
                 <div class= "caption-text"> {{caption}}</div>
-                <!-- <div class="entry-end">
-                    <span class="glyphicon glyphicon-share-alt"></span>
+                <div class="entry-end">
+                    <!-- <span class="glyphicon glyphicon-share-alt"></span> -->
                     <span class="glyphicon glyphicon-trash"></span>
-                    <a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span>
-                </div> -->        
+                    <!-- <a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span> -->
+                </div>        
                 </div>
             </div>
         {{/each}}
+
+        <div class = "hint">
+            Tap <span class="glyphicon glyphicon-plus"></span> to add to your Past Eats log!
+        </div>
 
     </div>
 

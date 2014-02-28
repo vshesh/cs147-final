@@ -1,8 +1,22 @@
+body {
+  overflow-x: hidden;
+}
+
 #map-canvas {
   width: 100%;
   height: 200px;
   padding-bottom: .5em;
 }
+
+#menuButton {
+  padding: .75em;
+}
+
+.frame {
+  width: 100%;
+  overflow: hidden;
+}
+
 .wishlist-entry {
   padding: 8px 0px;
   height:75px;
@@ -58,8 +72,12 @@ img {
   border: 1px #e3e3e3 solid;
 }
 
-a:link, a:visited {
+.place:hover, .place {
   color: black; 
+}
+
+.place:active {
+  color: #f46b4f;
 }
 
 .photo {

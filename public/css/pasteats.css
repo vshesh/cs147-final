@@ -8,6 +8,16 @@ body {
 	background-color: #f46b4f;
 }
 
+#add {
+	float:right;
+}
+
+.hint {
+	color: white;
+	text-align: center;
+	padding: 1em;
+}
+
 .entry-text, .caption-text, .entry-end{
 	padding: 0.5em .75em;
 }
