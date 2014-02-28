@@ -13,9 +13,10 @@ function initializePage() {
     //disable after first click
     if(submitPressed > 0){$(this).attr("disabled","disabled");}
     submitPressed ++;
-    //should go to form.
+    //Makes it possible to not double submit.
 });
 
+  //Discard draft
   $('#menuButton').click(function (e) {
     ShowDialog(false);
     e.preventDefault();
@@ -24,6 +25,7 @@ function initializePage() {
   var fileSelect = document.getElementById("filewrapper"),
   fileElem = document.getElementById("file");
 
+
   fileSelect.addEventListener("click", function (e) {
     if (fileElem) {
       fileElem.click();
@@ -31,6 +33,7 @@ function initializePage() {
     e.preventDefault(); // prevent navigation to "#"
   }, false);
 
+  //reads in file url, shows a preview of the photo.
   function readURL(input) {
 
     if (input.files && input.files[0]) {
@@ -45,22 +48,26 @@ function initializePage() {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
+  
+  //Detects if a file is uploaded.
   $("#file").change(function(){
     readURL(this);
 });
 
+  //Doesn't delete it.
   $("#btnNo").click(function (e) {
     HideDialog();
     e.preventDefault();
   });
 
+  //Goes back.
   $("#btnYes").click(function (e) {
     window.history.back();
     e.preventDefault();
   });
 };
 
+ //Reads in the files (wow ash, this is intense code)
 function handleFiles(files) {
   for (var i = 0; i < files.length; i++) {
     var file = files[i];
@@ -70,6 +77,7 @@ function handleFiles(files) {
       continue;
     }
     
+    //Previews the uploaded image
     var img = document.createElement("img");
     img.classList.add("obj");
     img.file = file;
@@ -85,6 +93,7 @@ function handleFiles(files) {
         e.preventDefault();
 }
 
+//Shows dialog for deleting (BUGGY) - it only overlays the first elem
 function ShowDialog(modal){
   $("#overlay").show();
   $("#dialog").fadeIn(300);
