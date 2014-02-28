@@ -9,8 +9,6 @@
 
   variable matches its value in app.js  Otherwise, you'll have
   initialized the wrong database.
-
-  DON'T EDIT THIS YET! Just copying it over.
 */
 
 var mongoose = require('mongoose');
@@ -44,11 +42,10 @@ function onceClear(err) {
   var to_save_count = users_json.length;
   for(var i=0; i<users_json.length; i++) {
     var json = users_json[i];
-    var proj = new models.User(json);
+    var user = new models.User(json);
 
-    proj.save(function(err, proj) {
+    user.save(function(err, user) {
       if(err) console.log(err);
-      console.log(proj);
 
       to_save_count--;
       console.log(to_save_count + ' left to save');

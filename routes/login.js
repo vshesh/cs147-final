@@ -19,19 +19,30 @@ exports.view = function(req, res) {
 exports.findOrCreate = function(req, res){
 		
 
-		var user = data[findIndexByAttr(data, 'google_id', req.googleId)];
-		if(user == undefined){
-			var newUser = {
-				'name': req.name,
-				'google_id': req.googleId,
-				'access_token': null,
-				'wishlist': [],
-				'pasteats': []
-			}
-			data.push(newUser);
-		}
+		models.User
+  			.find({"google_id": req.googleId})
+  			.sort()
+ 				.exec(userCallback);
 
-		res(false, data[data.length-1]);
+ 		function userCallback(err, users){
+ 			if (users.length){
+ 				res(false, users[0]);
+ 			}
+ 			else{
+ 				var userObject = {
+					'name': req.name,
+					'google_id': req.googleId,
+					'wishlist': [],
+					'pasteats': []
+				}
+				newUser = models.User(userObject);
+				newUser.save(function(err){
+					if(err){console.log(err); res.send(500)};
+					res(false, userObject);
+				})
+
+ 			}
+ 		}
 
 		/*models.User
 		.find({'google_id':req.googleId})
