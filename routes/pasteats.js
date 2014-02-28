@@ -39,10 +39,10 @@ var findIndexByAttr = function(array, attr, value) {
 
 //Allows for easy access to month names in the Date prototype.
 Date.prototype.monthNames = [
-    "January", "February", "March",
-    "April", "May", "June",
-    "July", "August", "September",
-    "October", "November", "December"
+    "Jan", "Feb", "Mar",
+    "Apr", "May", "Jun",
+    "Jul", "Aug", "Sept",
+    "Oct", "Nov", "Dec"
 ];
 
 Date.prototype.getMonthName = function() {
