@@ -31,15 +31,23 @@
   <link rel="stylesheet" href="/css/searchformalt.css">
 
   <script>
+    var r;
+    var minVal = 0;
+    var maxVal = 2;
     $(document).ready(function() {
-    $("#price-slider").slider({
-    });
 
-      $('#priceSelect').select2({
-        placeholder: "Price Ranges",
-        data: [ {id: 1, text: "$"},{id: 2, text: "$$"},{id: 3, text: "$$$"},{id: 4, text: "$$$$"}],
-        multiple: true
-      });
+    var sliderChange = function() {
+      minVal = r.getValue()[0];
+      maxVal = r.getValue()[1];
+    };
+
+    r = $("#price-slider").slider().on('slide', sliderChange).data('slider');
+
+      // $('#priceSelect').select2({
+      //   placeholder: "Price Ranges",
+      //   data: [ {id: 1, text: "$"},{id: 2, text: "$$"},{id: 3, text: "$$$"},{id: 4, text: "$$$$"}],
+      //   multiple: true
+      // });
       $('#cuisineSelect').select2({
         placeholder: "Cuisines",
         data: [
@@ -269,12 +277,13 @@
       });
       $('#submitBtn').click(function(e) {
         e.preventDefault();
+
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         var location = $('#pac-input').val();
         console.log($('#price-slider').slider('getValue'));
 
         // redirect as a get request
-        window.location  = '/search/results?keyword='+(cuisines === "" ? "food" : cuisines)+" "+location;
+        window.location  = '/search/results?keyword='+(cuisines === "" ? "food" : cuisines)+" "+location+'&minprice='+minVal+'&maxprice='+maxVal;
       });
       $('#autocomplete-clear').click(function(e) {
         e.preventDefault();
@@ -334,13 +343,13 @@
     </span>
     </div>
     <h3>and by filters</h3>
-    <div class="priceWrapper">
+    <!-- <div class="priceWrapper">
       <input id="priceSelect" multiple class="controls" placeholder="Price Ranges">
-    </div>
+    </div> -->
     
     <div class="priceWrapper">
     <p>Price Range</p>
-    <b>$  &nbsp; </b> <input id="price-slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="40" data-slider-step="10" data-slider-value="[0,20]" data-slider-tooltip="always"/> <b> $$$$</b>
+    <b>$ &nbsp; </b> <input id="price-slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="4" data-slider-step="1" data-slider-value="[0,2]" data-slider-tooltip="hide"/> <b> &nbsp; $$$$$</b>
   </div>
 
 

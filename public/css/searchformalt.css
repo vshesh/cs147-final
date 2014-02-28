@@ -9,7 +9,12 @@
 }
 
 .slider-selection {
-  background: #c4c4c4;
+  background: #a1a1a1;
+}
+
+.slider-track {
+  background-color: #dedede;
+  background-image: none ;
 }
 
 .body {
