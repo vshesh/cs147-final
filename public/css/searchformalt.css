@@ -26,8 +26,14 @@
   font-weight: 600;
   font-size: 20px;
   width: 50%;
+  background-color: #f46b4f;
+  background-image: none;
+  color: white;
 }
 
+#submitBtn:active {
+  background-color: #9f311a;
+}
 .container {
   text-align: center;
   margin: auto;
