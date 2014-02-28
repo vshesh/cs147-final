@@ -34,7 +34,7 @@ var findIndexByAttr = function(array, attr, value) {
             return i;
         }
     }
-    return undefined;
+    return -1;
 }
 
 //Allows for easy access to month names in the Date prototype.
