@@ -182,7 +182,9 @@ function ensureAuthenticated(req, res, next) {
       req.path.startsWith('/js/bootstrap') || 
       req.path.startsWith('/css/bootstrap') || 
       req.path.startsWith('/css/introHCI') ||
-      req.path.startsWith('/css/login') || 
+      req.path.startsWith('/css/login') ||
+      // REMOVE THIS WHEN JULIE GRADES THIS WEEK's ASSIGN 
+      req.path.startsWith('/searchalt') ||
       req.path.startsWith('/auth') || 
       req.isAuthenticated()) { return next(); }
   
