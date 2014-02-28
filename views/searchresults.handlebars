@@ -138,9 +138,6 @@
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
-    $(document).ready(function() {
-      $(document).on('touchmove', function(e) {e.preventDefault();});
-    });
 
     function setupActions() {
       $('.glyphicon-plus-sign').each(function(i,e) {
@@ -180,7 +177,6 @@
 </head>
 
 <body>
-{{> menupanel-partial}}
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-headerw">
