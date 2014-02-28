@@ -3,6 +3,7 @@ var models = require('../models');
 var request = require('request');
 var fs = require('fs');
 var settings;
+
 if(fs.existsSync('./settings.js')){
   settings = require('../settings.js');
 }else{

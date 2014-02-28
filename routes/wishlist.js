@@ -4,8 +4,7 @@ var request = require('request');
 
 var findIndexByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
-    	console.log(array[i]);
-        if(array[i].hasOwnProperty(attr) && array[i][attr] == value) {
+        if(array[i][attr] === value) {
             return i;
         }
     }
@@ -24,8 +23,7 @@ exports.view = function(req, res) {
 		if(err){console.log(err); res.send(500)}
 		console.log(users[0]);
 		res.render('wishlist', users[0]);
-	}	
-
+	}
 }
 
 
@@ -82,9 +80,7 @@ exports.remove = function(req, res) {
 		console.log("user found");
 		if(err){console.log(err); res.send(500)}
 		var wishlist = users[0].wishlist;
-		console.log(wishlist + );
-		console.log(req.query.gid);
-		var index = findIndexByAttr(wishlist, "g_places_id", req.query.gid);
+		var index = findIndexByAttr(wishlist, 'g_places_id', req.query.gid);
 		console.log("index to be removed: " + index);
 		if(index != -1){
 			console.log(wishlist.length);
