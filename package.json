@@ -17,7 +17,6 @@
     "express": "3.x",
     "express3-handlebars": "*",
     "express-partials": "*",
-    "fs" : "*",
     "mongodb": "*",
     "mongoose": "~3.8.7",
     "select2": "*",

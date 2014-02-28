@@ -95,20 +95,19 @@ exports.add = function(req, res) {
 	 			newEntry['image'] = "http://s3-us-west-2.amazonaws.com/umamiappimages/" + fileName;
 	 			user.pasteats.unshift(newEntry);
 	 			res.redirect('/pasteats');
-
  			});
 
  			/*fs.writeFile(newPath, photoData, function(err){
 	 			if(err)console.log(err);
 	 			console.log(newPath);
-	 			
  			}); */	
  			
  		}else{
+      console.log(req.user.google_id);
  			var user = findByAttr(data, 'google_id', req.user.google_id);
-	 			newEntry['image'] = "";
-	 			user.pasteats.unshift(newEntry);
-	 			res.redirect('/pasteats');
+ 			newEntry['image'] = "";
+ 			user.pasteats.unshift(newEntry);
+ 			res.redirect('/pasteats');
  		}	
 	});
 
