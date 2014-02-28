@@ -1,6 +1,6 @@
-var data = require('../data/data.json');
 var models = require('../models');
 
+//Returns int
 var findIndexByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
         if(array[i][attr] === value) {
@@ -11,8 +11,8 @@ var findIndexByAttr = function(array, attr, value) {
 }
 
 
+//Instant render of log in.
 exports.view = function(req, res) {
-  var name = req.params.name;
   res.render('login');
 };
 
