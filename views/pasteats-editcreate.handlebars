@@ -41,7 +41,7 @@
         </table>
     </div>
     <form action="/pasteats-editcreate/add" method="post" enctype="multipart/form-data">
-      <input type="text" name="title" class="textfield" placeholder="Title" required maxlength="80">
+      <input type="text" name="title" class="textfield" placeholder="Title" required maxlength="80" autocomplete="off">
       <textarea type="text" name="summary" id="summary" placeholder="Your eloquent text"></textarea>
       <div id="filewrapper">Add Photo</div>
       <input type="file" name='photo' accept="image/*" id="file">

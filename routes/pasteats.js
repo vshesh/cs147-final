@@ -92,7 +92,7 @@ exports.add = function(req, res) {
  			}, function (err, response){
  				if(err)console.log(err);
  				var user = findByAttr(data, 'google_id', req.user.google_id);
-	 			newEntry['image'] = fileName;
+	 			newEntry['image'] = "http://s3-us-west-2.amazonaws.com/umamiappimages/" + fileName;
 	 			user.pasteats.unshift(newEntry);
 	 			res.redirect('/pasteats');
 
@@ -120,6 +120,8 @@ exports.add = function(req, res) {
 exports.remove= function(req, res) {
 	var user = findByAttr(data, 'google_id', req.user.google_id);
 	var index = findIndexByAttr(user.pasteats, 'created_timestamp', req.body.timestamp);
+	console.log(req.body.timestamp);
+	console.log(index);
 	if (index != -1) {
 		user.pasteats.splice(index, 1);
 		res.send(200);
