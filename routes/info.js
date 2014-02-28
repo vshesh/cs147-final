@@ -1,9 +1,9 @@
-var data = require('../data/data.json');
 var models = require('../models');
 var request = require('request');
 var fs = require('fs');
 var settings;
 
+//Getting our API keys without putting them on github.
 if(fs.existsSync('./settings.js')){
   settings = require('../settings.js');
 }else{
@@ -16,10 +16,12 @@ if(fs.existsSync('./settings.js')){
   settings.googleServer = process.env.googleServer;
 }
 
+//Takes the passed in ID and dynamically creates a webpage with it.
 exports.viewById = function(req, res) {
   var ref = req.params.id;
   request("https://maps.googleapis.com/maps/api/place/details/json?reference="  + ref + "&sensor=false&key=" + settings.googleServer, callback);
 
+  //make the entry yeah!
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
   	var entry = {
@@ -36,8 +38,4 @@ exports.viewById = function(req, res) {
   	res.render('info', entry);
 
   };
-  //res.render('info', data[0].wishlist[id-1]);
-  //This renders a page with the id
-  //Continue to edit the default info page
-  //Edit app.js to match everything else (so that you can do info/:id)
 };

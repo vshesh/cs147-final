@@ -8,14 +8,11 @@
   <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
   <link href="/css/introHCI.css" rel="stylesheet">
   <!-- Req for menubar-->
+
   <link href="/css/menubar/component.css" rel="stylesheet"/>
   <link rel="stylesheet" href="/css/select2.css">
   <link rel="stylesheet" href="/css/select2-bootstrap.css">
   <script src="https://code.jquery.com/jquery.js"></script>
-
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />zcom/jquery-1.9.1.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
-  <link rel="stylesheet" href="/css/searchform.css">
 
   <!-- Req for menubar-->
   <script src="/js/menubar/modernizr.custom.js"></script>
@@ -25,16 +22,32 @@
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/select2.js"></script>
+
+  <script src="/js/bootstrap-slider.js"></script>
+  <link rel="stylesheet" href="/css/slider.css">
   <!-- Google Places API -->
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+  
+  <link rel="stylesheet" href="/css/searchformalt.css">
 
   <script>
+    var r;
+    var minVal = 0;
+    var maxVal = 2;
     $(document).ready(function() {
-      $('#priceSelect').select2({
-        placeholder: "Price Ranges",
-        data: [ {id: 1, text: "$"},{id: 2, text: "$$"},{id: 3, text: "$$$"},{id: 4, text: "$$$$"}],
-        multiple: true
-      });
+
+    var sliderChange = function() {
+      minVal = r.getValue()[0];
+      maxVal = r.getValue()[1];
+    };
+
+    r = $("#price-slider").slider().on('slide', sliderChange).data('slider');
+
+      // $('#priceSelect').select2({
+      //   placeholder: "Price Ranges",
+      //   data: [ {id: 1, text: "$"},{id: 2, text: "$$"},{id: 3, text: "$$$"},{id: 4, text: "$$$$"}],
+      //   multiple: true
+      // });
       $('#cuisineSelect').select2({
         placeholder: "Cuisines",
         data: [
@@ -264,10 +277,12 @@
       });
       $('#submitBtn').click(function(e) {
         e.preventDefault();
+
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         var location = $('#pac-input').val();
+
         // redirect as a get request
-        window.location  = '/search/results?keyword='+(cuisines === "" ? "food" : cuisines)+" "+location;
+        window.location  = '/search/results?keyword='+(cuisines === "" ? "food" : cuisines)+" "+location+'&minprice='+minVal+'&maxprice='+maxVal;
       });
       $('#autocomplete-clear').click(function(e) {
         e.preventDefault();
@@ -327,10 +342,18 @@
     </span>
     </div>
     <h3>and by filters</h3>
-    <div class="priceWrapper">
+    <!-- <div class="priceWrapper">
       <input id="priceSelect" multiple class="controls" placeholder="Price Ranges">
-    </div>
-    <div class="cuisineWrapper">    
+    </div> -->
+    
+    <div class="priceWrapper">
+    <p>Price Range</p>
+    <b>$ &nbsp; </b> <input id="price-slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="4" data-slider-step="1" data-slider-value="[0,2]" data-slider-tooltip="hide"/> <b> &nbsp; $$$$$</b>
+  </div>
+
+
+    <div class="cuisineWrapper">   
+
       <input multiple id="cuisineSelect" class="controls" placeholder="Cuisines">
     </div>
   <br>
@@ -338,15 +361,9 @@
   </div>
 
 
-
-    <label for="slider-1">Input slider:</label>
-<input type="range" name="slider-1" id="slider-1" value="60" min="0" max="100">
-
+  
 
 </div>
 
-
-
 </body>
 </html>
-

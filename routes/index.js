@@ -4,11 +4,11 @@ var models = require('../models');
 
 var findIndexByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
-        if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
+        if(array[i][attr] === value) {
             return i;
         }
     }
-    return undefined;
+    return -1;
 }
 
 exports.view = function(req, res) {

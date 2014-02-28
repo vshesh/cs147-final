@@ -1,4 +1,3 @@
-var data = require('../data/data.json');
 var models = require('../models');
 var request = require('request');
 
@@ -11,9 +10,8 @@ var findIndexByAttr = function(array, attr, value) {
     return -1;
 }
 
+//Renders wishlist based on current signed in user.
 exports.view = function(req, res) {
-  //res.render('wishlist', user);
-
 	models.User
 		.find({'google_id':req.user.google_id})
 		.sort()
@@ -21,12 +19,12 @@ exports.view = function(req, res) {
 
 	function userCallback(err, users){
 		if(err){console.log(err); res.send(500)}
-		console.log(users[0]);
 		res.render('wishlist', users[0]);
 	}
 }
 
 
+//Adds an entry to the wishlist
 exports.add = function(req, res) {
 	var newentry = {
 		"g_places_ref" : req.query.gref,
@@ -39,37 +37,25 @@ exports.add = function(req, res) {
 		.sort()
 		.exec(userCallback);
 
+		//Called to add to the user
 	function userCallback(err, users){
 		if(err){console.log(err); res.send(500)}
 		var wishlist = users[0].wishlist
 		var entry = wishlist[findIndexByAttr(wishlist, 'g_places_id', req.query.gid)];
 		if (entry == undefined) {
 			wishlist.push(newentry);
-			console.log(wishlist);
-			console.log(newentry);
-			console.log("\n\n\n\n\n");
-			/*models.User
-				.find({'google_id':req.user.google_id})*/
 
 				users[0].update({'wishlist': wishlist})
 					.exec(updateCallback);
 		}
 
 		function updateCallback(err){
-			console.log("updateCallback called");
-			if(err){console.log(err); res.send(500)}
 			res.send(200);
 		}
 	}	
-
-	/*var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
-	var entry = user.wishlist[findIndexByAttr(user.wishlist, 'g_places_id', req.query.gid)];
-	if (entry == undefined) {
-		user.wishlist.push(newentry);
-	}
-	res.send(200);*/
 }
 
+//Removes wishlist entry from user data.
 exports.remove = function(req, res) {
 	models.User
 		.find({'google_id':req.user.google_id})
@@ -77,26 +63,22 @@ exports.remove = function(req, res) {
 		.exec(userCallback);
 
 	function userCallback(err, users){
-		console.log("user found");
 		if(err){console.log(err); res.send(500)}
 		var wishlist = users[0].wishlist;
 		var index = findIndexByAttr(wishlist, 'g_places_id', req.query.gid);
-		console.log("index to be removed: " + index);
 		if(index != -1){
-			console.log(wishlist.length);
 			wishlist.splice(index, 1);
-			console.log(wishlist.length);
 
 			users[0].update({'wishlist': wishlist}).exec(removeCallback);
 		}
 		function removeCallback(err){
-			console.log("removeCallback");
 			if(err){console.log(err); res.send(500)}
 			res.send(200);
 		}
 	}
 }
 
+//Finds the wishlist entry, returns a boolean.
 exports.find = function(req, res) {
 	models.User
 		.find({'google_id':req.user.google_id})
@@ -114,21 +96,3 @@ exports.find = function(req, res) {
 	}	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

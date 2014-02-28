@@ -30,6 +30,12 @@ body {
   margin-top: 2px;
 	padding: 1em;
   border: none;
+  background-color: #f46b4f;
+  color: white;
+}
+
+.icon-bar {
+  background-color: white;
 }
 
 #tooltip

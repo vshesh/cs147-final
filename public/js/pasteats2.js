@@ -26,7 +26,6 @@ function initializePage() {
 
 function trash(e) {
   currentTile = $(this).parent().parent();
-  console.log(currentTile.attr('id'));
   currentID = currentTile.attr('id');
   ShowDialog(false);
   e.preventDefault();
@@ -34,7 +33,7 @@ function trash(e) {
 
 function deleteEntry(e) {
   //this will eventually actually delete the entry
-  $.post('/pasteats/remove', {timestamp: currentID}, 
+  $.post('/pasteats/remove', {id: currentID}, 
                         function(result, err){
                             if (err) console.log(err)
                           }

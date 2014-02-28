@@ -1,7 +1,8 @@
 var models = require('../models.js');
-var data = require('../data/data.json');
 var fs = require('fs');
 var AWS = require('aws-sdk');
+
+//Keeping our secrets secret.
 var settings;
 if(fs.existsSync('./settings.js')){
 	settings = require('../settings.js');
@@ -11,26 +12,18 @@ if(fs.existsSync('./settings.js')){
 	settings.amazonSecret = process.env.S3Secret;
 }
 
+
 AWS.config.update({
 	accessKeyId: settings.amazonID,
 	secretAccessKey: settings.amazonSecret,
 	region: 'us-west-2',
 });
 
-//Returns data value
-var findByAttr = function(array, attr, value) {
-    for(var i = 0; i < array.length; i++) {
-        if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
-            return array[i];
-        }
-    }
-    return undefined;
-}
 
 //Returns int
 var findIndexByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
-        if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
+        if(array[i][attr] === value) {
             return i;
         }
     }
@@ -50,25 +43,35 @@ Date.prototype.getMonthName = function() {
 };
 
 
+//Uses the google id to render that particular users past eats.
 exports.view = function(req, res) {
-	var user = findByAttr(data, 'google_id', req.user.google_id);
-  res.render('pasteats', user);
+	models.User
+		.find({'google_id':req.user.google_id})
+		.sort()
+		.exec(userCallback);
+
+	function userCallback(err, users){
+		if(err){console.log(err); res.send(500)}
+		res.render('pasteats', users[0]);
+	}
 }
 
 
 
+//Views each one individually (not implemented)
 exports.viewById = function(req, res) {
   var id = req.params.id;
   res.render('pasteats-entry');
 }
 
 
-
+//Adds a new past eats entry!
 exports.add = function(req, res) {
 
 	var time = new Date();
  	var newEntry = {
 		'created_timestamp' : Date.now(),
+		'id': Date.now() + '_' + req.user.google_id,
 		'formatted_date': time.getMonthName() + " " + time.getDate() + ", " + time.getFullYear(),
 		'title' : req.body.title,
 		'summary': req.body.summary,
@@ -76,6 +79,8 @@ exports.add = function(req, res) {
 		'gid': req.body.gid
 	};
 
+	//Uploads a photo if they attach one
+	//Otherwise just submits it.
 	var s3 = new AWS.S3();
  	fs.readFile(req.files.photo.path, function(err, photoData){
  		var oldImageName = req.files.photo.name;
@@ -91,41 +96,61 @@ exports.add = function(req, res) {
  				ACL: 'public-read'
  			}, function (err, response){
  				if(err)console.log(err);
- 				var user = findByAttr(data, 'google_id', req.user.google_id);
 	 			newEntry['image'] = "http://s3-us-west-2.amazonaws.com/umamiappimages/" + fileName;
-	 			user.pasteats.unshift(newEntry);
-	 			res.redirect('/pasteats');
+	 			updateUser(newEntry);
  			});
-
- 			/*fs.writeFile(newPath, photoData, function(err){
-	 			if(err)console.log(err);
-	 			console.log(newPath);
- 			}); */	
  			
  		}else{
-      console.log(req.user.google_id);
- 			var user = findByAttr(data, 'google_id', req.user.google_id);
  			newEntry['image'] = "";
- 			user.pasteats.unshift(newEntry);
- 			res.redirect('/pasteats');
+ 			updateUser(newEntry)
  		}	
+
 	});
 
-	
+ 	//After creating the entry, associates it with the User
+	function updateUser(entry){
+		models.User
+			.find({'google_id':req.user.google_id})
+			.sort()
+			.exec(userCallback);
 
-	//res.redirect('/pasteats');
+		function userCallback (err, users){
+			if(err){console.log(err); res.send(500)}
+			var pasteats = users[0].pasteats;
+			pasteats.unshift(entry);
+			users[0].update({'pasteats': pasteats}).exec(addCallback);
+		}
+
+		//Once it's all done, it reloads the past eats page.
+		function addCallback(err){
+			if(err){console.log(err); res.send(500)}
+			res.redirect('/pasteats');
+		}
+	}
+
 }
 
+//Removes the entry from past eats user data.
 exports.remove= function(req, res) {
-	var user = findByAttr(data, 'google_id', req.user.google_id);
-	var index = findIndexByAttr(user.pasteats, 'created_timestamp', req.body.timestamp);
-	console.log(user);
-	console.log(user.pasteats);
-	console.log(req.body.timestamp);
-	console.log(index);
-	if (index != -1) {
-		user.pasteats.splice(index, 1);
-		res.send(200);
+	
+	models.User
+		.find({'google_id':req.user.google_id})
+		.sort()
+		.exec(userCallback);
+
+	function userCallback(err, users){
+		if(err){console.log(err); res.send(500)}
+		var pasteats = users[0].pasteats;
+		var index = findIndexByAttr(pasteats, 'id', req.body.id);
+		if(index != -1){
+			pasteats.splice(index, 1);
+
+			//upadates the entry
+			users[0].update({'pasteats': pasteats}).exec(removeCallback);
+		}
+		function removeCallback(err){
+			if(err){console.log(err); res.send(500)}
+			res.send(200);
+		}
 	}
-	res.send(201);
 }

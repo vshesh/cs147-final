@@ -41,7 +41,9 @@
       });
 
       var request = {
-        query: "{{keyword}}"
+        query: "{{keyword}}",
+        minprice: "{{minprice}}",
+        maxprice: "{{maxprice}}"
       };
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);

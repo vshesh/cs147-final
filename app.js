@@ -18,7 +18,6 @@ var index = require('./routes/index');
 var login = require('./routes/login');
 var wishlist = require('./routes/wishlist');
 var info = require('./routes/info');
-var mapview = require('./routes/mapview');
 var pasteats = require('./routes/pasteats');
 var pasteats_editcreate = require('./routes/pasteats-editcreate');
 var search = require('./routes/search');
@@ -104,7 +103,6 @@ app.get('/wishlist', wishlist.view);
 app.get('/wishlist/add', wishlist.add);
 app.get('/wishlist/remove', wishlist.remove);
 app.get('/info/:id', info.viewById);
-app.get('/mapview', mapview.view);
 app.get('/pasteats', pasteats.view);
 app.get('/pasteats/:id', pasteats.viewById);
 app.get('/pasteats-editcreate/:id', pasteats_editcreate.viewById);
@@ -121,7 +119,6 @@ app.get('/auth/google/callback', passport.authenticate('google', {failureRedirec
 
 app.get('/logout', function(req, res){
   req.logout();
-  console.log(req.user);
   res.redirect('/');
 });
 
@@ -184,6 +181,7 @@ function ensureAuthenticated(req, res, next) {
       req.path.startsWith('/css/introHCI') ||
       req.path.startsWith('/css/login') ||
       req.path.startsWith('/auth') || 
+      req.path.startsWith('/images') ||
       req.isAuthenticated()) { return next(); }
   
   res.redirect('/login');

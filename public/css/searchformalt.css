@@ -1,3 +1,22 @@
+#price-slider {
+  width: 250px;
+  height: 80px;
+}
+
+.slider-handle {
+  background: #f46b4f;
+  opacity: 1;
+}
+
+.slider-selection {
+  background: #a1a1a1;
+}
+
+.slider-track {
+  background-color: #dedede;
+  background-image: none ;
+}
+
 .body {
   overflow-x: hidden;
   overflow-y: scroll;
@@ -15,12 +34,6 @@
 #submitBtn:active {
   background-color: #9f311a;
 }
-
-#price-slider {
-  width: 100%;
-  height: 50px;
-}
-
 .container {
   text-align: center;
   margin: auto;
