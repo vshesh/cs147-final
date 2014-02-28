@@ -22,6 +22,7 @@ var mapview = require('./routes/mapview');
 var pasteats = require('./routes/pasteats');
 var pasteats_editcreate = require('./routes/pasteats-editcreate');
 var search = require('./routes/search');
+var searchalt = require('./routes/search');
 var help = require('./routes/help');
 var fs = require('fs');
 
@@ -109,6 +110,7 @@ app.get('/pasteats/:id', pasteats.viewById);
 app.get('/pasteats-editcreate/:id', pasteats_editcreate.viewById);
 app.get('/search/results', search.viewResults);
 app.get('/search', search.viewForm);
+app.get('/searchalt', search.viewAlt);
 app.get('/search/results', search.viewResults);
 app.get('/help', help.view);
 app.get('/auth/google', passport.authenticate('google', {scope: 'https://www.googleapis.com/auth/plus.login'}));

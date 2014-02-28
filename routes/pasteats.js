@@ -120,6 +120,8 @@ exports.add = function(req, res) {
 exports.remove= function(req, res) {
 	var user = findByAttr(data, 'google_id', req.user.google_id);
 	var index = findIndexByAttr(user.pasteats, 'created_timestamp', req.body.timestamp);
+	console.log(user);
+	console.log(user.pasteats);
 	console.log(req.body.timestamp);
 	console.log(index);
 	if (index != -1) {

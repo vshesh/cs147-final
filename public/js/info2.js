@@ -12,6 +12,5 @@ function initializePage() {
 	$('#menuButton').click(function (e) {
     e.preventDefault();
     top.location.href = document.referrer;
-    //window.history.back();
   });
 };
