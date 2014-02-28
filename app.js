@@ -181,6 +181,7 @@ function ensureAuthenticated(req, res, next) {
       req.path.startsWith('/css/introHCI') ||
       req.path.startsWith('/css/login') ||
       req.path.startsWith('/auth') || 
+      req.path.startsWith('/images') ||
       req.isAuthenticated()) { return next(); }
   
   res.redirect('/login');

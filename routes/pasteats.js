@@ -1,7 +1,8 @@
 var models = require('../models.js');
-var data = require('../data/data.json');
 var fs = require('fs');
 var AWS = require('aws-sdk');
+
+//Keeping our secrets secret.
 var settings;
 if(fs.existsSync('./settings.js')){
 	settings = require('../settings.js');
@@ -10,6 +11,7 @@ if(fs.existsSync('./settings.js')){
 	settings.amazonID = process.env.S3Key;
 	settings.amazonSecret = process.env.S3Secret;
 }
+
 
 AWS.config.update({
 	accessKeyId: settings.amazonID,
@@ -41,6 +43,7 @@ Date.prototype.getMonthName = function() {
 };
 
 
+//Uses the google id to render that particular users past eats.
 exports.view = function(req, res) {
 	models.User
 		.find({'google_id':req.user.google_id})
@@ -55,13 +58,14 @@ exports.view = function(req, res) {
 
 
 
+//Views each one individually (not implemented)
 exports.viewById = function(req, res) {
   var id = req.params.id;
   res.render('pasteats-entry');
 }
 
 
-
+//Adds a new past eats entry!
 exports.add = function(req, res) {
 
 	var time = new Date();
@@ -75,6 +79,8 @@ exports.add = function(req, res) {
 		'gid': req.body.gid
 	};
 
+	//Uploads a photo if they attach one
+	//Otherwise just submits it.
 	var s3 = new AWS.S3();
  	fs.readFile(req.files.photo.path, function(err, photoData){
  		var oldImageName = req.files.photo.name;
@@ -101,6 +107,7 @@ exports.add = function(req, res) {
 
 	});
 
+ 	//After creating the entry, associates it with the User
 	function updateUser(entry){
 		models.User
 			.find({'google_id':req.user.google_id})
@@ -114,17 +121,16 @@ exports.add = function(req, res) {
 			users[0].update({'pasteats': pasteats}).exec(addCallback);
 		}
 
+		//Once it's all done, it reloads the past eats page.
 		function addCallback(err){
 			if(err){console.log(err); res.send(500)}
 			res.redirect('/pasteats');
 		}
 	}
 
-	
-
-	//res.redirect('/pasteats');
 }
 
+//Removes the entry from past eats user data.
 exports.remove= function(req, res) {
 	
 	models.User
@@ -139,6 +145,7 @@ exports.remove= function(req, res) {
 		if(index != -1){
 			pasteats.splice(index, 1);
 
+			//upadates the entry
 			users[0].update({'pasteats': pasteats}).exec(removeCallback);
 		}
 		function removeCallback(err){
