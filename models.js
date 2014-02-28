@@ -4,9 +4,9 @@ var Mongoose = require('mongoose');
 var UserSchema = new Mongoose.Schema({
 	//define fields
 	"name": String,
-	"google_id":String,
-	"wishlist": [{"id":String, "g_places_id":String, "created_timestamp": Date}],
-	"pasteats": [{"g_places_id": String, "created_timestamp": Date, "last_modified_timestamp": Date, "entry_time": Date, "title":String, "summary":String, "image": String, "caption": String}],
+	"google_id": String,
+	"wishlist": [{"id":String, "g_places_id":String, "g_places_ref":String, "created_timestamp": Date}],
+	"pasteats": [{"place_name": String, "created_timestamp": Date, "formatted_date": String, "title":String, "summary":String, "image": String, "caption": String, "gid": String}],
 });
 
 exports.User = Mongoose.model('User', UserSchema);
