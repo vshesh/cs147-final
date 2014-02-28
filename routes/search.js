@@ -3,7 +3,7 @@ exports.viewForm = function(req, res) {
 }
 
 exports.viewResults = function(req, res) {
-  res.render('searchresults', {keyword: req.query.keyword});
+  res.render('searchresults', {keyword: req.query.keyword, minprice: req.query.minprice, maxprice: req.query.maxprice});
 }
 
 exports.viewAlt = function(req, res) {
