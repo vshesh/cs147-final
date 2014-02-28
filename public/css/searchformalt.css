@@ -1,0 +1,152 @@
+#price-slider {
+  width: 250px;
+  height: 80px;
+}
+
+.slider-handle {
+  background: #f46b4f;
+  opacity: 1;
+}
+
+.slider-selection {
+  background: #c4c4c4;
+}
+
+.body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#submitBtn {
+  font-weight: 600;
+  font-size: 20px;
+  width: 50%;
+}
+
+.container {
+  text-align: center;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.searchName, .priceWrapper, .cuisineWrapper {
+  padding: .25em 0em;
+}
+
+.searchName {  
+  margin: auto;
+  width: 80%;
+}
+
+#nameInput {
+  margin: auto;
+}
+
+.priceWrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.cuisineWrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.select2-container {
+  width: 80% !important;
+}
+
+.select2-search-choice-close {
+  
+}
+
+.select2-search-choice-close:after {
+  content: "X";
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.select2-search-choice {
+  vertical-align: center !important;
+  color:  #eee !important;
+  background-color: #888 !important;
+  background-image: none !important;
+  padding: 9px 5px 5px 5px !important;
+  border-radius: 2px !important;
+  border: 0px !important;
+  margin: auto !important;
+}
+
+.select2-search-choice > div{
+  display:inline;
+  margin: auto !important;
+}
+
+.select2-search-choice > a {
+  position: relative;
+  display: inline;
+  vertical-align: center !important;
+  top: -0.6px !important;
+  left:0px !important;
+}
+
+html, body, #map-canvas {
+  height: 100%;
+  margin: 0px;
+  padding: 0px
+}
+
+#pac-input {
+  background-color: #fff;
+  padding: 0 11px 0 13px;
+  width: 80%;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-overflow: ellipsis;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+  margin-left: -1px;
+  padding-left: 14px;  /* Regular padding-left + 1. */
+}
+
+.pac-container {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.controls {
+  margin-top: 16px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+}
+
+.glyphicons-remove-sign {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  height: 5px;
+  width: 5px;
+}
+
+
+
