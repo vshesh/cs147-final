@@ -49,7 +49,6 @@ exports.view = function(req, res) {
 
 	function userCallback(err, users){
 		if(err){console.log(err); res.send(500)}
-		console.log(users[0]);
 		res.render('pasteats', users[0]);
 	}
 }
@@ -93,20 +92,11 @@ exports.add = function(req, res) {
  				if(err)console.log(err);
 	 			newEntry['image'] = "http://s3-us-west-2.amazonaws.com/umamiappimages/" + fileName;
 	 			updateUser(newEntry);
-	 			/*user.pasteats.unshift(newEntry);
-	 			res.redirect('/pasteats');*/
  			});
-
- 			/*fs.writeFile(newPath, photoData, function(err){
-	 			if(err)console.log(err);
-	 			console.log(newPath);
- 			}); */	
  			
  		}else{
  			newEntry['image'] = "";
  			updateUser(newEntry)
- 			/*user.pasteats.unshift(newEntry);
- 			res.redirect('/pasteats');*/
  		}	
 
 	});
@@ -143,21 +133,15 @@ exports.remove= function(req, res) {
 		.exec(userCallback);
 
 	function userCallback(err, users){
-		console.log("user found");
 		if(err){console.log(err); res.send(500)}
 		var pasteats = users[0].pasteats;
-		console.log(req.body);
-		console.log(pasteats);
-		console.log(parseInt(req.body.id));
 		var index = findIndexByAttr(pasteats, 'id', req.body.id);
-		console.log("index to be removed: " + index);
 		if(index != -1){
 			pasteats.splice(index, 1);
 
 			users[0].update({'pasteats': pasteats}).exec(removeCallback);
 		}
 		function removeCallback(err){
-			console.log("removeCallback");
 			if(err){console.log(err); res.send(500)}
 			res.send(200);
 		}

@@ -26,7 +26,6 @@ function initializePage() {
 
 function trash(e) {
   currentTile = $(this).parent().parent();
-  console.log(currentTile.attr('id'));
   currentID = currentTile.attr('id');
   ShowDialog(false);
   e.preventDefault();

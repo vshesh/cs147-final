@@ -45,7 +45,6 @@
         minprice: "{{minprice}}",
         maxprice: "{{maxprice}}"
       };
-      console.log(request);
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);
       service.textSearch(request, callback);
@@ -53,7 +52,6 @@
 
     function callback(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        console.log(results);
         for (var i = 0; i < results.length; i++) {
           createMarker(results[i]);
           $('#results').html($('#results').html() + createResultDiv(results[i]));

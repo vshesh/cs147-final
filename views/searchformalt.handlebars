@@ -280,7 +280,6 @@
 
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         var location = $('#pac-input').val();
-        console.log($('#price-slider').slider('getValue'));
 
         // redirect as a get request
         window.location  = '/search/results?keyword='+(cuisines === "" ? "food" : cuisines)+" "+location+'&minprice='+minVal+'&maxprice='+maxVal;
