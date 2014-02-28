@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  {{> title}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link href="/css/introHCI.css" rel="stylesheet">
+  <!-- Req for menubar-->
+  <link href="/css/menubar/component.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/select2.css">
+  <link rel="stylesheet" href="/css/select2-bootstrap.css">
+  <link rel="stylesheet" href="/css/searchform.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="spreadsheet">
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />zcom/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+  <!-- Req for menubar-->
+  <script src="/js/menubar/modernizr.custom.js"></script>
+  <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+  <script src="/js/menubar/classie.js"></script>
+      <script type ="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/select2.js"></script>
+  <!-- Google Places API -->
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+
+  <script>
+    $(document).ready(function() {
+      $('#priceSelect').select2({
+        placeholder: "Price Ranges",
+        data: [ {id: 1, text: "$"},{id: 2, text: "$$"},{id: 3, text: "$$$"},{id: 4, text: "$$$$"}],
+        multiple: true
+      });
+      $('#cuisineSelect').select2({
+        placeholder: "Cuisines",
+        data: [
+          {id: 1, text: "Afghan"},   
+          {id: 2, text: "African"},   
+          {id: 3, text: "Senegalese"},   
+          {id: 4, text: "South African"},   
+          {id: 6, text: "American  "},   
+          {id: 7, text: "Arabian"},     
+          {id: 9, text: "Argentine"},   
+          {id: 10, text: "Armenian"},   
+          {id: 11, text: "Asian Fusion"},   
+          {id: 12, text: "Asturian"},   
+          {id: 13, text: "Australian"},   
+          {id: 14, text: "Austrian"},   
+          {id: 15, text: "Baguettes"},   
+          {id: 16, text: "Bangladeshi"},   
+          {id: 17, text: "Barbeque"},   
+          {id: 18, text: "Basque"},   
+          {id: 19, text: "Bavarian"},   
+          {id: 20, text: "Beer Garden"},   
+          {id: 21, text: "Beer Hall"}, 
+          {id: 23, text: "Belgian"},   
+          {id: 24, text: "Bistros"},   
+          {id: 25, text: "Black Sea"},   
+          {id: 26, text: "Brasseries"},   
+          {id: 27, text: "Brazilian"},   
+          {id: 32, text: "Rodizios"},   
+          {id: 33, text: "Breakfast and Brunch"},   
+          {id: 34, text: "British"},   
+          {id: 35, text: "Buffets"},   
+          {id: 36, text: "Bulgarian"},   
+          {id: 37, text: "Burgers"},   
+          {id: 38, text: "Burmese"},   
+          {id: 39, text: "Cafes"},   
+          {id: 40, text: "Cafeteria"},   
+          {id: 41, text: "Cajun"},   
+          {id: 42, text: "Cambodian"},   
+          {id: 43, text: "Canadian  "},   
+          {id: 44, text: "Canteen"},   
+          {id: 45, text: "Caribbean"},   
+          {id: 46, text: "Dominican"},   
+          {id: 47, text: "Haitian"},   
+          {id: 48, text: "Puerto Rican"},   
+          {id: 49, text: "Trinidadian"},   
+          {id: 50, text: "Catalan"},   
+          {id: 51, text: "Chech"},   
+          {id: 52, text: "Cheesesteaks"},   
+          {id: 53, text: "Chicken Shop"},   
+          {id: 54, text: "Chicken Wings"},   
+          {id: 55, text: "Chinese"},   
+          {id: 56, text: "Cantonese"},   
+          {id: 57, text: "Dim Sum"},   
+          {id: 58, text: "Fuzhou"},   
+          {id: 59, text: "Hakka"},   
+          {id: 60, text: "Henghwa"},   
+          {id: 61, text: "Hokkien"},   
+          {id: 62, text: "Shanghainese"},   
+          {id: 63, text: "Szechuan"},   
+          {id: 64, text: "Teochew"},   
+          {id: 65, text: "Comfort Food"},   
+          {id: 66, text: "Corsican"},   
+          {id: 67, text: "Creperies"},   
+          {id: 68, text: "Cuban"},   
+          {id: 69, text: "Curry Sausage"},   
+          {id: 70, text: "Cypriot"},   
+          {id: 71, text: "Czech"},   
+          {id: 72, text: "Czech Slovakian"},   
+          {id: 73, text: "Danish"},   
+          {id: 74, text: "Delis"},   
+          {id: 75, text: "Diners"},   
+          {id: 76, text: "Eastern European"},   
+          {id: 77, text: "Ethiopian"},   
+          {id: 78, text: "Fast Food"},   
+          {id: 79, text: "Filipino"},   
+          {id: 80, text: "Fish and Chips"},   
+          {id: 81, text: "Fondue"},   
+          {id: 82, text: "Food Court"},   
+          {id: 83, text: "Food Stands"},   
+          {id: 84, text: "French"},   
+          {id: 85, text: "French Southwest"},   
+          {id: 86, text: "Galician"},   
+          {id: 87, text: "Gastropubs"},   
+          {id: 88, text: "Georgian"},   
+          {id: 89, text: "German"},   
+          {id: 90, text: "Baden"},   
+          {id: 91, text: "Eastern German"},   
+          {id: 92, text: "Hessian"},   
+          {id: 93, text: "Northern German"},   
+          {id: 94, text: "Palatine"},   
+          {id: 95, text: "Rhinelandian"},   
+          {id: 96, text: "Giblets"},   
+          {id: 97, text: "Gluten-Free"},   
+          {id: 98, text: "Greek"},   
+          {id: 99, text: "Halal"},   
+          {id: 100, text: "Hawaiian"},   
+          {id: 101, text: "Heuriger"},   
+          {id: 102, text: "Nepalese"},   
+          {id: 103, text: "Hot Dogs"},   
+          {id: 104, text: "Hot Pot"},   
+          {id: 105, text: "Hungarian"},   
+          {id: 106, text: "Iberian"},   
+          {id: 107, text: "Indian"},   
+          {id: 108, text: "Indonesian"},    
+          {id: 110, text: "Irish"},   
+          {id: 111, text: "Island Pub"},   
+          {id: 112, text: "Israeli"},   
+          {id: 113, text: "Italian"},   
+          {id: 114, text: "Altoatesine"},   
+          {id: 115, text: "Apulian"},   
+          {id: 116, text: "Calabrian"},   
+          {id: 117, text: "Cucina campana"},   
+          {id: 118, text: "Emilian"},   
+          {id: 119, text: "Friulan"},   
+          {id: 120, text: "Ligurian"},   
+          {id: 121, text: "Lumbard"},   
+          {id: 122, text: "Napoletana"},   
+          {id: 123, text: "Roman"},   
+          {id: 124, text: "Sardinian"},   
+          {id: 125, text: "Sicilian"},   
+          {id: 126, text: "Tuscan"},   
+          {id: 127, text: "Venetian"},   
+          {id: 128, text: "Japanese"},   
+          {id: 129, text: "Hand Rolls"},   
+          {id: 130, text: "Izakaya"},   
+          {id: 131, text: "Ramen"},   
+          {id: 132, text: "Teppanyaki"},   
+          {id: 133, text: "Jewish"},   
+          {id: 134, text: "Kebab"},   
+          {id: 135, text: "Korean"},   
+          {id: 136, text: "Kosher"},   
+          {id: 137, text: "Kurdish"},   
+          {id: 138, text: "Laos"},   
+          {id: 139, text: "Laotian"},   
+          {id: 140, text: "Latin American"},   
+          {id: 141, text: "Colombian"},   
+          {id: 142, text: "Salvadoran"},   
+          {id: 143, text: "Venezuelan"},      
+          {id: 145, text: "Lyonnais"},   
+          {id: 146, text: "Malaysian"},   
+          {id: 147, text: "Mamak"},   
+          {id: 148, text: "Nyonya"},   
+          {id: 149, text: "Meatballs"},   
+          {id: 150, text: "Mediterranean"},   
+          {id: 151, text: "Falafel"},   
+          {id: 152, text: "Mexican"},   
+          {id: 153, text: "Middle Eastern"},   
+          {id: 154, text: "Egyptian"},   
+          {id: 155, text: "Lebanese"},   
+          {id: 156, text: "Milk Bars"},   
+          {id: 157, text: "Modern Australian"},   
+          {id: 158, text: "Modern European"},   
+          {id: 159, text: "Mongolian"},   
+          {id: 160, text: "Moroccan"},   
+          {id: 161, text: "New Zealand"},   
+          {id: 162, text: "Night Food"},   
+          {id: 163, text: "Open Sandwiches"},   
+          {id: 164, text: "Oriental"},   
+          {id: 165, text: "Pakistani"},   
+          {id: 166, text: "Parent Cafes"},   
+          {id: 167, text: "Parma"},   
+          {id: 168, text: "Persian"},   
+          {id: 169, text: "Peruvian"},   
+          {id: 170, text: "Pita"},   
+          {id: 171, text: "Pizza"},   
+          {id: 172, text: "Polish"},   
+          {id: 173, text: "Pierogis"},   
+          {id: 174, text: "Portuguese"},   
+          {id: 175, text: "Alentejo"},   
+          {id: 176, text: "Algarve"},   
+          {id: 177, text: "Azores"},   
+          {id: 178, text: "Beira"},   
+          {id: 179, text: "Fado Houses"},   
+          {id: 180, text: "Madeira"},   
+          {id: 181, text: "Minho"},   
+          {id: 182, text: "Ribatejo"},   
+          {id: 183, text: "Tras-os-Montes"},   
+          {id: 184, text: "Potatoes"},   
+          {id: 185, text: "Poutineries"},   
+          {id: 186, text: "Pub Food"},   
+          {id: 187, text: "Rice"},   
+          {id: 188, text: "Romanian"},   
+          {id: 189, text: "Rotisserie Chicken"},   
+          {id: 190, text: "Rumanian"},   
+          {id: 191, text: "Russian"},   
+          {id: 192, text: "Salad"},   
+          {id: 193, text: "Sandwiches"},   
+          {id: 194, text: "Scandinavian"},   
+          {id: 195, text: "Scottish"},   
+          {id: 196, text: "Seafood"},   
+          {id: 197, text: "Serbo Croatian"},   
+          {id: 198, text: "Signature Cuisine"},   
+          {id: 199, text: "Singaporean"},   
+          {id: 200, text: "Slovakian"},   
+          {id: 201, text: "Soul Food"},   
+          {id: 202, text: "Soup"},   
+          {id: 203, text: "Southern"},   
+          {id: 204, text: "Spanish"},   
+          {id: 205, text: "Paella"},   
+          {id: 206, text: "Steakhouses"},   
+          {id: 207, text: "Sushi Bars"},   
+          {id: 208, text: "Swabian"},   
+          {id: 209, text: "Swedish"},   
+          {id: 210, text: "Swiss Food"},   
+          {id: 211, text: "Tabernas"},   
+          {id: 212, text: "Taiwanese"},   
+          {id: 213, text: "Tapas Bars"},   
+          {id: 214, text: "Tapas"},   
+          {id: 215, text: "Tex-Mex"},   
+          {id: 216, text: "Thai"},   
+          {id: 217, text: "Traditional Norwegian"},   
+          {id: 218, text: "Traditional Swedish"},   
+          {id: 219, text: "Turkish"},   
+          {id: 220, text: "Chee Kufta"},   
+          {id: 221, text: "Gozleme"},   
+          {id: 222, text: "Turkish Ravioli"},   
+          {id: 223, text: "Ukrainian"},   
+          {id: 224, text: "Vegan"},   
+          {id: 225, text: "Vegetarian"},   
+          {id: 226, text: "Venison"},   
+          {id: 227, text: "Vietnamese"},   
+          {id: 228, text: "Wok"},   
+          {id: 229, text: "Wraps"},   
+          {id: 230, text: "Yugoslav"}
+        ],
+        multiple: true
+      });
+      $('#submitBtn').click(function(e) {
+        e.preventDefault();
+        var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
+        var location = $('#pac-input').val();
+        // redirect as a get request
+        window.location  = '/search/results?keyword='+(cuisines === "" ? "food" : cuisines)+" "+location;
+      });
+      $('#autocomplete-clear').click(function(e) {
+        e.preventDefault();
+        $('#pac-input').val('');
+      })
+    });
+    var address = '';
+    function initialize() {
+
+      var input = /** @type {HTMLInputElement} */(
+          document.getElementById('pac-input'));
+       
+      var autocomplete = new google.maps.places.Autocomplete(input);
+      google.maps.event.addListener(autocomplete, 'place_changed', function() {
+        var place = autocomplete.getPlace();
+        if (!place.geometry) {
+          return;
+        }
+        if (place.address_components) {
+          address = [
+            (place.address_components[0] && place.address_components[0].short_name || ''),
+            (place.address_components[1] && place.address_components[1].short_name || ''),
+            (place.address_components[2] && place.address_components[2].short_name || '')
+          ].join(' ');
+        }
+
+      });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+  </script>
+</head>
+
+<body>
+{{> menupanel-partial}}
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <button id="menuButton" type="button" class="navbar-toggle pull-left" >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">Search</span>
+      </div>
+    </div>
+    <div id="underlay"></div>
+
+<div class="container">
+  <div id="searchform">
+    <h3>search by keyword<span style="color: #f46b4f"> *</span></h3>
+    <div class="searchName">
+    <span>
+      <input id="pac-input" class="controls" required type="text" placeholder="Restaurant or Location" />
+      <span id="autocomplete-clear" class="glyphicon glyphicon-remove"></span>
+    </span>
+    </div>
+    <h3>and by filters</h3>
+    <div class="priceWrapper">
+      <input id="priceSelect" multiple class="controls" placeholder="Price Ranges">
+    </div>
+    <div class="cuisineWrapper">    
+      <input multiple id="cuisineSelect" class="controls" placeholder="Cuisines">
+    </div>
+  <br>
+  <button id="submitBtn" class="btn btn-default btn-lg">Go</button>
+  </div>
+
+
+
+    <label for="slider-1">Input slider:</label>
+<input type="range" name="slider-1" id="slider-1" value="60" min="0" max="100">
+
+
+</div>
+
+
+
+</body>
+</html>
+
