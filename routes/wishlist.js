@@ -12,9 +12,6 @@ var findIndexByAttr = function(array, attr, value) {
 }
 
 exports.view = function(req, res) {
-  req.session.lastPage = '/login';
-  console.log("found -1? " + findIndexByAttr(data, 'google_id', req.user.google_id));
-  var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
   //res.render('wishlist', user);
 
 	models.User
@@ -24,6 +21,7 @@ exports.view = function(req, res) {
 
 	function userCallback(err, users){
 		if(err){console.log(err); res.send(500)}
+		console.log(users[0]);
 		res.render('wishlist', users[0]);
 	}	
 
@@ -37,32 +35,87 @@ exports.add = function(req, res) {
 		"created_timestamp" : Date.now()
 	};
 
-	var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
+	models.User
+		.find({'google_id':req.user.google_id})
+		.sort()
+		.exec(userCallback);
+
+	function userCallback(err, users){
+		if(err){console.log(err); res.send(500)}
+		var wishlist = users[0].wishlist
+		var entry = wishlist[findIndexByAttr(users[0].wishlist, 'g_places_id', req.query.gid)];
+		if (entry == undefined) {
+			wishlist.push(newentry);
+			console.log(wishlist);
+			console.log(newentry);
+			console.log("\n\n\n\n\n");
+			/*models.User
+				.find({'google_id':req.user.google_id})*/
+
+				users[0].update({'wishlist': wishlist})
+					.exec(updateCallback);
+		}
+
+		function updateCallback(err){
+			console.log("updateCallback called");
+			if(err){console.log(err); res.send(500)}
+			res.send(200);
+		}
+	}	
+
+	/*var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
 	var entry = user.wishlist[findIndexByAttr(user.wishlist, 'g_places_id', req.query.gid)];
 	if (entry == undefined) {
 		user.wishlist.push(newentry);
 	}
-	res.send(200);
+	res.send(200);*/
 }
 
 exports.remove = function(req, res) {
-	var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
-	var index = findIndexByAttr(user.wishlist, 'g_places_id', req.query.gid);
-	if (index != -1) {
-		user.wishlist.splice(index, 1);
-		res.send(200);
+	models.User
+		.find({'google_id':req.user.google_id})
+		.sort()
+		.exec(userCallback);
+
+	function userCallback(err, users){
+		console.log("user found");
+		if(err){console.log(err); res.send(500)}
+		var wishlist = users[0].wishlist;
+		console.log(wishlist);
+		console.log(req.query.gid);
+		var index = findIndexByAttr(users[0].wishlist, 'g_places_id', req.query.gid);
+		console.log("index to be removed: " + index);
+		if(index != -1){
+			console.log(wishlist.length);
+			wishlist.splice(index, 1);
+			console.log(wishlist.length);
+
+			users[0].update({'wishlist': wishlist}).exec(removeCallback);
+		}
+		function removeCallback(err){
+			console.log("removeCallback");
+			if(err){console.log(err); res.send(500)}
+			res.send(200);
+		}
 	}
-	res.send(201);
 }
 
 exports.find = function(req, res) {
-	var user = data[findIndexByAttr(data, 'google_id', req.user.google_id)];
-	var index = findIndexByAttr(user.wishlist, 'g_places_id', req.query.gid);
-	if (index == -1) {
-		res.json({found: false});
-	} else {
-		res.json({found: true});
-	}
+	models.User
+		.find({'google_id':req.user.google_id})
+		.sort()
+		.exec(userCallback);
+	function userCallback(err, users){
+		if(err){console.log(err); res.send(500)}
+		
+		var index = findIndexByAttr(users[0].wishlist, 'g_places_id', req.query.gid);
+		if (index == -1) {
+			res.json({found: false});
+		} else {
+			res.json({found: true});
+		}
+	}	
+	
 }
 
 
