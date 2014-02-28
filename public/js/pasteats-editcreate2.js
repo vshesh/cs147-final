@@ -2,9 +2,19 @@ $(document).ready(function() {
 	initializePage();
 });
 
+var submitPressed = 0;
+
 function initializePage() {
 
-  $('#previewbox').hide()
+  $('#previewbox').hide();
+    
+
+  $("input[type='submit']").click(function() {
+    //disable after first click
+    if(submitPressed > 0){$(this).attr("disabled","disabled");}
+    submitPressed ++;
+    //should go to form.
+});
 
   $('#menuButton').click(function (e) {
     ShowDialog(false);
