@@ -68,7 +68,7 @@
       if (opennow != undefined) {
         displayopen = opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>";
       }
-      return '<div class= "frame"><div class="wishlist-entry" gid="'+place.id+'" gref="'+place.reference+'"><div class="swipe-options">'+
+      return '<div class="wishlist-entry" gid="'+place.id+'" gref="'+place.reference+'"><div class="swipe-options">'+
       '  <div class="option"> '+
       '    <span class="glyphicon glyphicon-plus-sign"></span></div>'+
       '    <div class="option">'+
@@ -83,7 +83,7 @@
       '      <ul >   '+
       '        <li>'+place.name +'</li>'+
       '        <li>'+place.types.toString()+'</li>'+
-      '        <li> Rating: '+(place.rating? place.rating : "")+'</li>'+
+      '        <li>'+(place.rating? place.rating : "")+'</li>'+
       '      </ul>'+
       '    </div>'+
       '    <div title="These are details about restaraunts" rel="tooltip" class= "right-info">'+
@@ -94,8 +94,7 @@
       '      </ul>'+
       '    </div>'+
       '  </a>'+
-      '</div>'+
-      '</div';
+      '</div>';
     }
 
     function createMarker(place) {
@@ -106,7 +105,7 @@
       });
 
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent('<a href="/info/' + place.reference + '">'+place.name+'</a>');
+        infowindow.setContent(place.name);
         infowindow.open(map, this);
       });
     }
@@ -137,9 +136,11 @@
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
+    $(document).ready(function() {
+      $(document).on('touchmove', function(e) {e.preventDefault();});
+    });
 
-  function setupActions() {
-    console.log("setup")
+    function setupActions() {
       $('.glyphicon-plus-sign').each(function(i,e) {
         $(e).click(function(ev) {
           ev.preventDefault();
@@ -151,13 +152,9 @@
             }, 
             complete: function(result, err) {
               if (err) console.log(err);
+              top.location.href = '/wishlist'
             }
           });
-          var parent_tile = $(this).parent().parent().parent();
-          parent_tile.fadeOut(300, function(){
-            parent_tile.hide(300);
-          });
-        swiped = false;
         });
       });
 

@@ -2,7 +2,6 @@
     {
       "name": "Avi Bagla", 
       "google_id": "111452748021407255154", 
-      "access_token": null,
       "wishlist" : [
         {
           "id" : "1",
@@ -55,8 +54,9 @@
       ],
       "pasteats": [
         {
-          "formatted_date" : "February 20, 2014",
+          "formatted_date" : "Feb 20, 2014",
           "created_timestamp" : "February 20, 2014",
+          "place_name": "Food",
           "id": "1",
           "title": "Amazing food!",
           "summary": "I really loved this place, I'm glad I put it on my Umami (tm) list!",
@@ -64,9 +64,10 @@
           "caption": "Yum ;D"
         },
         {
-          "formatted_date" : "February 20, 2014",
+          "formatted_date" : "Feb 20, 2014",
           "created_timestamp" : "February 14, 2014",
           "id": "2",
+          "place_name": "Food",
           "title": "FoodGASMMMIC",
           "summary": "There really is no better way to describe this.",
           "image": "1393494811801_111452748021407255154.jpg",
