@@ -5,6 +5,18 @@ body {
   background-color: #f46b4f;
 }
 
+#logo {
+  display: block;
+  margin:auto;
+  width: 80%;
+}
+
+#signInGoogle{
+  display: block;
+  margin: auto;
+  width: 60%;
+}
+
 .form-signin-heading{
 	text-align: center;
   font-weight:700;
