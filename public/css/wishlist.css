@@ -1,3 +1,12 @@
+body {
+  overflow-x: hidden;
+}
+
+.frame {
+  width: 100%;
+  overflow: hidden;
+}
+
 .wishlist-entry {
 	padding: 8px 0px;
 	height:75px;
@@ -12,6 +21,12 @@
 	height: 59px;
 	float:left;
 	padding: .5em;
+}
+
+.hint {
+	padding: 1em;
+	text-align :center;
+	height: 1em;
 }
 
 .option {
@@ -37,6 +52,14 @@ ul, li {
 	font-size: 1em;
 	font-weight: bold;
 	
+}
+
+#add {
+	float:right;
+}
+
+.gm-style-iw a {
+	color: blue;
 }
 
 .right-info {
@@ -66,11 +89,4 @@ a:link, a:visited {
 
 #out {
 	padding: .5em;
-}
-
-#add {
-	float:right;
-	font-size: 16px;
-	color:#888;
-	padding: 10px;
 }

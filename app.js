@@ -15,7 +15,6 @@ var request = require('request');
 
 //routes
 var index = require('./routes/index');
-var project = require('./routes/project');
 var login = require('./routes/login');
 var wishlist = require('./routes/wishlist');
 var info = require('./routes/info');
@@ -24,7 +23,21 @@ var pasteats = require('./routes/pasteats');
 var pasteats_editcreate = require('./routes/pasteats-editcreate');
 var search = require('./routes/search');
 var help = require('./routes/help');
-var secrets = require('./secrets');
+var fs = require('fs');
+
+//This code lets us test on local, or use heroku properly.
+var settings;
+if(fs.existsSync('./settings.js')){
+  settings = require('./settings.js');
+}else{
+  settings = {};
+  settings.amazonID = process.env.S3Key;
+  settings.amazonSecret = process.env.S3Secret;
+  settings.callbackURL = "http://umami.herokuapp.com/auth/google/callback";
+  settings.googleID = process.env.googleID;
+  settings.googleSecret = process.env.googleSecret;
+  settings.googleServer = process.env.googleServer;
+}
 
 //Mongo Database
 /*var local_database_name = 'cs147-final';
@@ -47,6 +60,7 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.multipart());
 app.use(express.methodOverride());
 app.use(express.session());
 // custom auth middelware
@@ -54,6 +68,7 @@ app.use(ensureAuthenticated);
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(partials());
+
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -64,14 +79,11 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new GoogleStrategy({
-		clientID: secrets.googleID,
-		clientSecret: secrets.googleSecret,
-		callbackURL: secrets.local
+		clientID: settings.googleID,
+		clientSecret: settings.googleSecret,
+		callbackURL: settings.callbackURL
 	},
 	function(accessToken, refreshToken, profile, done) {
-			/*process.nextTick(function(){
-				return done(null, profile);
-			});*/
 		login.findOrCreate({googleId: profile.id, name: profile.displayName}, function(err, user){
 				return done(err, user);
 		});
@@ -107,6 +119,7 @@ app.get('/auth/google/callback', passport.authenticate('google', {failureRedirec
 
 app.get('/logout', function(req, res){
   req.logout();
+  console.log(req.user);
   res.redirect('/');
 });
 
@@ -118,15 +131,16 @@ app.post('/pasteats/remove', pasteats.remove);
 app.get('/wishlist/add/:id', wishlist.add);
 app.get('/wishlist/find', wishlist.find);
 
+
 // places autocomplete request endpoints. 
 // NOTE: needs to not be visible to outside people (if someone found this url they could do lots of damage)
 app.get('/places/autocomplete/:keywords', function(req, res) {
-  request("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+req.params.keywords+"&location=37.76999,-122.44696&radius=500&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", 
+  request("https://maps.googleapis.com/maps/api/place/autocomplete/json?input="+req.params.keywords+"&location=37.76999,-122.44696&radius=500&sensor=false&key=" + settings.googleServer, 
         function(error, result, body) {res.json(result.body);});
 })
 
 app.get('/places/details/:id', function(req, res) {
-  request("https://maps.googleapis.com/maps/api/place/details/json?reference=" + req.params.id + "&sensor=false&key=AIzaSyCEkBg5mjDA-GYcn-AwsA6T8hNDgl_nLGo", 
+  request("https://maps.googleapis.com/maps/api/place/details/json?reference=" + req.params.id + "&sensor=false&key=" + settings.googleServer, 
         function(error, result, body) {res.json(result.body);});
 })
 

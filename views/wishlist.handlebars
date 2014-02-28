@@ -54,41 +54,37 @@
 
 	<div class="container">
 		{{#each wishlist}}
-		<!-- FREAKING FIX THE NAMES ALREADY THIS IS RIDICULOUS -->
+		<div class= "frame">
 		<div class="wishlist-entry" id="swipe{{id}}" gref = "{{g_places_ref}}" gid = "{{g_places_id}}">
 			
 			<div class="swipe-options">
 				<div class="option"> 
 					<span class="glyphicon glyphicon-remove"></span></div>
 					<div class="option">
-						<a href="/pasteats-editcreate/2"><span class="glyphicon glyphicon-pencil"></span></a>
+						<a href="/pasteats-editcreate/{{g_places_id}}"><span class="glyphicon glyphicon-pencil"></span></a>
 					</div>
 				</div>
 
 			<a  class = "place" gref = "{{g_places_ref}}" id = "{{g_places_id}}"  href="/info/{{g_places_ref}}">
-					<!--<div class="photo"> 
-						<img src="http://lorempixel.com/400/400/food/{{id}}">
-					</div>
-					<div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">
-						<ul >		
-							<li>{{name}}</li>
-							<li>{{cuisines}}</li>
-							<li><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></li>
-						</ul>
-					</div>
-					<div title="These are details about restaraunts" rel="tooltip" class= "right-info">
-						<ul>
-							<li>{{distance}}</li>
-							<li>{{hours}}</li>
-							<li>{{price}}</li>
-						</ul>
-					</div>-->
-
+						 <!-- details of each wishlist tile go here -->
 				</a>
 
 
 			</div>
+			</div>
 			{{/each}}
+
+					<div class="hint">
+						 	<ul>
+						 		<li>Tap <span class="glyphicon glyphicon-plus"></span> to add to your wishlist!</li>
+						 		<li>Swipe tiles to the right </li>
+						 		<li>for options</li>
+						 	</ul>
+						 </div>
+
+
+			</div>
+
 		</div>
 
 	<script type="text/javascript">
@@ -118,8 +114,9 @@
       var hours = place.opening_hours ? place.opening_hours : "";
       var opennow = hours.open_now;
       var displayopen = "";
+      var ratingWord = "Rating: "
       if (opennow != undefined) {
-        displayopen = opennow ? "open" : "closed";
+        displayopen = opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>";
       }
       return '    <div class="photo"> '+
       '      <img src="'+place.icon+'">'+
@@ -128,7 +125,7 @@
       '      <ul >   '+
       '        <li>'+place.name +'</li>'+
       '        <li>'+(place.types? place.types.toString(): "")+'</li>'+
-      '        <li>'+(place.rating? place.rating : "")+'</li>'+
+      '        <li>'+(place.rating? ratingWord + place.rating : "")+'</li>'+
       '      </ul>'+
       '    </div>'+
       '    <div title="These are details about restaraunts" rel="tooltip" class= "right-info">'+

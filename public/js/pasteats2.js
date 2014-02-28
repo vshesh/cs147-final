@@ -1,3 +1,6 @@
+var currentTile;
+var currentID;
+
 $(document).ready(function() {
 	initializePage();
 });
@@ -5,36 +8,39 @@ $(document).ready(function() {
 function initializePage() {
   // $('.glyphicon-share-alt').click(share);
   $('.glyphicon-trash').click(trash);
-  $("#btnNo").click(function (e) {
+  $(".btnNo").click(function (e) {
     HideDialog();
     e.preventDefault();
   });
 
-  $("#btnYes").click(function (e) {
+  $(".btnYes").click(function (e) {
     HideDialog();
     deleteEntry(e);
+
+    currentTile.fadeOut(300, function(){
+    currentTile.hide(300);
+  });
     e.preventDefault();
   });
 };
 
-//  function share(e) {
-//   
-// }
-
 function trash(e) {
+  currentTile = $(this).parent().parent();
+  console.log(currentTile.attr('id'));
+  currentID = currentTile.attr('id');
   ShowDialog(false);
   e.preventDefault();
 }
 
 function deleteEntry(e) {
   //this will eventually actually delete the entry
-  $("swipe1").fadeOut(500, function(){
-    $("#swipe1").hide(500);
-  });
+  $.post('/pasteats/remove', {timestamp: currentID}, 
+                        function(result, err){
+                            if (err) console.log(err)
+                          }
+                        )
 }
 
-function pencil(e) {
-}
 
 function ShowDialog(modal){
   $("#overlay").show();

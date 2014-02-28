@@ -103,3 +103,7 @@ td {
 #btnYes {
   border-left: 1px #c9c9c9 solid;
 }
+
+#menuButton {
+  padding: .75em;
+}

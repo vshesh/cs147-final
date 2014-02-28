@@ -55,21 +55,21 @@
       ],
       "pasteats": [
         {
+          "formatted_date" : "February 20, 2014",
           "created_timestamp" : "February 20, 2014",
-          "last_modified_timestamp" : "February 20, 2014",
           "id": "1",
           "title": "Amazing food!",
           "summary": "I really loved this place, I'm glad I put it on my Umami (tm) list!",
-          "image": "http://lorempixel.com/400/400/food/4",
+          "image": "1393494811801_111452748021407255154.jpg",
           "caption": "Yum ;D"
         },
         {
-          "created_timestamp" : "February 20, 2014",
-          "last_modified_timestamp" : "February 14, 2014",
+          "formatted_date" : "February 20, 2014",
+          "created_timestamp" : "February 14, 2014",
           "id": "2",
           "title": "FoodGASMMMIC",
           "summary": "There really is no better way to describe this.",
-          "image": "http://lorempixel.com/400/400/food/2",
+          "image": "1393494811801_111452748021407255154.jpg",
           "caption": "Hehehehehe"
         }
       ]

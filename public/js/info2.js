@@ -10,7 +10,8 @@ $(document).ready(function() {
 function initializePage() {
 
 	$('#menuButton').click(function (e) {
-    window.history.back();
     e.preventDefault();
+    top.location.href = document.referrer;
+    //window.history.back();
   });
 };
