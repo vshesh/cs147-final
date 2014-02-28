@@ -34,7 +34,7 @@ function trash(e) {
 
 function deleteEntry(e) {
   //this will eventually actually delete the entry
-  $.post('/pasteats/remove', {timestamp: currentID}, 
+  $.post('/pasteats/remove', {id: currentID}, 
                         function(result, err){
                             if (err) console.log(err)
                           }

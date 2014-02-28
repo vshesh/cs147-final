@@ -17,20 +17,11 @@ AWS.config.update({
 	region: 'us-west-2',
 });
 
-//Returns data value
-var findByAttr = function(array, attr, value) {
-    for(var i = 0; i < array.length; i++) {
-        if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
-            return array[i];
-        }
-    }
-    return undefined;
-}
 
 //Returns int
 var findIndexByAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i++) {
-        if(array[i].hasOwnProperty(attr) && array[i][attr] === value) {
+        if(array[i][attr] === value) {
             return i;
         }
     }
@@ -51,8 +42,16 @@ Date.prototype.getMonthName = function() {
 
 
 exports.view = function(req, res) {
-	var user = findByAttr(data, 'google_id', req.user.google_id);
-  res.render('pasteats', user);
+	models.User
+		.find({'google_id':req.user.google_id})
+		.sort()
+		.exec(userCallback);
+
+	function userCallback(err, users){
+		if(err){console.log(err); res.send(500)}
+		console.log(users[0]);
+		res.render('pasteats', users[0]);
+	}
 }
 
 
@@ -69,6 +68,7 @@ exports.add = function(req, res) {
 	var time = new Date();
  	var newEntry = {
 		'created_timestamp' : Date.now(),
+		'id': Date.now() + '_' + req.user.google_id,
 		'formatted_date': time.getMonthName() + " " + time.getDate() + ", " + time.getFullYear(),
 		'title' : req.body.title,
 		'summary': req.body.summary,
@@ -91,10 +91,10 @@ exports.add = function(req, res) {
  				ACL: 'public-read'
  			}, function (err, response){
  				if(err)console.log(err);
- 				var user = findByAttr(data, 'google_id', req.user.google_id);
 	 			newEntry['image'] = "http://s3-us-west-2.amazonaws.com/umamiappimages/" + fileName;
-	 			user.pasteats.unshift(newEntry);
-	 			res.redirect('/pasteats');
+	 			updateUser(newEntry);
+	 			/*user.pasteats.unshift(newEntry);
+	 			res.redirect('/pasteats');*/
  			});
 
  			/*fs.writeFile(newPath, photoData, function(err){
@@ -103,13 +103,32 @@ exports.add = function(req, res) {
  			}); */	
  			
  		}else{
-      console.log(req.user.google_id);
- 			var user = findByAttr(data, 'google_id', req.user.google_id);
  			newEntry['image'] = "";
- 			user.pasteats.unshift(newEntry);
- 			res.redirect('/pasteats');
+ 			updateUser(newEntry)
+ 			/*user.pasteats.unshift(newEntry);
+ 			res.redirect('/pasteats');*/
  		}	
+
 	});
+
+	function updateUser(entry){
+		models.User
+			.find({'google_id':req.user.google_id})
+			.sort()
+			.exec(userCallback);
+
+		function userCallback (err, users){
+			if(err){console.log(err); res.send(500)}
+			var pasteats = users[0].pasteats;
+			pasteats.unshift(entry);
+			users[0].update({'pasteats': pasteats}).exec(addCallback);
+		}
+
+		function addCallback(err){
+			if(err){console.log(err); res.send(500)}
+			res.redirect('/pasteats');
+		}
+	}
 
 	
 
@@ -117,13 +136,30 @@ exports.add = function(req, res) {
 }
 
 exports.remove= function(req, res) {
-	var user = findByAttr(data, 'google_id', req.user.google_id);
-	var index = findIndexByAttr(user.pasteats, 'created_timestamp', req.body.timestamp);
-	console.log(req.body.timestamp);
-	console.log(index);
-	if (index != -1) {
-		user.pasteats.splice(index, 1);
-		res.send(200);
+	
+	models.User
+		.find({'google_id':req.user.google_id})
+		.sort()
+		.exec(userCallback);
+
+	function userCallback(err, users){
+		console.log("user found");
+		if(err){console.log(err); res.send(500)}
+		var pasteats = users[0].pasteats;
+		console.log(req.body);
+		console.log(pasteats);
+		console.log(parseInt(req.body.id));
+		var index = findIndexByAttr(pasteats, 'id', req.body.id);
+		console.log("index to be removed: " + index);
+		if(index != -1){
+			pasteats.splice(index, 1);
+
+			users[0].update({'pasteats': pasteats}).exec(removeCallback);
+		}
+		function removeCallback(err){
+			console.log("removeCallback");
+			if(err){console.log(err); res.send(500)}
+			res.send(200);
+		}
 	}
-	res.send(201);
 }
