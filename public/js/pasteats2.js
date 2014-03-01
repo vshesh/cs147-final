@@ -6,7 +6,10 @@ $(document).ready(function() {
 });
 
 function initializePage() {
+  //Possible late implementation - social?
   // $('.glyphicon-share-alt').click(share);
+
+  //Delete entry
   $('.glyphicon-trash').click(trash);
   $(".btnNo").click(function (e) {
     HideDialog();
@@ -24,6 +27,7 @@ function initializePage() {
   });
 };
 
+//Deleting an element (with confirm)
 function trash(e) {
   currentTile = $(this).parent().parent();
   currentID = currentTile.attr('id');
@@ -32,7 +36,7 @@ function trash(e) {
 }
 
 function deleteEntry(e) {
-  //this will eventually actually delete the entry
+  //Deletes the past eats entry by ID
   $.post('/pasteats/remove', {id: currentID}, 
                         function(result, err){
                             if (err) console.log(err)

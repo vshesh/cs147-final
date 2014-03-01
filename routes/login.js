@@ -16,6 +16,8 @@ exports.view = function(req, res) {
   res.render('login');
 };
 
+//Called when a user logs in - either finds them in our database
+//or creates them with new entries.
 exports.findOrCreate = function(req, res){
 		
 
