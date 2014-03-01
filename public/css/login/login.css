@@ -5,17 +5,31 @@ body {
   background-color: #f46b4f;
 }
 
-#logo {
-  display: block;
-  margin:auto;
-  width: 80%;
+
+/*For the sake of browsers*/
+@media(max-width: 900px){
+  #logo {
+    display: block;
+    margin:auto;
+    width: 80%;
+  }
+  #signInGoogle{
+    display: block;
+    margin: auto;
+    padding-top: 70px;
+    width: 90%;
+  }
 }
 
-#signInGoogle{
-  display: block;
-  margin: auto;
-  width: 60%;
-}
+#logo {
+    display: block;
+    margin:auto;
+  }
+  #signInGoogle{
+    display: block;
+    margin: auto;
+  }
+
 
 .form-signin-heading{
 	text-align: center;
