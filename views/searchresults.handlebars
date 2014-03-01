@@ -138,9 +138,7 @@
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
-    $(document).ready(function() {
-      $(document).on('touchmove', function(e) {e.preventDefault();});
-    });
+    
 
     function setupActions() {
       $('.glyphicon-plus-sign').each(function(i,e) {
