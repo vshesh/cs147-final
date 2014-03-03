@@ -38,7 +38,6 @@
     var sliderChange = function() {
       minVal = r.getValue()[0];
       maxVal = r.getValue()[1];
-      ga("send", "event", "sliderHandle", "move");
     };
 
     r = $("#price-slider").slider().on('slide', sliderChange).data('slider');
@@ -279,7 +278,11 @@
         e.preventDefault();
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         if (cuisines != "") {
-          ga("send", "event", "CuisineField", "CuisineInputted", maxVal-minVal);
+          ga("send", "event", "CuisineField", "CuisineInputted", $('#cuisineSelect').select2('data').length);
+        }
+
+         if (prices != "") {
+          ga("send", "event", "PriceField", "PriceInputted", maxVal-minVal);
         }
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         var location = $('#pac-input').val();
