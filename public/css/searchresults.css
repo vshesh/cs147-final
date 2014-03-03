@@ -76,6 +76,11 @@ img {
   color: black; 
 }
 
+.place{
+  padding-top: 40px;
+  margin-top: -40px;
+}
+
 .place:active {
   color: #f46b4f;
 }
