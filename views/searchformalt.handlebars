@@ -32,7 +32,7 @@
   <script>
     var r;
     var minVal = 0;
-    var maxVal = 2;
+    var maxVal = 4;
     $(document).ready(function() {
 
     var sliderChange = function() {
@@ -281,10 +281,10 @@
           ga("send", "event", "CuisineField", "CuisineInputted", $('#cuisineSelect').select2('data').length);
         }
 
-         if (prices != "") {
+        // the user moved the slider somewhere useful
+        if (maxVal-minVal != 4) {
           ga("send", "event", "PriceField", "PriceInputted", maxVal-minVal);
         }
-        var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         var location = $('#pac-input').val();
 
         // redirect as a get request
@@ -357,7 +357,7 @@
     
     <div class="priceWrapper">
     <p>Price Range</p>
-    <b>$ &nbsp; </b> <input id="price-slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="4" data-slider-step="1" data-slider-value="[0,2]" data-slider-tooltip="hide"/> <b> &nbsp; $$$$$</b>
+    <b>$ &nbsp; </b> <input id="price-slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="4" data-slider-step="1" data-slider-value="[0,4]" data-slider-tooltip="hide"/> <b> &nbsp; $$$$$</b>
   </div>
 
 
