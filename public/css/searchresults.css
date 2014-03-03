@@ -14,7 +14,7 @@ body {
 
 .frame {
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .wishlist-entry {
@@ -74,6 +74,11 @@ img {
 
 .place:hover, .place {
   color: black; 
+}
+
+.place{
+  padding-top: 40px;
+  margin-top: -40px;
 }
 
 .place:active {

@@ -41,7 +41,7 @@
       });
 
       var request = {
-        query: "{{keyword}}",
+        query: "food {{keyword}}",
         minprice: "{{minprice}}",
         maxprice: "{{maxprice}}"
       };
@@ -70,7 +70,7 @@
       if (opennow != undefined) {
         displayopen = opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>";
       }
-      return '<div class="wishlist-entry" gid="'+place.id+'" gref="'+place.reference+'"><div class="swipe-options">'+
+      return '<div class="frame"><div class="wishlist-entry" gid="'+place.id+'" gref="'+place.reference+'"><div class="swipe-options">'+
       '  <div class="option"> '+
       '    <span class="glyphicon glyphicon-plus-sign"></span></div>'+
       '    <div class="option">'+
@@ -96,7 +96,7 @@
       '      </ul>'+
       '    </div>'+
       '  </a>'+
-      '</div>';
+      '</div></div>';
     }
 
     function createMarker(place) {
@@ -107,7 +107,7 @@
       });
 
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name);
+        infowindow.setContent("<span onclick='scroll(this);' href= #" + place.id + "> " + place.name + "</span>");
         infowindow.open(map, this);
       });
     }
@@ -137,11 +137,6 @@
       });
     }
 
-    google.maps.event.addDomListener(window, 'load', initialize);
-    $(document).ready(function() {
-      $(document).on('touchmove', function(e) {e.preventDefault();});
-    });
-
     function setupActions() {
       $('.glyphicon-plus-sign').each(function(i,e) {
         $(e).click(function(ev) {
@@ -159,7 +154,6 @@
           });
         });
       });
-
       $('#menuButton').click(function (e) {
         e.preventDefault();
         top.location.href = '/search';
@@ -176,11 +170,18 @@
         top.location.href = '/info/' + $(this).attr('gref');
       });
     }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    function scroll(e) {
+      console.log($(e));
+     $('html,body').animate({scrollTop: $($('.wishlist-entry a.place'+$(e)[0].getAttribute('href'))).offset().top -45});
+     }
+
   </script>
 </head>
 
 <body>
-{{> menupanel-partial}}
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-headerw">
