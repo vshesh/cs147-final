@@ -70,7 +70,7 @@
       if (opennow != undefined) {
         displayopen = opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>";
       }
-      return '<div class="wishlist-entry" gid="'+place.id+'" gref="'+place.reference+'"><div class="swipe-options">'+
+      return '<div class="frame"><div class="wishlist-entry" gid="'+place.id+'" gref="'+place.reference+'"><div class="swipe-options">'+
       '  <div class="option"> '+
       '    <span class="glyphicon glyphicon-plus-sign"></span></div>'+
       '    <div class="option">'+
@@ -96,7 +96,7 @@
       '      </ul>'+
       '    </div>'+
       '  </a>'+
-      '</div>';
+      '</div></div>';
     }
 
     function createMarker(place) {
