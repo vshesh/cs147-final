@@ -278,11 +278,9 @@
         e.preventDefault();
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         if (cuisines != "") {
-          ga("send", "event", "CuisineField", "CuisineInputted", $('#cuisineSelect').select2('data').length);
+          ga("send", "event", "CuisineField", "CuisineInputted","AltCuisineInputted", $('#cuisineSelect').select2('data').length);
         }
-
-         if (prices != "") {
-          ga("send", "event", "PriceField", "PriceInputted", maxVal-minVal);
+          ga("send", "event", "PriceField", "PriceInputted", "AltPriceInputted", maxVal-minVal);
         }
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         var location = $('#pac-input').val();

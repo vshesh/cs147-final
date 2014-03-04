@@ -270,12 +270,12 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
         e.preventDefault();
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         if (cuisines != "") {
-          ga("send", "event", "CuisineField", "CuisineInputted", $('#cuisineSelect').select2('data').length);
+          ga("send", "event", "CuisineField", "CuisineInputted", "CuisineInputted", $('#cuisineSelect').select2('data').length);
         }
         var prices = $('#priceSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
 
          if (prices != "") {
-          ga("send", "event", "PriceField", "PriceInputted", $('#priceSelect').select2('data').length);
+          ga("send", "event", "PriceField", "PriceInputted", "PriceInputted", $('#priceSelect').select2('data').length);
         }
         var location = $('#pac-input').val();
         // redirect as a get request
