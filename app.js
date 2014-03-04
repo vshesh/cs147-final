@@ -33,7 +33,8 @@ if(fs.existsSync('./settings.js')){
   settings = {};
   settings.amazonID = process.env.S3Key;
   settings.amazonSecret = process.env.S3Secret;
-  settings.callbackURL = "http://umami.herokuapp.com/auth/google/callback";
+  //CHANGE BACK WHEN WE SWITCH
+  settings.callbackURL = "http://umamialt.herokuapp.com/auth/google/callback";
   settings.googleID = process.env.googleID;
   settings.googleSecret = process.env.googleSecret;
   settings.googleServer = process.env.googleServer;
