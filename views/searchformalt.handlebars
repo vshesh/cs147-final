@@ -32,7 +32,6 @@
   
 
 
-  <script src="/js/search2.js"></script>
 </head>
 
 <body>
@@ -336,6 +335,7 @@
       });
       $('#submitBtn').click(function(e) {
         e.preventDefault();
+        ga("send", "event", "SubmitBtn", "click");
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         if (cuisines != "") {
           ga("send", "event", "CuisineField", "CuisineInputted","AltCuisineInputted", $('#cuisineSelect').select2('data').length);

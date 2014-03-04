@@ -41,8 +41,6 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
   
-
-    <script src="/js/search2.js"></script>
 </head>
 
 <body>
@@ -321,6 +319,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
       });
       $('#submitBtn').click(function(e) {
         e.preventDefault();
+        ga("send", "event", "SubmitBtn", "click");
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         if (cuisines != "") {
           ga("send", "event", "CuisineField", "CuisineInputted", "OrigCuisineInputted", $('#cuisineSelect').select2('data').length);
