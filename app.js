@@ -2,6 +2,8 @@
 /**
  * Module dependencies.
  * Vishesh, Ashley, Avi Final
+
+ CHANGE THE CODE FOR WHEN WE GO BACK TO UMAMI
  */
 
 var express = require('express');
@@ -33,6 +35,7 @@ if(fs.existsSync('./settings.js')){
   settings = {};
   settings.amazonID = process.env.S3Key;
   settings.amazonSecret = process.env.S3Secret;
+  //CHANGE BACK WHEN WE SWITCH
   settings.callbackURL = "http://umami.herokuapp.com/auth/google/callback";
   settings.googleID = process.env.googleID;
   settings.googleSecret = process.env.googleSecret;
