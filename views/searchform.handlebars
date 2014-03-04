@@ -40,7 +40,60 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
   <!-- Google Places API -->
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
-  <script>
+  
+
+    <script src="/js/search2.js"></script>
+</head>
+
+<body>
+{{> menupanel-partial}}
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <button id="menuButton" type="button" class="navbar-toggle pull-left" >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="navbar-brand">Search</span>
+      </div>
+    </div>
+    <div id="underlay"></div>
+
+<div class="container">
+  <div id="searchform">
+    <h3>search by keyword<span style="color: #f46b4f"> *</span></h3>
+    <div class="searchName">
+    <span>
+      <input id="pac-input" class="controls" required type="text" placeholder="Restaurant or Location" />
+      <span id="autocomplete-clear" class="glyphicon glyphicon-remove"></span>
+    </span>
+    </div>
+    <h3>and by filters</h3>
+    <div class="priceWrapper">
+      <input id="priceSelect" multiple class="controls" placeholder="Price Ranges"></input>
+    </div>
+    
+    <div class="cuisineWrapper">    
+      <input multiple id="cuisineSelect" class="controls" placeholder="Cuisines"></input>
+    </div>
+  <br>
+  <button id="submitBtn" class="btn btn-default btn-lg">Go</button>
+  </div>
+</div>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48563768-1', 'umami.herokuapp.com');
+  ga('send', 'pageview');
+
+</script>
+<script>
     $(document).ready(function() {
       $('#priceSelect').select2({
         placeholder: "Price Ranges",
@@ -312,58 +365,6 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
     google.maps.event.addDomListener(window, 'load', initialize);
 
   </script>
-
-    <script src="/js/search2.js"></script>
-</head>
-
-<body>
-{{> menupanel-partial}}
-
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
-          <button id="menuButton" type="button" class="navbar-toggle pull-left" >
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <span class="navbar-brand">Search</span>
-      </div>
-    </div>
-    <div id="underlay"></div>
-
-<div class="container">
-  <div id="searchform">
-    <h3>search by keyword<span style="color: #f46b4f"> *</span></h3>
-    <div class="searchName">
-    <span>
-      <input id="pac-input" class="controls" required type="text" placeholder="Restaurant or Location" />
-      <span id="autocomplete-clear" class="glyphicon glyphicon-remove"></span>
-    </span>
-    </div>
-    <h3>and by filters</h3>
-    <div class="priceWrapper">
-      <input id="priceSelect" multiple class="controls" placeholder="Price Ranges"></input>
-    </div>
-    
-    <div class="cuisineWrapper">    
-      <input multiple id="cuisineSelect" class="controls" placeholder="Cuisines"></input>
-    </div>
-  <br>
-  <button id="submitBtn" class="btn btn-default btn-lg">Go</button>
-  </div>
-</div>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-48563768-1', 'umami.herokuapp.com' );
-  ga('send', 'pageview');
-
-</script>
 
 
 
