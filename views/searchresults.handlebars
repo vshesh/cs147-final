@@ -37,7 +37,7 @@
 
       map = new google.maps.Map(document.getElementById('map-canvas'), {
         center: pyrmont,
-        zoom: 10
+        zoom: 12
       });
 
       var request = {
@@ -51,15 +51,17 @@
     }
 
     function callback(results, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
+      if (status == google.maps.places.PlacesServiceStatus.OK && results) {
         for (var i = 0; i < results.length; i++) {
           createMarker(results[i]);
           $('#results').html($('#results').html() + createResultDiv(results[i]));
         }
+        map.setCenter(results[0].geometry.location);
+        swipeTiles();
+        setupActions();
+      } else {
+        $('#noresults').show();
       }
-      map.setCenter(results[0].geometry.location);
-      swipeTiles();
-      setupActions();
     }
 
     function createResultDiv(place) {
@@ -201,8 +203,9 @@
 
 <div class="container">
   <div id="map-canvas"></div>
+  <div id="noresults"> No tasty places found </br>Please try a different search</div>
   <div id="results">
-    
+      
   </div>
 </div>
 

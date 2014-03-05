@@ -2,6 +2,12 @@ body {
   overflow-x: hidden;
 }
 
+#noresults {
+  display:none;
+  text-align: center;
+  padding: 1em;
+}
+
 #map-canvas {
   width: 100%;
   height: 200px;
