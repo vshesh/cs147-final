@@ -66,6 +66,12 @@
       var price = place.price_level ? Array(place.price_level+1).join('$') : "";
       var hours = place.opening_hours ? place.opening_hours : "";
       var opennow = hours.open_now;
+      var photo = place.photos;
+      if (photo) {
+        photo = photo[0].getUrl({'maxHeight': 100});
+      } else {
+        photo = place.icon;
+      }
       var displayopen = "";
       if (opennow != undefined) {
         displayopen = opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>";
@@ -79,7 +85,7 @@
       '  </div>'+
       '  <a class="place" gref="' + place.reference+ '"" id= "' + place.id + '" href="/info/' + place.reference+ '"">'+
       '    <div class="photo"> '+
-      '      <img src="'+place.icon+'">'+
+      '      <img src="'+ photo +'">'+
       '    </div>'+
       '    <div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">'+
       '      <ul >   '+

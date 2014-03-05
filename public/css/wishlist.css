@@ -23,6 +23,10 @@ body {
 	padding: .5em;
 }
 
+#map-canvas {
+	display: none;
+}
+
 .hint {
 	padding: 1em;
 	text-align :center;

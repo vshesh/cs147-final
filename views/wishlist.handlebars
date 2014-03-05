@@ -27,13 +27,14 @@
 		<script src="/js/hammer.js"></script>
 		<script src="/js/jquery.hammer.js"></script>
 		<script src="/js/wishlist2.js"></script>
+	  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
 </head>
 
 
 <body>
 	{{> menupanel-partial}}
-
+	<div id = "map-canvas"></div>
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
         <button id="menuButton" type="button" class="navbar-toggle pull-left" >
@@ -85,6 +86,15 @@
 		</div>
 
 	<script type="text/javascript">
+		var map;
+    var infowindow;
+      var pyrmont = new google.maps.LatLng(33.8665433, -115.1956316);
+
+      map = new google.maps.Map(document.getElementById('map-canvas'), {
+        center: pyrmont,
+        zoom: 10
+      });
+
 	$(function(){
 		$('.place').each(function(index){
 			var placeRef = $(this).attr('gref');
@@ -115,8 +125,32 @@
       if (opennow != undefined) {
         displayopen = opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>";
       }
+
+
+      var request = {
+        reference: place.reference
+      };
+      var service = new google.maps.places.PlacesService(map);
+
+      var image;
+      service.getDetails(request, callback);
+
+      function callback(place, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          image = createPhotoMarker(place);
+        }
+      }
+
+      function createPhotoMarker(place) {
+        var photo_arr = place.photos;
+        if (!photo_arr) return;
+        photo = photo_arr[0].getUrl({'maxHeight': 500});
+
+	      var tile = $('#img'+place.id).attr("src", photo);
+      };
+
       return '    <div class="photo"> '+
-      '      <img src="'+place.icon+'">'+
+      '      <img id="img' + place.id + '" src="' + place.icon + '">'+
       '    </div>'+
       '    <div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">'+
       '      <ul >   '+
