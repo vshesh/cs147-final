@@ -174,8 +174,8 @@
     google.maps.event.addDomListener(window, 'load', initialize);
 
     function scroll(e) {
-      console.log($(e));
      $('html,body').animate({scrollTop: $($('.wishlist-entry a.place'+$(e)[0].getAttribute('href'))).offset().top -45});
+      $('.wishlist-entry a.place'+$(e)[0].getAttribute('href')).addClass('scrolledToThis');
      }
 
   </script>
