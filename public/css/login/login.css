@@ -25,10 +25,15 @@ body {
     display: block;
     margin:auto;
   }
-  #signInGoogle{
-    display: block;
-    margin: auto;
-  }
+#signInGoogle{
+  display: block;
+  margin: auto;
+}
+
+#tagline{
+  text-align: center;
+  margin-top: -10px;
+}
 
 
 .form-signin-heading{
