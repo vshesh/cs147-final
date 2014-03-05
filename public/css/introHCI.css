@@ -26,12 +26,13 @@ body {
 }
 
 #menuButton {
-  margin-left: .5em;
-  margin-top: 2px;
+  margin-top: 0px;
 	padding: 1em;
+  height: 50px;
   border: none;
   background-color: #f46b4f;
   color: white;
+  border-radius: 0px;
 }
 
 .icon-bar {
