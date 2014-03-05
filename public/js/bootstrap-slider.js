@@ -36,7 +36,10 @@
 			this.picker[0].id = this.id;
 		}
 
-		this.touchCapable = true;
+		this.touchCapable = false;
+		if('ontouchstart' in document) {
+    	this.touchCapable = true;
+		}
 
 		var tooltip = this.element.data('slider-tooltip')||options.tooltip;
 
