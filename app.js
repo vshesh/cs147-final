@@ -110,7 +110,7 @@ app.get('/pasteats', pasteats.view);
 app.get('/pasteats/:id', pasteats.viewById);
 app.get('/pasteats-editcreate/:id', pasteats_editcreate.viewById);
 app.get('/search/results', search.viewResults);
-app.get('/search', search.viewForm);
+app.get('/search', search.viewAlt);
 app.get('/searchalt', search.viewAlt);
 app.get('/search/results', search.viewResults);
 app.get('/help', help.view);
