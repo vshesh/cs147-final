@@ -50,6 +50,7 @@ ul, li {
 	width: 28%;
 	float:left;
 	height: 59px;
+	padding-left: 6px;
 }
 
 .left-info ul li:first-child {
@@ -77,7 +78,7 @@ ul, li {
 img {
 	width: 4.5em;
 	height: 4.5em;
-	border: 1px #e3e3e3 solid;
+	/*border: 1px #e3e3e3 solid;*/
 }
 
 a:link, a:visited {
