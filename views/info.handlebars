@@ -173,7 +173,7 @@
         });
 
         google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent('<a href="{{website}}">'+place.name+'</a>');
+          infowindow.setContent(place.name + '<a href="https://www.google.com/maps/preview?saddr=My+Location&daddr={{address}}"><br>Get Directions!</a>');
           infowindow.open(map, this);
         });
 
