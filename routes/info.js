@@ -24,7 +24,6 @@ exports.viewById = function(req, res) {
   //make the entry yeah!
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
-    console.log(theBody.result);
   	var entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
