@@ -32,6 +32,19 @@ body {
   margin: auto;
 }
 
+#about{
+  display: block;
+  padding-top: 100px;
+  float: bottom;
+  text-align: center;
+  margin: auto;
+  font-size: 1.1em;
+}
+
+#about:hover{
+
+}
+
 h4 {
   font-weight: 100;
   text-transform: uppercase;
