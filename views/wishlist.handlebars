@@ -164,13 +164,14 @@
       '      <ul >   '+
       '        <li>'+place.name +'</li>'+
       '        <li><span class= "address">'+ street +", " +locality+'</span></li>'+
-      '        <li>'+(place.rating? ratingWord + place.rating : "N/A")+'</li>'+
+      '        <li>'/*+(place.rating? ratingWord + place.rating : "N/A")*/+'</li>'+
       '      </ul>'+
       '    </div>'+
       '    <div title="These are details about restaraunts" rel="tooltip" class= "right-info">'+
       '      <ul>'+
       '        <li>'+displayopen+'</li>'+
-      '        <li>'+price+'</li>'+
+      '        <li>'+(price ? price: "$$" )+'</li>'+
+      '				 <li>'+(place.rating? place.rating : "N/A")+'</li>'+
       '      </ul>'+
       '    </div>';
 	}
