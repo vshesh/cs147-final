@@ -14,6 +14,12 @@ body {
   padding-bottom: .5em;
 }
 
+
+.address {
+  font-size: 13px;
+}
+
+
 #menuButton {
   padding: .75em;
 }

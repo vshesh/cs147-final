@@ -81,7 +81,7 @@
 						 </div>
 
 
-			</div>
+			</idv>
 
 		</div>
 
@@ -148,15 +148,23 @@
 
 	      var tile = $('#img'+place.id).attr("src", photo);
       };
+      
+      var address = place.adr_address;
+      var startStreet = address.indexOf('<span class="street-address">') + 29;
+      var endStreet = address.indexOf('<', startStreet);
+      var street = address.substring(startStreet, endStreet);
+      var startLocality = address.indexOf('<span class="locality">') + 23;
+      var endLocality = address.indexOf('<', startLocality);
+      var locality = address.substring(startLocality, endLocality);
 
       return '    <div class="photo"> '+
-      '      <img id="img' + place.id + '" src="' + place.icon + '">'+
+      '      <div class="photowrapper"><img id="img' + place.id + '" src="/images/default.png"></div>'+
       '    </div>'+
       '    <div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">'+
       '      <ul >   '+
       '        <li>'+place.name +'</li>'+
-      '        <!--<li>'+(place.types? place.types.toString(): "")+'</li>-->'+
-      '        <li>'+(place.rating? ratingWord + place.rating : "")+'</li>'+
+      '        <li><span class= "address">'+ street +", " +locality+'</span></li>'+
+      '        <li>'+(place.rating? ratingWord + place.rating : "N/A")+'</li>'+
       '      </ul>'+
       '    </div>'+
       '    <div title="These are details about restaraunts" rel="tooltip" class= "right-info">'+

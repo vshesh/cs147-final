@@ -4,23 +4,32 @@ body {
 
 .frame {
   width: 100%;
+  height: 75px;
   overflow: hidden;
+	border-bottom: 1px #e3e3e3 solid;
+	background-color: #f8f8f8;
+}
+
+.address {
+	font-size: 13px;
+}
+
+.container {
+	margin-top: 50px;
 }
 
 .wishlist-entry {
-	padding: 8px 0px;
-	height:75px;
+	height:100%;
 	overflow: hidden;
-	border-bottom: 1px #e3e3e3 solid;
 	position: relative;
 	width: 200%;
 }
 
 .swipe-options {
-	width:49%;
-	height: 59px;
+	width:50%;
+	height: 100%;
 	float:left;
-	padding: .5em;
+	padding: 1.25em;
 }
 
 #map-canvas {
@@ -47,16 +56,18 @@ ul, li {
 }
 
 .left-info {
-	width: 28%;
+	width: 29%;
 	float:left;
-	height: 59px;
+	height: 100%;
+	padding: 5px 0em 0px 0em;
+	overflow: hidden;
+	padding-left: 6px;
 	padding-left: 8px;
 }
 
 .left-info ul li:first-child {
 	font-size: 1em;
-	font-weight: bold;
-	
+	font-weight: bold;	
 }
 
 #add {
@@ -69,16 +80,15 @@ ul, li {
 
 .right-info {
 	text-align:right;
-	width: 10.5%;
+	width: 9.5%;
 	float:left;
-	height: 59px;
-	padding: 0px 1em 0px 0em;
+	height: 100%;
+	padding: 5px 10px 0px 0px;
 }
 
 img {
 	width: 4.5em;
 	height: 4.5em;
-	/*border: 1px #e3e3e3 solid;*/
 }
 
 a:link, a:visited {
@@ -86,10 +96,24 @@ a:link, a:visited {
 }
 
 .photo {
-	padding: 0px 0px 0px 1em;
-	width: 12%;
-	height: 59px;
+	width: 75px;
+	height: 100%;
 	float:left;
+	margin-right: .5em;
+}
+
+.photowrapper {
+	display: table-cell;
+	vertical-align: middle;
+	overflow: hidden;
+	width: 75px;
+	height: 75px;
+}
+
+
+img {
+	width: 100%;
+	height: 100%;
 }
 
 #out {
