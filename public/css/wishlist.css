@@ -58,14 +58,11 @@ ul, li {
 .left-info {
 	width: 29%;
 	float:left;
-<<<<<<< HEAD
 	height: 100%;
 	padding: 5px 0em 0px 0em;
 	overflow: hidden;
-=======
-	height: 59px;
 	padding-left: 6px;
->>>>>>> a7d91703ed7f669cb4ba5261a431dfd94616d86a
+	padding-left: 8px;
 }
 
 .left-info ul li:first-child {

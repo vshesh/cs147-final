@@ -156,7 +156,8 @@
           return;
         }
         var url1 = photos[0].getUrl({'maxHeight': 500});
-        var url2 = photos[1].getUrl({'maxHeight': 500});
+        var url2 = '';
+        if(photos[1]) url2 = photos[1].getUrl({'maxHeight': 500});
         $('#photo1').attr("src", url1);
         $('#photo2').attr("src", url2);
         $('#url1').attr("href", url1);

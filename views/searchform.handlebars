@@ -329,7 +329,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
          if (prices != "") {
           ga("send", "event", "PriceField", "PriceInputted", "OrigPriceInputted", $('#priceSelect').select2('data').length);
         }
-        var location = $('#pac-input').val();
+        var location = address;
         // redirect as a get request
         window.location  = '/search/results?keyword='+(cuisines === "" ? "food" : cuisines)+" "+location;
       });
@@ -350,6 +350,9 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
         if (!place.geometry) {
           return;
         }
+        
+        console.log(place);
+        address = place.address;
         if (place.address_components) {
           address = [
             (place.address_components[0] && place.address_components[0].short_name || ''),
