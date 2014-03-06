@@ -9,7 +9,7 @@ form {
 .textfield, textarea, #upload, #add, #filewrapper{
   color: #333;
   font-size: 13px;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   border: none;
   width: 90%;
   margin: 1em auto;
@@ -42,7 +42,7 @@ textarea {
 #caption {
 	color: #333;
   font-size: 13px;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   border: none;
   width: 90%;
   margin: auto;

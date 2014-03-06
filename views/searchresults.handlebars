@@ -72,12 +72,24 @@
       if (photo) {
         photo = photo[0].getUrl({'maxHeight': 100});
       } else {
-        photo = place.icon;
+        photo = "/images/default.png";
       }
       var displayopen = "";
       if (opennow != undefined) {
         displayopen = opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>";
       }
+
+
+      var name = place.name;
+      if (name.length > 20) {
+        name = name.substring(0,25);
+      }
+
+      var address = place.formatted_address;
+      if (address.length > 29) {
+        address = address.substring(0,28);
+      }
+
       return '<div class="frame"><div class="wishlist-entry" gid="'+place.id+'" gref="'+place.reference+'"><div class="swipe-options">'+
       '  <div class="option"> '+
       '    <span class="glyphicon glyphicon-plus-sign"></span></div>'+
@@ -91,9 +103,9 @@
       '    </div>'+
       '    <div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">'+
       '      <ul >   '+
-      '        <li>'+place.name +'</li>'+
-      '        <li>'+place.types.toString()+'</li>'+
-      '        <li>'+(place.rating? place.rating : "")+'</li>'+
+      '        <li>'+name +'</li>'+
+      '        <li><span class="address">'+ address +'</span></li>'+
+      '        <li>Rating: '+(place.rating? place.rating : "N/A")+'</li>'+
       '      </ul>'+
       '    </div>'+
       '    <div title="These are details about restaraunts" rel="tooltip" class= "right-info">'+
@@ -106,6 +118,8 @@
       '  </a>'+
       '</div></div>';
     }
+
+
 
     function createMarker(place) {
       var placeLoc = place.geometry.location;
