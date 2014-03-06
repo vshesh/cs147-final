@@ -335,15 +335,15 @@
       });
       $('#submitBtn').click(function(e) {
         e.preventDefault();
-        ga("send", "event", "SubmitBtn", "Altclick");
+        // ga("send", "event", "SubmitBtn", "Altclick");
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         if (cuisines != "") {
-          ga("send", "event", "CuisineField", "CuisineInputted","AltCuisineInputted", $('#cuisineSelect').select2('data').length);
+          // ga("send", "event", "CuisineField", "CuisineInputted","AltCuisineInputted", $('#cuisineSelect').select2('data').length);
         }
 
         // the user moved the slider somewhere useful
         if (maxVal-minVal != 4) {
-          ga("send", "event", "PriceField", "PriceInputted", "AltPriceInputted", maxVal-minVal);
+          // ga("send", "event", "PriceField", "PriceInputted", "AltPriceInputted", maxVal-minVal);
         }
         var location = $('#pac-input').val();
 

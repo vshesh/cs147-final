@@ -319,15 +319,15 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
       });
       $('#submitBtn').click(function(e) {
         e.preventDefault();
-        ga("send", "event", "SubmitBtn", "Origclick");
+        //ga("send", "event", "SubmitBtn", "Origclick");
         var cuisines = $('#cuisineSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
         if (cuisines != "") {
-          ga("send", "event", "CuisineField", "CuisineInputted", "OrigCuisineInputted", $('#cuisineSelect').select2('data').length);
+          // ga("send", "event", "CuisineField", "CuisineInputted", "OrigCuisineInputted", $('#cuisineSelect').select2('data').length);
         }
         var prices = $('#priceSelect').select2('data').map(function(d) {return d.text;}).join(' OR ');
 
          if (prices != "") {
-          ga("send", "event", "PriceField", "PriceInputted", "OrigPriceInputted", $('#priceSelect').select2('data').length);
+          // ga("send", "event", "PriceField", "PriceInputted", "OrigPriceInputted", $('#priceSelect').select2('data').length);
         }
         var location = address;
         // redirect as a get request
