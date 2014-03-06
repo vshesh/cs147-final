@@ -1,0 +1,34 @@
+{
+  "entries" : [
+    {
+      "id" : "1",
+      "name" : "Umami",
+      "title": "The cool food app",
+      "description" : "Don't you hate it when you forget those awesome restaurants you've always wanted to go to? So do we. We here at Umami created this web app to keep track of all of the restaurants we want to go to sometime in the future. We love our food, dude."
+    },
+    {
+      "id" : "2",
+      "name" : "Avi Bagla",
+      "title": "A slice of Pizza",
+      "description" : "Avi loves to eat. Give him a bowl of nails, and he'll find a way to eat it and enjoy it (with lots of thousand island dressing). Avi probably has too many restaurants on his wishlist. He's too hungry.",
+      "image": "https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-frc3/t1/1779080_10152211672270664_1535489162_n.jpg",
+      "caption": "The dog was interviewed after. He said he liked it."
+    },
+    {
+      "id" : "3",
+      "name" : "Ashley Ngu",
+      "title": "Gourmet Pickles",
+      "description" : "Ash is the inventor of Umami. It came to her in a vision while meditating upon the satelite dish at the Dish. Ash loves good food. Like, really, really really good food. Don't mess with Ash. No one messes with Ash.",
+      "image": "http://west.stanford.edu/sites/default/files/AshleyNguProfilePic_225x300.png",
+      "caption": "#nofilter"
+    },
+    {
+      "id" : "4",
+      "name" : "Vishesh Gupta",
+      "title": "Spinach Samosas",
+      "description" : "Vishesh is scary. Like, super scary. But give him a plate and some food, and he's happy. Like, soo happy. ",
+      "image": "http://m.c.lnkd.licdn.com/mpr/pub/image-lDlbFyVsKI4wQOsLGINAto525L7mItyjA-2lUsD75KGtG3telDllb7bs5Moh-txCBhV2/vishesh-gupta.jpg",
+      "caption": "Have you heard of topology? Really? WHAT? No. No. I can't even."
+    }
+  ]
+}

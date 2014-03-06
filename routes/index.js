@@ -1,4 +1,5 @@
 var models = require('../models');
+var about = require('../data/about.json');
 
 //returns int
 var findIndexByAttr = function(array, attr, value) {
@@ -9,6 +10,12 @@ var findIndexByAttr = function(array, attr, value) {
     }
     return -1;
 }
+
+
+exports.about = function(req, res){
+  res.render('aboutus', about);
+}
+
 
 //Logging someone in!
 exports.view = function(req, res) {

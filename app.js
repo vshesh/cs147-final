@@ -112,6 +112,7 @@ app.get('/pasteats-editcreate/:id', pasteats_editcreate.viewById);
 app.get('/search/results', search.viewResults);
 app.get('/search', search.viewAlt);
 app.get('/searchalt', search.viewAlt);
+app.get('/about', index.about)
 app.get('/search/results', search.viewResults);
 app.get('/help', help.view);
 app.get('/auth/google', passport.authenticate('google', {scope: 'https://www.googleapis.com/auth/plus.login'}));
@@ -179,12 +180,16 @@ function ensureAuthenticated(req, res, next) {
   // UBER HACK for the middleware to allow css,js to pass through but not 
   // anything else.
   if (req.path === '/login' || 
-      req.path.startsWith('/js/bootstrap') || 
+      req.path === '/about' ||
+      req.path.startsWith('/js') || 
       req.path.startsWith('/css/bootstrap') || 
       req.path.startsWith('/css/introHCI') ||
       req.path.startsWith('/css/login') ||
       req.path.startsWith('/auth') || 
       req.path.startsWith('/images') ||
+      req.path.startsWith('/css/about') ||
+      req.path.startsWith('/css') ||
+      req.path.startsWith('/js/about') ||
       req.isAuthenticated()) { return next(); }
   
   res.redirect('/login');
