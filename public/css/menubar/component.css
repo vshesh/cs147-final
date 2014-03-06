@@ -30,8 +30,11 @@
 }
 
 .cbp-spmenu a:active {
-	background: #F5502F;
-	color: #47a3da;
+	background: #CC3A1D;
+}
+
+.cbp-spmenu a:active {
+	background: #CC3A1D;
 }
 
 /* Orientation-dependent styles for the content of the menu */
@@ -48,7 +51,7 @@
 }
 
 .cbp-spmenu-vertical a {
-	border-bottom: 1px solid #D65136;
+	border-bottom: 1px solid #A55A0B;
 	padding: 1em;
 }
 
