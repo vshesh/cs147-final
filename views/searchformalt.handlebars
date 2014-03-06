@@ -92,6 +92,7 @@
     var r;
     var minVal = 0;
     var maxVal = 4;
+    var address = '';
     $(document).ready(function() {
 
     var sliderChange = function() {
@@ -345,7 +346,7 @@
         if (maxVal-minVal != 4) {
           // ga("send", "event", "PriceField", "PriceInputted", "AltPriceInputted", maxVal-minVal);
         }
-        var location = $('#pac-input').val();
+        var location = address;
 
         // redirect as a get request
         window.location  = '/search/results?keyword='+(cuisines === "" ? "food" : cuisines)+" "+location+'&minprice='+minVal+'&maxprice='+maxVal;
@@ -367,6 +368,7 @@
         if (!place.geometry) {
           return;
         }
+        address = place.address;
         if (place.address_components) {
           address = [
             (place.address_components[0] && place.address_components[0].short_name || ''),

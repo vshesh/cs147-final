@@ -157,9 +157,14 @@
             }, 
             complete: function(result, err) {
               if (err) console.log(err);
-              top.location.href = '/wishlist'
+              //top.location.href = '/wishlist'
             }
           });
+          var parent_tile = $(this).parent().parent().parent();
+          parent_tile.fadeOut(300, function(){
+            parent_tile.hide(300);
+          });
+          swiped = false;
         });
       });
       $('#menuButton').click(function (e) {

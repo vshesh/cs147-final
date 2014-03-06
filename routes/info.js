@@ -24,16 +24,18 @@ exports.viewById = function(req, res) {
   //make the entry yeah!
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
+    console.log(theBody.result);
   	var entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
   		"hours" : (theBody.result.opening_hours ? " " + theBody.result.opening_hours.periods[1].open.time + " - " + theBody.result.opening_hours.periods[1].close.time : ""),
   		"website": theBody.result.website, 
   		"reviews" : theBody.result.reviews,
-  		"phone" : theBody.result.international_phone_number.substr(3),
+  		"phone" : (theBody.result.international_phone_number ? theBody.result.international_phone_number.substr(3) : ""),
       "id" : theBody.result.id,
       "ref" : theBody.result.reference,
       "photos" : theBody.result.photos,
+      "address" : theBody.result.formatted_address
   	};
   	res.render('info', entry);
 
