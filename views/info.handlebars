@@ -79,7 +79,7 @@
             <hr>
             <ul>
               <a href= "{{author_url}}"><li>{{author_name}}</li> </a>
-              <li>Rating: {{rating}}</li>
+              <li><b>Rating:</b> {{rating}}</li>
               <li> {{text}}</li>
             </ul>
             {{/each}}
@@ -173,7 +173,7 @@
         });
 
         google.maps.event.addListener(marker, 'click', function() {
-          infowindow.setContent(place.name + '<a href="https://www.google.com/maps/preview?saddr=My+Location&daddr={{address}}"><br>Get Directions!</a>');
+          infowindow.setContent(place.name + '<a href="https://www.google.com/maps/preview?saddr=My+Location&daddr={{address}}"><br>Directions</a>');
           infowindow.open(map, this);
         });
 

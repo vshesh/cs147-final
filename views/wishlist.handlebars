@@ -149,21 +149,13 @@
 	      var tile = $('#img'+place.id).attr("src", photo);
       };
       
-      var address = place.adr_address;
-      var startStreet = address.indexOf('<span class="street-address">') + 29;
-      var endStreet = address.indexOf('<', startStreet);
-      var street = address.substring(startStreet, endStreet);
-      var startLocality = address.indexOf('<span class="locality">') + 23;
-      var endLocality = address.indexOf('<', startLocality);
-      var locality = address.substring(startLocality, endLocality);
-
       return '    <div class="photo"> '+
       '      <div class="photowrapper"><img id="img' + place.id + '" src="/images/default.png"></div>'+
       '    </div>'+
       '    <div id="' + (opennow? "open":"closed")+'" title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">'+
       '      <ul >   '+
       '        <li>'+place.name +'</li>'+
-      '        <li><span class= "address">'+ street +", " +locality+'</span></li>'+
+      '        <li><span class= "address">'+ place.formatted_address +'</span></li>'+
       '        <li>'/*+(place.rating? ratingWord + place.rating : "N/A")*/+'</li>'+
       '      </ul>'+
       '    </div>'+

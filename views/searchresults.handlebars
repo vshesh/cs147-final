@@ -87,12 +87,7 @@
       if (name.length > 20) {
         name = name.substring(0,25);
       }
-
-      var address = place.formatted_address;
-      if (address.length > 29) {
-        address = address.substring(0,28);
-      }
-
+      
       return '<div class="frame"><div class="wishlist-entry" gid="'+place.id+'" gref="'+place.reference+'"><div class="swipe-options">'+
       '  <div class="option"> '+
       '    <span class="glyphicon glyphicon-plus-sign"></span></div>'+
@@ -107,15 +102,14 @@
       '    <div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">'+
       '      <ul >   '+
       '        <li>'+name +'</li>'+
-      '        <li><span class="address">'+ address +'</span></li>'+
-      '        <li>Rating: '+(place.rating? place.rating : "N/A")+'</li>'+
+      '        <li><span class="address">'+ place.formatted_address +'</span></li>'+
       '      </ul>'+
       '    </div>'+
       '    <div title="These are details about restaraunts" rel="tooltip" class= "right-info">'+
       '      <ul>'+
-      '        <li>'+'1.2 mi'+'</li>'+
       '        <li>'+displayopen+'</li>'+
-      '        <li>'+price+'</li>'+
+      '        <li>'+price+'</li>'+        
+      '        <li>'+(place.rating? place.rating : "N/A")+'</li>'+
       '      </ul>'+
       '    </div>'+
       '  </a>'+

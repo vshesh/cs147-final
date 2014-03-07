@@ -30,7 +30,6 @@ body {
 }
 
 .wishlist-entry {
-  padding: 8px 0px;
   height:75px;
   overflow: hidden;
   border-bottom: 1px #e3e3e3 solid;
@@ -61,7 +60,8 @@ ul, li {
 .left-info {
   width: 28%;
   float:left;
-  height: 59px;
+  height: 75px;
+  padding-top: 2px;
   padding-left: 6px;
   overflow: hidden;
 }
@@ -75,13 +75,13 @@ ul, li {
   text-align:right;
   width: 10.5%;
   float:left;
-  height: 59px;
+  height: 65px;
   padding: 0px 1em 0px 0em;
 }
 
 img {
-  width: 4.5em;
-  height: 4.5em;
+  width: 75px;
+  height: 75px;
   /*border: 1px #e3e3e3 solid;*/
 }
 
@@ -101,7 +101,7 @@ img {
 .photo {
   padding: 0px 0px 0px .5em;
   width: 12%;
-  height: 59px;
+  height: 100%;
   float:left;
 }
 
