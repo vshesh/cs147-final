@@ -32,6 +32,13 @@ function initializePage() {
 
   $('#searchButton').click(function(){
     $('.filter').toggle('slow');
+    $('#filter-keywords').focus();
+    $('#filter-keywords').val('');
+    var names = $('.wishlist-entry .place div:nth-child(2) ul:first-child li:first-child');
+    for(var i = 0; i < names.length; i++){
+      $(names[i]).parent().parent().parent().parent().parent().fadeIn();
+    }
+
   });
 
   $('#filter-keywords').keyup(function(e) {
