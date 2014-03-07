@@ -14,7 +14,6 @@
 	font-size: 1.9em;
 	padding: 20px;
 	margin: 0;
-	background: #0d77b6;
 }
 
 .cbp-spmenu a {
@@ -51,7 +50,7 @@
 }
 
 .cbp-spmenu-vertical a {
-	border-bottom: 1px solid #D1462A;
+	border-bottom: 1px solid #DB5337;
 	padding: 1em;
 }
 
@@ -73,7 +72,7 @@
 	float: left;
 	width: 20%;
 	padding: 0.8em;
-	border-left: 1px solid #258ecd;
+	border-left: 1px solid #F5502F;
 }
 
 /* Vertical menu that slides from the left or right */
