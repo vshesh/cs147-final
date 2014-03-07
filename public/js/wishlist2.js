@@ -32,6 +32,7 @@ function initializePage() {
 
   $('#searchButton').click(function(){
     $('.filter').toggle('slow');
+    $('#searchButton').toggleClass('selected');
     $('#filter-keywords').focus();
     $('#filter-keywords').val('');
     var names = $('.wishlist-entry .place div:nth-child(2) ul:first-child li:first-child');

@@ -40,6 +40,10 @@ body {
 	padding-left: 10px;
 }
 
+.selected{
+	color:green;
+}
+
 .filter{
 	text-align: center;
 	display: none;
