@@ -30,6 +30,15 @@ function initializePage() {
     });
   });
 
+  $('#openNow').click(function(){
+    $('#openNow').toggleClass('selected');
+    var closed = $('.closed');
+    for(var i = 0; i < closed.length; i++){
+      $(closed[i]).parent().parent().parent().fadeToggle();
+    }
+
+  });
+
   $('#searchButton').click(function(){
     $('.filter').toggle('slow');
     $('#searchButton').toggleClass('selected');
