@@ -97,8 +97,12 @@ hr {
 .navbar-brand {
 	float: left;
 	overflow: hidden;
-	width: 7g0%;
+	width: 70%;
 	height: 38px;
+}
+
+.navbar-header {
+	overflow: hidden;
 }
 
 #menuButton {

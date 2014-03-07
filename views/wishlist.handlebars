@@ -160,7 +160,7 @@
       return '    <div class="photo"> '+
       '      <div class="photowrapper"><img id="img' + place.id + '" src="/images/default.png"></div>'+
       '    </div>'+
-      '    <div title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">'+
+      '    <div id="' + (opennow? "open":"closed")+'" title=" This is an entry in your wishlist" rel="tooltip" class= "left-info">'+
       '      <ul >   '+
       '        <li>'+place.name +'</li>'+
       '        <li><span class= "address">'+ street +", " +locality+'</span></li>'+

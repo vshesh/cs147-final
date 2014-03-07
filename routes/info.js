@@ -24,10 +24,29 @@ exports.viewById = function(req, res) {
   //make the entry yeah!
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
+    var hours = "";
+    if(theBody.result.opening_hours){
+      var startNum = parseInt(theBody.result.opening_hours.periods[1].open.time);
+      var endNum = parseInt(theBody.result.opening_hours.periods[1].close.time);
+      var startMorn, endMorn;
+      startNum < 1200 ? startMorn = 'A' : startMorn = 'P';
+      endNum < 1200 ? endMorn = 'A': endMorn = 'P'; 
+      startNum = startNum % 1200;
+      endNum = endNum % 1200;
+      var start = startNum.toString();
+      var end = endNum.toString();
+      start = startNum < 1000 ? start.substring(0, 1) + ":" + start.substring(1): start.substring(0, 2) + ":" + start.substring(2);
+      end = endNum < 1000 ? end.substring(0, 1) + ":" + end.substring(1): end.substring(0, 2) + ":" + end.substring(2);
+      start += startMorn;
+      end += endMorn;
+      hours = start + " - " + end;
+    }
+
   	var entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
-  		"hours" : (theBody.result.opening_hours ? " " + theBody.result.opening_hours.periods[1].open.time + " - " + theBody.result.opening_hours.periods[1].close.time : ""),
+  		"hours" : hours,//(theBody.result.opening_hours ? " " + theBody.result.opening_hours.periods[1].open.time + " - " + theBody.result.opening_hours.periods[1].close.time : ""),
+      "opennow": (theBody.result.opening_hours.opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>"),
   		"website": theBody.result.website, 
   		"reviews" : theBody.result.reviews,
   		"phone" : (theBody.result.international_phone_number ? theBody.result.international_phone_number.substr(3) : ""),
