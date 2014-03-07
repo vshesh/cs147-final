@@ -7,14 +7,14 @@ $(document).ready(function() {
 
 
 
- function initializePage() {
-   // geoFindMe();
+function initializePage() {
+ // geoFindMe();
 
-   //Init Swiping
-   swipeTiles();
+ //Init Swiping
+ swipeTiles();
 
-   //Handle removing a wishlist item.
-   $('.glyphicon-remove').each(function(i,e) {
+  //Handle removing a wishlist item.
+  $('.glyphicon-remove').each(function(i,e) {
     $(e).click(function(ev) {
       ev.preventDefault();
       $.get('/wishlist/remove/', {
@@ -27,9 +27,25 @@ $(document).ready(function() {
         parent_tile.hide(300);
       });
     swiped = false;
+    });
   });
- });
- }
+
+  $('#filter-keywords').keyup(function(e) {
+    e.preventDefault();
+    var val = $('#filter-keywords').val();
+    $.map($('.frame'), function(d,i) { $(d).show();});
+    var keywords = val.split(" ");
+    var names = $('.wishlist-entry .place div:nth-child(2) ul:first-child li:first-child');
+    for( var i = 0; i < names.length; i++) {
+      for (var k = 0; k < keywords.length; k++) {
+        if ($(names[i]).html().toLowerCase().indexOf(keywords[k].toLowerCase()) == -1) {
+          $(names[i]).parent().parent().parent().parent().parent().hide();
+          break;
+        }
+      }
+    }
+  })
+}
 
 
  function swipeTiles() {

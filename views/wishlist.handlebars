@@ -51,6 +51,10 @@
     <div id="underlay"></div>
 
 	<div class="container">
+    <div class="filter">
+      Filter by Name: <input id="filter-keywords" type="text"> <button class="filterGo">Go</button>
+    </div>
+    <hr>
 		{{#each wishlist}}
 		<div class= "frame">
 		<div class="wishlist-entry" id="swipe{{id}}" gref = "{{g_places_ref}}" gid = "{{g_places_id}}">
