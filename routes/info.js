@@ -26,8 +26,10 @@ exports.viewById = function(req, res) {
   	var theBody = JSON.parse(body);
     var hours = "";
     if(theBody.result.opening_hours){
-      var startNum = parseInt(theBody.result.opening_hours.periods[1].open.time);
-      var endNum = parseInt(theBody.result.opening_hours.periods[1].close.time);
+      var today = new Date();
+      var startNum = parseInt(theBody.result.opening_hours.periods[today.getDay()].open.time);
+      var endNum = parseInt(theBody.result.opening_hours.periods[today.getDay()].close.time);
+      console.log(today.getDay());
       var startMorn, endMorn;
       startNum < 1200 ? startMorn = 'A' : startMorn = 'P';
       endNum < 1200 ? endMorn = 'A': endMorn = 'P'; 
