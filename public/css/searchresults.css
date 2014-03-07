@@ -14,14 +14,16 @@ body {
   padding-bottom: .5em;
 }
 
-
 .address {
   font-size: 13px;
 }
 
-
 #menuButton {
   padding: .75em;
+}
+
+.gm-style-iw {
+  color: #f46b4f;
 }
 
 .frame {
@@ -31,17 +33,26 @@ body {
 
 .wishlist-entry {
   height:75px;
+  padding-top:5px;
   overflow: hidden;
   border-bottom: 1px #e3e3e3 solid;
   position: relative;
   width: 200%;
 }
 
+.glyphicon-pencil {
+  color: #333;
+}
+
+.glyphicon-pencil:active, .glyphicon-plus-sign:active {
+color: #f46b4f;
+}
+
 .swipe-options {
   width:49%;
-  height: 59px;
+  height: 75px;
   float:left;
-  padding: .5em;
+  padding: 1em;
 }
 
 .option {

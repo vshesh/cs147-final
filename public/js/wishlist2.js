@@ -22,9 +22,9 @@ function initializePage() {
         gref: $(this).parent().parent().parent().attr('gref')
       }, function(result,err) {if (err) console.log(err);});
 
-      var parent_tile = $(this).parent().parent().parent();
+      var parent_tile = $(this).parent().parent().parent().parent();
       parent_tile.fadeOut(300, function(){
-        parent_tile.hide(300);
+        parent_tile.remove(300);
       });
     swiped = false;
     });

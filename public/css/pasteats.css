@@ -18,8 +18,21 @@ body {
 	padding: 1em;
 }
 
+.col-xs-8, .col-xs-4, .caption-text, .text {
+	overflow: hidden;
+} 
+
+.text {
+	width:100%;
+	height:auto;
+}
+
 .entry-text, .caption-text, .entry-end{
 	padding: 0.5em .75em;
+}
+
+.glyphicon-plus:active {
+	color: #f46b4f;
 }
 
 .caption-text {

@@ -25,6 +25,10 @@ body {
 	width: 200%;
 }
 
+.glyphicon-pencil:active, .glyphicon-remove:active, .glyphicon-plus:active {
+color: #f46b4f;
+}
+
 .swipe-options {
 	width:50%;
 	height: 100%;
@@ -34,14 +38,6 @@ body {
 
 #map-canvas {
 	display: none;
-}
-
-#searchButton{
-	padding-left: 10px;
-}
-
-.selected{
-	color:green;
 }
 
 .filter{
@@ -71,8 +67,8 @@ ul, li {
 .left-info {
 	width: 26%;
 	float:left;
-	height: 100%;
-	padding: 0px 0em 0px 0em;
+	height: 70px;
+	padding: 5px 0em 0px 0em;
 	overflow: hidden;
 }
 
@@ -81,8 +77,24 @@ ul, li {
 	font-weight: bold;	
 }
 
-#add {
-	float:right;
+#add, #searchButton, #openNow {
+  float:right;
+  font-size: 20px;
+  color:#888;
+  padding: 10px;
+  margin-right: 5px;
+}
+#searchButton, #openNow {
+	margin-top: 4px;
+}
+
+#filter-keywords {
+	width: 100%;
+	padding: 0em 1em;
+}
+
+.selected{
+	color:green !important;
 }
 
 .gm-style-iw a {
@@ -94,7 +106,7 @@ ul, li {
 	width: 9.5%;
 	float:left;
 	height: 100%;
-	padding: 0px 10px 0px 0px;
+	padding: 5px 10px 0px 0px;
 }
 
 img {

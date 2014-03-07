@@ -42,13 +42,13 @@
         </table>
     </div>
     <form action="/pasteats-editcreate/add" method="post" enctype="multipart/form-data">
-      <input type="text" name="title" class="textfield" placeholder="Title" required maxlength="80" autocomplete="off">
-      <textarea type="text" name="summary" id="summary" placeholder="Your eloquent text"></textarea>
+      <input type="text" name="title" class="textfield" placeholder="Title" required maxlength="26" autocomplete="off">
+      <textarea type="text" name="summary" id="summary" placeholder="Your eloquent thoughts, memories & food feels"></textarea>
       <div id="filewrapper">Add Photo</div>
       <input type="file" name='photo' accept="image/*" id="file">
       <div id="previewbox">
         <img id="preview">
-        <input type="text" name="caption" id="caption" placeholder="Caption the image">
+        <input type="text" name="caption" id="caption" maxlength="35"  placeholder="Caption">
       </div>
         <input type="submit" id="upload" value="Submit">
     </form>
