@@ -30,6 +30,10 @@ function initializePage() {
     });
   });
 
+  $('#searchButton').click(function(){
+    $('.filter').toggle('slow');
+  });
+
   $('#filter-keywords').keyup(function(e) {
     e.preventDefault();
     var val = $('#filter-keywords').val();

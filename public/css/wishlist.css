@@ -36,6 +36,15 @@ body {
 	display: none;
 }
 
+#searchButton{
+	padding-left: 10px;
+}
+
+.filter{
+	text-align: center;
+	display: none;
+}
+
 .hint {
 	padding: 1em;
 	text-align :center;
