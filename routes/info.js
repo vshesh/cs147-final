@@ -25,10 +25,10 @@ exports.viewById = function(req, res) {
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
     var hours = "";
-    if(theBody.result.opening_hours){
+    if(theBody.result.opening_hours && theBody.result.opening_hours.periods[1].open.time){
       var today = new Date();
-      var startNum = parseInt(theBody.result.opening_hours.periods[today.getDay()].open.time);
-      var endNum = parseInt(theBody.result.opening_hours.periods[today.getDay()].close.time);
+      var startNum = parseInt(theBody.result.opening_hours.periods[1].open.time);
+      var endNum = parseInt(theBody.result.opening_hours.periods[1].close.time);
       console.log(today.getDay());
       var startMorn, endMorn;
       startNum < 1200 ? startMorn = 'A' : startMorn = 'P';
@@ -44,11 +44,12 @@ exports.viewById = function(req, res) {
       hours = start + " - " + end;
     }
 
+    console.log(theBody.result.opening_hours.opennow);
   	var entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
   		"hours" : hours,//(theBody.result.opening_hours ? " " + theBody.result.opening_hours.periods[1].open.time + " - " + theBody.result.opening_hours.periods[1].close.time : ""),
-      "opennow": (theBody.result.opening_hours.opennow ? "<span style='color: green'>open</span>" : "<span style='color: #cc0052'>closed</span>"),
+      "opennow": (theBody.result.opening_hours.open_now ? "open" : "closed"),
   		"website": theBody.result.website, 
   		"reviews" : theBody.result.reviews,
   		"phone" : (theBody.result.international_phone_number ? theBody.result.international_phone_number.substr(3) : ""),
