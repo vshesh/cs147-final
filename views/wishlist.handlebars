@@ -169,7 +169,7 @@
       '      <ul>'+
       '        <li>'+displayopen+'</li>'+
       '        <li>'+(price ? price: "$$" )+'</li>'+
-      '				 <li>'+(place.rating? place.rating : "N/A")+'</li>'+
+      '				 <li>'+(place.rating? Math.round(parseInt(place.rating)) : "N/A")+'</li>'+
       '      </ul>'+
       '    </div>';
 	}
