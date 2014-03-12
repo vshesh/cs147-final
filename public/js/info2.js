@@ -16,15 +16,28 @@ function initializePage() {
     top.location.href = document.referrer;
   });
 
+  $('#showReviews').click(function(e){
+    e.preventDefault();
+    $('#reviews').fadeToggle();
+    $(this).text( $(this).text()==="Show" ? "Hide" : "Show" );
+    //$('html', 'body').animate({scrollTop: $('#showReviews').parent().offset.top + 'px'}, 'fast');
+  });
+  stars();
+
+};
+
+function stars(){
+  //makes ratings into stars
   var rating = parseFloat($('#avgRating').text().substring(8));
   console.log(rating);
   var ratingString = "";
   rating = Math.round(rating);
   for(var i = 0; i < rating; i++){
-  	ratingString += '<span class="glyphicon glyphicon-star"></span>';
+    ratingString += '<span class="glyphicon glyphicon-star"></span>';
   }
   for(var j = rating; j < 5; j++){
-  	ratingString += '<span class="glyphicon glyphicon-star-empty"></span>';
+    ratingString += '<span class="glyphicon glyphicon-star-empty"></span>';
   }
   $('#avgRating').html(ratingString);
-};
+}
+

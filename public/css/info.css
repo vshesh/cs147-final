@@ -85,9 +85,7 @@ ul, li {
 	width:150%;
 }
 
-#reviews {
-	padding: 1em;
-}
+
 
 hr {
 	margin-top: 10px;
@@ -107,6 +105,15 @@ hr {
 
 #menuButton {
 	padding: .75em;
+}
+
+#reviews{
+	display:none;
+}
+
+#showReviews{
+	float: right;
+	color: #428bca;
 }
 
 #map-canvas {

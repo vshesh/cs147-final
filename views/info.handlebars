@@ -74,15 +74,17 @@
       
       <div class="row-fluid panel panel-default">
          <div class= "panel-body review">
-            <span class = "header-text">Google Reviews</span>
+            <span class = "header-text">Google Reviews<span id= "showReviews">Show</span></span>
+            <div id="reviews">
             {{#each reviews}}
-            <hr>
-            <ul>
-              <a href= "{{author_url}}"><li>{{author_name}}</li> </a>
-              <li class="reviewRating"><b>Rating:</b> {{rating}}</li>
-              <li> {{text}}</li>
-            </ul>
+              <hr>
+              <ul>
+                <a href= "{{author_url}}"><li>{{author_name}}</li> </a>
+                <li class="reviewRating"><b>Rating:</b> {{rating}}</li>
+                <li> {{text}}</li>
+              </ul>
             {{/each}}
+            </div>
           </div>
       </div>
 
