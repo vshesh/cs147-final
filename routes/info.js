@@ -25,11 +25,11 @@ exports.viewById = function(req, res) {
   function callback(error, result, body){
   	var theBody = JSON.parse(body);
     var hours = "";
-    if(theBody.result.opening_hours && theBody.result.opening_hours.periods[1].open.time){
-      var today = new Date();
-      var startNum = parseInt(theBody.result.opening_hours.periods[1].open.time);
-      var endNum = parseInt(theBody.result.opening_hours.periods[1].close.time);
-      console.log(today.getDay());
+    var date = new Date();
+    var today = date.getDay();
+    if(theBody.result.opening_hours && theBody.result.opening_hours.periods[today].open.time){
+      var startNum = parseInt(theBody.result.opening_hours.periods[today].open.time);
+      var endNum = parseInt(theBody.result.opening_hours.periods[today].close.time);
       var startMorn, endMorn;
       startNum < 1200 ? startMorn = 'A' : startMorn = 'P';
       endNum < 1200 ? endMorn = 'A': endMorn = 'P'; 
@@ -43,8 +43,6 @@ exports.viewById = function(req, res) {
       end += endMorn;
       hours = start + " - " + end;
     }
-
-    console.log(theBody.result.opening_hours.opennow);
   	var entry = {
   		"name" : theBody.result.name,
   		"rating" : theBody.result.rating,
