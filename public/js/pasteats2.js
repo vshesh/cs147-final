@@ -39,7 +39,7 @@ function deleteEntry(e) {
   //Deletes the past eats entry by ID
   $.post('/pasteats/remove', {id: currentID}, 
                         function(result, err){
-                            if (err) console.log(err)
+                            if (err !=="success") console.log(err)
                           }
                         )
 }

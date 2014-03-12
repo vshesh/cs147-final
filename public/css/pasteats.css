@@ -76,7 +76,7 @@ a:link, a:visited, a:hover, a:active {
 
 .web_dialog_overlay
 {
-	position: absolute;
+	position: fixed;
 	top: 0;;
 	left: 0;
 	height: 100%;
@@ -94,7 +94,7 @@ a:link, a:visited, a:hover, a:active {
 {
 	top: 45%;
 	left: 10%;
-	position: absolute;
+	position: fixed;
 	margin: auto;
 	width: 80%;
 	z-index: 102;
