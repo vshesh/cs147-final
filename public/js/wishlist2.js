@@ -57,11 +57,14 @@ function initializePage() {
     $.map($('.frame'), function(d,i) { $(d).show();});
     var keywords = val.split(" ");
     var names = $('.wishlist-entry .place div:nth-child(2) ul:first-child li:first-child');
+    var cities = $('.wishlist-entry .place div:nth-child(2) ul:first-child li:nth-child(2)');
     for( var i = 0; i < names.length; i++) {
       for (var k = 0; k < keywords.length; k++) {
-        if ($(names[i]).html().toLowerCase().indexOf(keywords[k].toLowerCase()) == -1) {
-          $(names[i]).parent().parent().parent().parent().parent().hide();
-          break;
+        if ($(names[i]).text().toLowerCase().indexOf(keywords[k].toLowerCase()) == -1) {
+          if($(cities[i]).text().toLowerCase().indexOf(keywords[k].toLowerCase()) == -1){
+            $(names[i]).parent().parent().parent().parent().parent().hide();
+            break;
+          }
         }
       }
     }
