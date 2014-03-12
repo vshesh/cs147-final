@@ -29,7 +29,7 @@
   					<ul>
   						<li>{{cuisines}}</li>
   						<li>{{price}}</li>
-  						<li>Rating: {{rating}}</li>
+  						<li id="avgRating">Rating: {{rating}}</li>
   					</ul>
   				</div>
   				<div class= "col-xs-6">
@@ -79,7 +79,7 @@
             <hr>
             <ul>
               <a href= "{{author_url}}"><li>{{author_name}}</li> </a>
-              <li><b>Rating:</b> {{rating}}</li>
+              <li class="reviewRating"><b>Rating:</b> {{rating}}</li>
               <li> {{text}}</li>
             </ul>
             {{/each}}
