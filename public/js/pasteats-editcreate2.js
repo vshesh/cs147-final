@@ -9,10 +9,16 @@ function initializePage() {
   $('#previewbox').hide();
     
 
-  $("input[type='submit']").click(function() {
+  $("input[type='submit']").click(function(e) {
     //disable after first click
-    if(submitPressed > 0){$(this).attr("disabled","disabled");}
-    submitPressed ++;
+    console.log($('#upload').length);
+    if(submitPressed > 0 && $("#title").val() > 0){
+      $(this).attr("disabled","disabled");
+      $('#upload').css('color', 'gray');
+    }else{
+      submitPressed++;
+    }
+    
     //Makes it possible to not double submit.
 });
 

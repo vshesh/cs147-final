@@ -39,6 +39,10 @@ textarea {
   margin-bottom: 1em;
 }
 
+.noUse{
+  color: white;
+}
+
 #caption {
 	color: #333;
   font-size: 13px;
