@@ -8,13 +8,13 @@ form {
 
 .textfield, textarea, #upload, #add, #filewrapper{
   color: #333;
-  font-size: 13px;
+  font-size: 14px;
   font-family: 'Lato', sans-serif;
   border: none;
   width: 90%;
   margin: 1em auto;
   display:block;
-  padding: .5em;
+  padding: .6em;
   resize:none;
 }
 
@@ -23,7 +23,7 @@ textarea {
 }
 
 #filewrapper, #cancel{
-	height: 31px;
+	height: 35px;
 	padding: 6.5px;
 	background-color: #ddd;
 	text-align: center;
