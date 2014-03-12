@@ -27,6 +27,7 @@
 .slider-track {
   background-color: #dedede;
   background-image: none ;
+  position: relative;
 }
 
 .body {
@@ -35,12 +36,14 @@
 }
 
 #submitBtn {
+  position: relative;
   font-weight: 600;
   font-size: 20px;
   width: 50%;
   background-color: #f46b4f;
   background-image: none;
   color: white;
+  z-index: 8;
 }
 
 #submitBtn:active {
@@ -107,6 +110,10 @@
 .select2-search-choice > div{
   display:inline;
   margin: auto !important;
+}
+
+.select2-choices{
+  position: relative;
 }
 
 .select2-search-choice > a {
