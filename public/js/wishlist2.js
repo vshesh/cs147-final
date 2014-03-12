@@ -76,7 +76,7 @@ function initializePage() {
       left: -width +"px"
     });
     //Swipe open
-    Hammer(e).on("swiperight", function(ev) {
+    Hammer(e).on("swiperight dragright", function(ev) {
       if(!swiped) {
         $(this).animate({
           left: "0px"
@@ -87,7 +87,7 @@ function initializePage() {
   });
   //Swipe close
   $('.wishlist-entry').each(function(i,e) {
-    Hammer(e).on("swipeleft", function(ev) {
+    Hammer(e).on("swipeleft dragleft", function(ev) {
       if(swiped) {
         $(this).animate({
           left: -width + "px",
