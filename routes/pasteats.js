@@ -68,11 +68,11 @@ exports.viewById = function(req, res) {
 
 		function userCallback(err, users){
 			if(err){console.log(err); res.send(500)}
-			if(users[0].pasteats.public){
+			//if(users[0].pasteats.public){
 				res.render('pasteats', users[0]);
-			}else{
-				res.render('login');
-			}
+			// }else{
+			// 	res.render('login');
+			// }
 		}
 }
 
