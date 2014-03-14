@@ -8,8 +8,16 @@ body {
 	background-color: #f46b4f;
 }
 
-#add {
+#add, #share{
 	float:right;
+}
+
+#share{
+	color: rgb(136, 136, 136);
+	margin-top: 10px;
+	padding-right: 5px;
+	width:auto;
+	display: block;
 }
 
 .hint {
@@ -117,6 +125,7 @@ table {
 td {
 	width:50%;
 }
+
 
 .btnYes {
 	border-left: 1px #c9c9c9 solid;

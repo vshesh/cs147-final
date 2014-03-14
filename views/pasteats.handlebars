@@ -12,6 +12,7 @@
     <link href="/css/menubar/component.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery.js"></script>
     <link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="spreadsheet">
+    <script src="https://apis.google.com/js/plusone.js"></script>
 </head>
 
 
@@ -29,7 +30,9 @@
           <span class="navbar-brand">Past Eats </span>
 
         <a href="/pasteats-editcreate/2" id="add" class="add"><span class="glyphicon glyphicon-plus"></span></a>
-        <a href="/shared" id="add" class="add"><span class="glyphicon glyphicon-share"></span></a>
+        <a href="https://plus.google.com/share?url=http://umami.herokuapp.com/shared/{{google_id}}" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img id="share"
+  src="https://www.gstatic.com/images/icons/gplus-32.png" alt="Share on Google+"/></a>
       </div>
     </div>
     <div id="underlay"></div>
@@ -61,8 +64,7 @@
                 </div>
                 <img src= "{{image}}">
                 <div class= "caption-text"> {{caption}}</div>
-                <div class="entry-end">
-                   <g:plus action="share"></g:plus> <span class="glyphicon glyphicon-trash"></span>
+                <div class="entry-end"> <span class="glyphicon glyphicon-trash"></span>
                 </div>        
                 </div>
             </div>
