@@ -61,7 +61,19 @@ exports.view = function(req, res) {
 //Views each one individually (not implemented)
 exports.viewById = function(req, res) {
   var id = req.params.id;
-  res.render('pasteats-entry');
+  	models.User
+		.find({'google_id':id})
+		.sort()
+		.exec(userCallback);
+
+		function userCallback(err, users){
+			if(err){console.log(err); res.send(500)}
+			if(users[0].pasteats.public){
+				res.render('pasteats', users[0]);
+			}else{
+				res.render('login');
+			}
+		}
 }
 
 
