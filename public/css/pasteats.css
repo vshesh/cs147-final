@@ -14,10 +14,10 @@ body {
 
 #share{
 	color: rgb(136, 136, 136);
-	margin-top: 10px;
+	font-size: 20px;
+	display: inline-block;
+	margin-top: 12px;
 	padding-right: 5px;
-	width:auto;
-	display: block;
 }
 
 .hint {
@@ -125,7 +125,6 @@ table {
 td {
 	width:50%;
 }
-
 
 .btnYes {
 	border-left: 1px #c9c9c9 solid;
