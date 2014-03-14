@@ -107,7 +107,7 @@ app.get('/wishlist/add', wishlist.add);
 app.get('/wishlist/remove', wishlist.remove);
 app.get('/info/:id', info.viewById);
 app.get('/pasteats', pasteats.view);
-app.get('/pasteats/:id', pasteats.viewById);
+app.get('/shared/:id', pasteats.viewById);
 app.get('/pasteats-editcreate/:id', pasteats_editcreate.viewById);
 app.get('/search/results', search.viewResults);
 app.get('/search', search.viewAlt);
@@ -181,7 +181,8 @@ function ensureAuthenticated(req, res, next) {
   // anything else.
   if (req.path === '/login' || 
       req.path === '/about' ||
-      req.path.startsWith('/js') || 
+      req.path.startsWith('/js') ||
+      req.path.startsWith('/shared') || 
       req.path.startsWith('/css/bootstrap') || 
       req.path.startsWith('/css/introHCI') ||
       req.path.startsWith('/css/login') ||
