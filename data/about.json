@@ -10,8 +10,8 @@
       "id" : "2",
       "name" : "Avi Bagla",
       "title": "Vegan Pizza",
-      "description" : "Avi loves to eat. Give him a bowl of nails, and he'll find a way to eat it and enjoy it (with lots of thousand island dressing). Avi probably has too many restaurants on his wishlist. He's too hungry.",
-      "image": "https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-frc3/t1/1779080_10152211672270664_1535489162_n.jpg",
+      "description" : "Avi loves to eat. Give him a bowl of nails, and he'll find a way to eat it and enjoy it. Avi probably has too many restaurants on his wishlist. He's too hungry.",
+      "image": "http://m.c.lnkd.licdn.com/mpr/pub/image-g4ufUYCm2z5XVFD-NBJeslNAhV_L1FeIghJiaQQghoDK1Qbzg4uiaFLmhyfxilRV9mtO/avi-bagla.jpg",
       "caption": "The dog was interviewed after. He said he liked it."
     },
     {
@@ -29,6 +29,11 @@
       "description" : "Vishesh is smart. Like, super smart. Ask him about topology and he'll blow your mind. Give him a bowl of lentils and he's happy.",
       "image": "http://m.c.lnkd.licdn.com/mpr/pub/image-lDlbFyVsKI4wQOsLGINAto525L7mItyjA-2lUsD75KGtG3telDllb7bs5Moh-txCBhV2/vishesh-gupta.jpg",
       "caption": "Have you heard of topology? Really? WHAT? No. No. I can't even."
+    },
+    {
+      "id":"5",
+      "name": "Have feedback?",
+      "description": "Do you have any questions, comments, or feedback? Or do you just need a friend to talk to? Email Avi at avi@avibagla.com"
     }
   ]
 }

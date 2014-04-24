@@ -27,6 +27,8 @@ var searchalt = require('./routes/search');
 var help = require('./routes/help');
 var fs = require('fs');
 
+var herokuCallBack = "http://umami.herokuapp.com/auth/google/callback";
+var aviCallBack = "http://umami.avibagla.com/auth/google/callback";
 //This code lets us test on local, or use heroku properly.
 var settings;
 if(fs.existsSync('./settings.js')){
@@ -35,8 +37,7 @@ if(fs.existsSync('./settings.js')){
   settings = {};
   settings.amazonID = process.env.S3Key;
   settings.amazonSecret = process.env.S3Secret;
-  //CHANGE BACK WHEN WE SWITCH
-  settings.callbackURL = "http://umami.herokuapp.com/auth/google/callback";
+  settings.callbackURL = herokuCallBack;
   settings.googleID = process.env.googleID;
   settings.googleSecret = process.env.googleSecret;
   settings.googleServer = process.env.googleServer;
