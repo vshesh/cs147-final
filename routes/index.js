@@ -13,6 +13,7 @@ var findIndexByAttr = function(array, attr, value) {
 
 
 exports.about = function(req, res){
+  console.log(about);
   res.render('aboutus', about);
 }
 

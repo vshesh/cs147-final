@@ -12,7 +12,11 @@
       "title": "Vegan Pizza",
       "description" : "Avi loves to eat. Give him a bowl of nails, and he'll find a way to eat it and enjoy it. Avi probably has too many restaurants on his wishlist. He's too hungry.",
       "image": "http://m.c.lnkd.licdn.com/mpr/pub/image-g4ufUYCm2z5XVFD-NBJeslNAhV_L1FeIghJiaQQghoDK1Qbzg4uiaFLmhyfxilRV9mtO/avi-bagla.jpg",
-      "caption": "The dog was interviewed after. He said he liked it."
+      "caption": "The dog was interviewed after. He said he liked it.",
+      "site": {
+        "site": "http://avibagla.com",
+        "siteName":"his website"
+      }
     },
     {
       "id" : "3",
@@ -20,7 +24,11 @@
       "title": "Gourmet Pickles",
       "description" : "Ash loves good food. And mochi.",
       "image": "http://west.stanford.edu/sites/default/files/AshleyNguProfilePic_225x300.png",
-      "caption": "#nofilter"
+      "caption": "#nofilter",
+      "site": {
+        "site":"http://ngusletter.tumblr.com/",
+        "siteName": "her blog"
+      }
     },
     {
       "id" : "4",
@@ -28,7 +36,11 @@
       "title": "Spinach Samosas",
       "description" : "Vishesh is smart. Like, super smart. Ask him about topology and he'll blow your mind. Give him a bowl of lentils and he's happy.",
       "image": "http://m.c.lnkd.licdn.com/mpr/pub/image-lDlbFyVsKI4wQOsLGINAto525L7mItyjA-2lUsD75KGtG3telDllb7bs5Moh-txCBhV2/vishesh-gupta.jpg",
-      "caption": "Have you heard of topology? Really? WHAT? No. No. I can't even."
+      "caption": "Have you heard of topology? Really? WHAT? No. No. I can't even.",
+      "site":{
+        "site":"http://www.linkedin.com/pub/vishesh-gupta/65/418/b31",
+        "siteName":"his LinkedIn"
+      }
     },
     {
       "id":"5",

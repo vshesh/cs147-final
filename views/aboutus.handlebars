@@ -7,11 +7,12 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/css/introHCI.css" rel="stylesheet">
-    <link href="/css/about.css" rel="stylesheet">
+    
     <!-- Req for menubar-->
     <link href="/css/menubar/component.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery.js"></script>
     <link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="spreadsheet">
+    <link href="/css/about.css" rel="stylesheet">
 </head>
 
 
@@ -39,7 +40,11 @@
             <div class="pasteats-entry" id="{{id}}">
                 <div class= "entry-text row-fluid">
                     <b>{{name}}</b>
-                    <p>{{description}}</p>   
+                    <p>{{description}}</p>
+                    {{#site}}
+                    <p>Check out <a class="website" style="color:blue;" href="{{site}}">{{siteName}}</a></p>
+                    {{else}}
+                    {{/site}}
                 </div>
                 <img src= "{{image}}">   
                 </div>
