@@ -37,7 +37,7 @@ if(fs.existsSync('./settings.js')){
   settings = {};
   settings.amazonID = process.env.S3Key;
   settings.amazonSecret = process.env.S3Secret;
-  settings.callbackURL = herokuCallBack;
+  settings.callbackURL = aviCallBack;
   settings.googleID = process.env.googleID;
   settings.googleSecret = process.env.googleSecret;
   settings.googleServer = process.env.googleServer;
