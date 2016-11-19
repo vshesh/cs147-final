@@ -24,6 +24,6 @@
     "archiver": ">= 0.4.10"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "*"
   }  
 }
